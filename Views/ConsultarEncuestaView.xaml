@@ -9,10 +9,7 @@
     <VerticalStackLayout>
 
         <Label Text="Fecha desde"/>
-
         <DatePicker Date="{Binding FechaDesde}" />
-
-
 
         <Label Text="Fecha hasta"/>
         <DatePicker Date="{Binding FechaHasta}" />
