@@ -8,7 +8,7 @@ namespace dsi_ppai_maui.Models
 {
     public class Estado
     {
-        string Nombre { get; set; }
+        public string Nombre { get; set; }
 
         public bool Esfinalizada()
         {

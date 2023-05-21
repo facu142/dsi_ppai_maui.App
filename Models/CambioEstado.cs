@@ -8,7 +8,7 @@ namespace dsi_ppai_maui.Models
 {
     public class CambioEstado
     {
-        DateTime FechaHoraInicio { get; set; }
-        Estado Estado { get; set; }
+        public DateTime FechaHoraInicio { get; set; }
+        public Estado Estado { get; set; }
     }
 }

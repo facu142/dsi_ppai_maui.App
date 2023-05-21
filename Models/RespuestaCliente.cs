@@ -8,8 +8,7 @@ namespace dsi_ppai_maui.Models
 {
     public class RespuestaCliente
     {
-        DateTime FechaEncuesta { get; set; }
-
-        RespuestaPosible RespuestaSeleccionada { get; set; }
+        public DateTime FechaEncuesta { get; set; }
+        public RespuestaPosible RespuestaSeleccionada { get; set; }
     }
 }

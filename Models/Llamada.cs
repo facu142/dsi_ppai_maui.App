@@ -8,11 +8,11 @@ namespace dsi_ppai_maui.Models
 {
     public class Llamada
     {
-        string DescripcionOperador { get; set; }
-        string DetalleAccionRequerida { get; set; }
-        string Duracion { get; set; }
-        string EncuestaEnviada { get; set; }
-        string ObservacionAuditor { get; set; }
+        public string DescripcionOperador { get; set; }
+        public string DetalleAccionRequerida { get; set; }
+        public string Duracion { get; set; }
+        public string EncuestaEnviada { get; set; }
+        public string ObservacionAuditor { get; set; }
 
         List<RespuestaCliente> RespuestasDeEncuesta { get; set; }
 

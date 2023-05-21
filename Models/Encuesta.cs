@@ -8,9 +8,9 @@ namespace dsi_ppai_maui.Models
 {
     public class Encuesta
     {
-        string Descripcion { get; set; }
-        DateTime FechaFinVigencia { get; set; }
-        List<Pregunta> Preguntas { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime FechaFinVigencia { get; set; }
+        public List<Pregunta> Preguntas { get; set; }
 
         public Encuesta()
         {
