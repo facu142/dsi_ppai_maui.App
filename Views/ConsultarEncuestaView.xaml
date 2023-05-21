@@ -5,18 +5,18 @@
              Title="Consultar Encuesta"
              xmlns:ViewModels="clr-namespace:dsi_ppai_maui.ViewModels"
              x:DataType="ViewModels:ConsultarEncuestaViewModel">
-    
+
     <VerticalStackLayout>
 
         <Label Text="Fecha desde"/>
 
-        <!--<DatePicker MinimumDate="{Binding MinDate}"
-            MaximumDate="{Binding MaxDate }"
-            Date="{Binding SelectedDate}" />-->
+        <DatePicker Date="{Binding FechaDesde}" />
 
-        
+
 
         <Label Text="Fecha hasta"/>
+
+        <DatePicker Date="{Binding FechaHasta}" />
 
     </VerticalStackLayout>
 </ContentPage>

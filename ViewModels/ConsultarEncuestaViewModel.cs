@@ -9,21 +9,19 @@ namespace dsi_ppai_maui.ViewModels
 {
     public partial class ConsultarEncuestaViewModel: ObservableObject
     {
-        //[ObservableProperty]
-        //DateOnly maxDate;
 
-        //[ObservableProperty]
-        //DateOnly minDate;
+        [ObservableProperty]
+        DateOnly fechaDesde;
 
-        //[ObservableProperty]
-        //DateOnly selectedDate;
+        [ObservableProperty]
+        DateOnly fechaHasta;
 
-        //public ConsultarEncuestaViewModel()
-        //{
-        //    maxDate = new DateOnly();
-        //    minDate = new DateOnly();
-        //    selectedDate = new DateOnly();
-        //}
+
+        public ConsultarEncuestaViewModel()
+        {
+            fechaDesde = new DateOnly();
+            fechaHasta = new DateOnly();
+        }
 
     }
 }
