@@ -15,7 +15,6 @@
 
 
         <Label Text="Fecha hasta"/>
-
         <DatePicker Date="{Binding FechaHasta}" />
 
     </VerticalStackLayout>
