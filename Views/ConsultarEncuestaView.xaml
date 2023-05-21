@@ -4,15 +4,29 @@
              x:Class="dsi_ppai_maui.Views.ConsultarEncuestaView"
              Title="Consultar Encuesta"
              xmlns:ViewModels="clr-namespace:dsi_ppai_maui.ViewModels"
-             x:DataType="ViewModels:ConsultarEncuestaViewModel">
+             x:DataType="ViewModels:ConsultarEncuestaViewModel"
+             xmlns:models="clr-namespace:dsi_ppai_maui.Models">
 
     <VerticalStackLayout>
 
         <Label Text="Fecha desde"/>
-        <DatePicker Date="{Binding FechaDesde}" />
+        <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" DateSelected="FechaSeleccionada"/>
 
         <Label Text="Fecha hasta"/>
-        <DatePicker Date="{Binding FechaHasta}" />
+        <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" DateSelected="FechaSeleccionada"/>
 
+        <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Llamada">
+                    <Frame>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding DescripcionOperador}"/>
+                            <Label Text="{Binding CambioDeEstado}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
     </VerticalStackLayout>
 </ContentPage>

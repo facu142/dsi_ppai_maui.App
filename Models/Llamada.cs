@@ -14,7 +14,9 @@ namespace dsi_ppai_maui.Models
         public string EncuestaEnviada { get; set; }
         public string ObservacionAuditor { get; set; }
 
-        List<RespuestaCliente> RespuestasDeEncuesta { get; set; }
+        public List<RespuestaCliente> RespuestasDeEncuesta { get; set; }
+
+        public List<CambioEstado> CambioDeEstado {get; set;}
 
         public Llamada()
         {
