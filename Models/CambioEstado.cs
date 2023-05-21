@@ -10,5 +10,6 @@ namespace dsi_ppai_maui.Models
     {
         public DateTime FechaHoraInicio { get; set; }
         public Estado Estado { get; set; }
+
     }
 }

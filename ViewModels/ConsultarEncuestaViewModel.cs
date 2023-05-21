@@ -21,15 +21,16 @@ namespace dsi_ppai_maui.ViewModels
             fechaDesde = new DateOnly();
             fechaHasta = new DateOnly();
 
-            Estado finalizada = new Estado { Nombre = "Finalizada" };
-            Estado iniciada = new Estado { Nombre = "Iniciada" };
+            Estado finalizada = new() { Nombre = "Finalizada" };
+            Estado iniciada = new() { Nombre = "Iniciada" };
 
-            CambioEstado cambio1 = new CambioEstado { Estado = iniciada, FechaHoraInicio = new DateTime() };
-            CambioEstado cambio2 = new CambioEstado { Estado = finalizada, FechaHoraInicio = new DateTime() };
+            CambioEstado cambio1 = new() { Estado = iniciada, FechaHoraInicio = new DateTime() };
+            CambioEstado cambio2 = new() { Estado = finalizada, FechaHoraInicio = new DateTime() };
 
             // Listado de cambios de estado
             List<CambioEstado> cambiosDeEstado1 = new();
             List<CambioEstado> cambiosDeEstado2 = new();
+
             cambiosDeEstado1.Add(cambio1);
             cambiosDeEstado1.Add(cambio2);
 

@@ -20,8 +20,15 @@
                 <DataTemplate x:DataType="models:Llamada">
                     <Frame>
                         <VerticalStackLayout>
-                            <Label Text="{Binding DescripcionOperador}"/>
-                            <Label Text="{Binding CambioDeEstado}"/>
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="DescripcionOperador:"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Estado:" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
+
+                            </Grid>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>

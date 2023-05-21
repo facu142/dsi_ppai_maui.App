@@ -17,11 +17,13 @@ namespace dsi_ppai_maui.Models
         public List<RespuestaCliente> RespuestasDeEncuesta { get; set; }
 
         public List<CambioEstado> CambioDeEstado {get; set;}
+        public string DeterminarUltimoEstado => CambioDeEstado.LastOrDefault()?.Estado?.Nombre;
 
         public Llamada()
         {
             RespuestasDeEncuesta = new List<RespuestaCliente>();
         }
+
     }
 
 }
