@@ -43,7 +43,8 @@
                             <Label Text="{Binding RespuestaSeleccionada.Pregunta.StrPregunta}"/>
                             <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
                             <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
-
+                            <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
+                            <Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
                         </VerticalStackLayout>
                     </Frame>
                     
