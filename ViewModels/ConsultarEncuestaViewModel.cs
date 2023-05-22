@@ -48,7 +48,9 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void GoToDetail( Llamada llamada )
         {
-           await Shell.Current.GoToAsync(nameof(DetalleLlamadaView));
+            var navParam = new Dictionary<string, object>();
+            navParam.Add("DetalleLlamada", llamada);
+            await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
         }
 
     }
