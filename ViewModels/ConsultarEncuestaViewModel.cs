@@ -36,8 +36,8 @@ namespace dsi_ppai_maui.ViewModels
 
             cambiosDeEstado2.Add(cambio1);
 
-            Llamada llamada1 = new() { DescripcionOperador = "ASD", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion", CambioDeEstado = cambiosDeEstado1 };
-            Llamada llamada2 = new() { DescripcionOperador = "BDF", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion", CambioDeEstado = cambiosDeEstado2 };
+            Llamada llamada1 = new() { DescripcionOperador = "Desc 1", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1 };
+            Llamada llamada2 = new() { DescripcionOperador = "Desc 2", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2 };
 
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
