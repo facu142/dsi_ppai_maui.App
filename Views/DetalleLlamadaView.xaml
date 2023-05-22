@@ -4,14 +4,15 @@
              x:Class="dsi_ppai_maui.Views.DetalleLlamadaView"
              Title="DetalleLlamadaView"
              xmlns:viewModels="clr-namespace:dsi_ppai_maui.ViewModels"
-             x:DataType="viewModels:DetalleLlamadaViewModel">
+             x:DataType="viewModels:DetalleLlamadaViewModel"
+             xmlns:models="clr-namespace:dsi_ppai_maui.Models">
     <VerticalStackLayout Margin="15" Spacing="10">
 
         <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
             <Image Source="detalle" HeightRequest="20"/>
             <Label Text="Detalle de Llamada" FontSize="25"/>
         </HorizontalStackLayout>
- 
+
         <HorizontalStackLayout Spacing="15">
             <Image Source="person_icon" HeightRequest="18"/>
             <Label Text="Cliente:" FontAttributes="Bold"></Label>
@@ -28,5 +29,27 @@
             <Label Text="{Binding DetalleLlamada.Duracion}"/>
         </HorizontalStackLayout>
 
+        <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+            <Image Source="answer_icon" HeightRequest="20"/>
+            <Label Text="Respuestas seleccionadas" FontSize="25"/>
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding DetalleLlamada.RespuestasDeEncuesta}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:RespuestaCliente">
+                    <Frame>
+                        <VerticalStackLayout>
+                            <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
+                            <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

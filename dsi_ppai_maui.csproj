@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\answer_icon.png" />
 	  <None Remove="Resources\Images\clock_icon.png" />
 	  <None Remove="Resources\Images\detalle.png" />
 	  <None Remove="Resources\Images\dni_icon.png" />

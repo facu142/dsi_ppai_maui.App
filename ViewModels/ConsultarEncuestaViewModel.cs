@@ -44,8 +44,23 @@ namespace dsi_ppai_maui.ViewModels
             Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", nroCelular = "351111111" };
             Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", nroCelular = "351222222" };
 
-            Llamada llamada1 = new() { DescripcionOperador = "Desc 1", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente=cliente1};
-            Llamada llamada2 = new() { DescripcionOperador = "Desc 2", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2, Cliente = cliente2 };
+            RespuestaPosible respuestaPosible1 = new() { Descripcion="Descripcion Respuesta 1" ,Valor="1" };
+            RespuestaPosible respuestaPosible2 = new() { Descripcion = "Descripcion Respuesta 2", Valor = "2" };
+
+            List<RespuestaCliente> RespuestasDeEncuesta1 = new();
+            List<RespuestaCliente> RespuestasDeEncuesta2 = new();
+
+            RespuestaCliente respuestaCliente1 = new() { FechaEncuesta= DateTime.Now.AddDays(-5), RespuestaSeleccionada=respuestaPosible1 };
+            RespuestaCliente respuestaCliente2 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible2 };
+
+            RespuestasDeEncuesta1.Add(respuestaCliente1);
+            RespuestasDeEncuesta1.Add(respuestaCliente2);
+
+            RespuestasDeEncuesta2.Add(respuestaCliente1);
+            RespuestasDeEncuesta2.Add(respuestaCliente2);
+
+            Llamada llamada1 = new() { DescripcionOperador = "Desc 1", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente=cliente1, RespuestasDeEncuesta= RespuestasDeEncuesta1 };
+            Llamada llamada2 = new() { DescripcionOperador = "Desc 2", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2, Cliente = cliente2, RespuestasDeEncuesta = RespuestasDeEncuesta2 };
 
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
