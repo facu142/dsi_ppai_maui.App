@@ -19,6 +19,18 @@ namespace dsi_ppai_maui.Models
         {
             return Nombre == "Iniciada";
         }
+        public bool EsEnCurso()
+        {
+            return Nombre == "EnCurso";
+        }
+        public bool EsDescartada()
+        {
+            return Nombre == "Descartada";
+        }
+        public bool EsCancelada()
+        {
+            return Nombre == "Cancelada";
+        }
 
     }
 }
