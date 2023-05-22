@@ -10,6 +10,7 @@ namespace dsi_ppai_maui.Models
     {
         public string StrPregunta { get; set; }
         public List<RespuestaPosible> Respuestas { get; set; }
+        public Encuesta Encuesta { get; set; } // dependencia
         public Pregunta()
         {
             Respuestas = new List<RespuestaPosible>();

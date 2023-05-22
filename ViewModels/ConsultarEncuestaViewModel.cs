@@ -9,7 +9,6 @@ namespace dsi_ppai_maui.ViewModels
 {
     public partial class ConsultarEncuestaViewModel : ObservableObject
     {
-
         [ObservableProperty]
         DateOnly fechaDesde;
 
@@ -22,6 +21,25 @@ namespace dsi_ppai_maui.ViewModels
         {
             fechaDesde = new DateOnly();
             fechaHasta = new DateOnly();
+
+            RespuestaPosible respuestaPosible1 = new() { Descripcion = "muy satisfecho", Valor = "1" };
+            RespuestaPosible respuestaPosible2 = new() { Descripcion = "Satisfecho", Valor = "2" };
+
+            List<RespuestaPosible> respuestas = new()
+            {
+                respuestaPosible1,
+                respuestaPosible1
+            };
+
+            Encuesta Encuesta1 = new() { Descripcion = "Descripcion de la encuesta 1", FechaFinVigencia = DateTime.Now };
+            Pregunta pregunta1 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas, Encuesta = Encuesta1 };
+            Pregunta pregunta2 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas, Encuesta = Encuesta1 };
+            List<Pregunta> preguntas = new()
+            {
+                pregunta1,
+                pregunta2
+            };
+            Encuesta1.Preguntas = preguntas;
 
             Estado finalizada = new() { Nombre = "Finalizada" };
             Estado iniciada = new() { Nombre = "Iniciada" };
@@ -44,13 +62,11 @@ namespace dsi_ppai_maui.ViewModels
             Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", nroCelular = "351111111" };
             Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", nroCelular = "351222222" };
 
-            RespuestaPosible respuestaPosible1 = new() { Descripcion="Descripcion Respuesta 1" ,Valor="1" };
-            RespuestaPosible respuestaPosible2 = new() { Descripcion = "Descripcion Respuesta 2", Valor = "2" };
 
             List<RespuestaCliente> RespuestasDeEncuesta1 = new();
             List<RespuestaCliente> RespuestasDeEncuesta2 = new();
 
-            RespuestaCliente respuestaCliente1 = new() { FechaEncuesta= DateTime.Now.AddDays(-5), RespuestaSeleccionada=respuestaPosible1 };
+            RespuestaCliente respuestaCliente1 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible1 };
             RespuestaCliente respuestaCliente2 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible2 };
 
             RespuestasDeEncuesta1.Add(respuestaCliente1);
@@ -59,7 +75,7 @@ namespace dsi_ppai_maui.ViewModels
             RespuestasDeEncuesta2.Add(respuestaCliente1);
             RespuestasDeEncuesta2.Add(respuestaCliente2);
 
-            Llamada llamada1 = new() { DescripcionOperador = "Desc 1", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente=cliente1, RespuestasDeEncuesta= RespuestasDeEncuesta1 };
+            Llamada llamada1 = new() { DescripcionOperador = "Desc 1", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente = cliente1, RespuestasDeEncuesta = RespuestasDeEncuesta1 };
             Llamada llamada2 = new() { DescripcionOperador = "Desc 2", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2, Cliente = cliente2, RespuestasDeEncuesta = RespuestasDeEncuesta2 };
 
             Llamadas.Add(llamada1);

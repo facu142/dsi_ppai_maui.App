@@ -11,5 +11,7 @@ namespace dsi_ppai_maui.Models
         public string Descripcion { get; set; }
         public string Valor { get; set; }
 
+        public Pregunta Pregunta { get; set; } // dependencia
+
     }
 }
