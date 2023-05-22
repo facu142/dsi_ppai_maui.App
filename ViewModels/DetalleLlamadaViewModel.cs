@@ -31,8 +31,12 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void GenerarCSV()
         {
-
             string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
+
+            foreach (RespuestaCliente respuestaCliente in _detalleLlamada.RespuestasDeEncuesta)
+            {
+                str += _detalleLlamada.Cliente.NombreCompleto + ";"+ _detalleLlamada.DeterminarUltimoEstado + ";" + _detalleLlamada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+            }
 
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);

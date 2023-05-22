@@ -20,7 +20,9 @@ public partial class ConsultarEncuestaView : ContentPage
     {
         //LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().Estado.EsIniciada());
 
-        // Loop llamadas con encuesta respondida
+        // ConsultarEncuestasRespondidas
+        // EsDePeriodo
+
         LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().FechaHoraInicio >= FechaDesde.Date 
                                                                          && i.CambioDeEstado.Last().FechaHoraInicio <= FechaHasta.Date);
     }
