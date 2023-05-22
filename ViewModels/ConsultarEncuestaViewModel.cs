@@ -22,7 +22,7 @@ namespace dsi_ppai_maui.ViewModels
             fechaDesde = new DateOnly();
             fechaHasta = new DateOnly();
 
-            RespuestaPosible respuestaPosible1 = new() { Descripcion = "muy satisfecho", Valor = "1" };
+            RespuestaPosible respuestaPosible1 = new() { Descripcion = "muy satisfecho", Valor = "1"};
             RespuestaPosible respuestaPosible2 = new() { Descripcion = "Satisfecho", Valor = "2" };
 
             List<RespuestaPosible> respuestas = new()
@@ -39,6 +39,10 @@ namespace dsi_ppai_maui.ViewModels
                 pregunta1,
                 pregunta2
             };
+
+            respuestaPosible1.Pregunta=pregunta1;
+            respuestaPosible2.Pregunta = pregunta1;
+
             Encuesta1.Preguntas = preguntas;
 
             Estado finalizada = new() { Nombre = "Finalizada" };
