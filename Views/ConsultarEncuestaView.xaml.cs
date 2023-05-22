@@ -9,9 +9,9 @@ public partial class ConsultarEncuestaView : ContentPage
 
 
     public ConsultarEncuestaView(ConsultarEncuestaViewModel vm)
-	{
-		InitializeComponent();
-		BindingContext = vm;
+    {
+        InitializeComponent();
+        BindingContext = vm;
         _viewModel = vm;
 
     }
@@ -20,5 +20,9 @@ public partial class ConsultarEncuestaView : ContentPage
     {
         //LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().Estado.Esfinalizada() &&
         //                                                                i.CambioDeEstado != null);
+
+        LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().FechaHoraInicio >= FechaDesde.Date 
+                                                                         && i.CambioDeEstado.Last().FechaHoraInicio <= FechaHasta.Date);
+
     }
 }
