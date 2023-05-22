@@ -1,4 +1,6 @@
-﻿using dsi_ppai_maui.ViewModels;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Storage;
+using dsi_ppai_maui.ViewModels;
 using dsi_ppai_maui.Views;
 using Microsoft.Extensions.Logging;
 
@@ -11,7 +13,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+			.UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -21,6 +24,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
+		builder.Services.AddSingleton<IFileSaver>(FileSaver.Default);
 
 		// Home
 		builder.Services.AddSingleton<HomeView>();

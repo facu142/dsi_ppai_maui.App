@@ -8,54 +8,64 @@
              xmlns:models="clr-namespace:dsi_ppai_maui.Models">
     <VerticalStackLayout Margin="15" Spacing="10">
 
-        <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
-            <Image Source="detalle" HeightRequest="20"/>
-            <Label Text="Detalle de Llamada" FontSize="25"/>
-        </HorizontalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout>
+                <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+                    <Image Source="detalle" HeightRequest="20"/>
+                    <Label Text="Detalle de Llamada" FontSize="25"/>
+                </HorizontalStackLayout>
 
-        <HorizontalStackLayout Spacing="15">
-            <Image Source="person_icon" HeightRequest="18"/>
-            <Label Text="Cliente:" FontAttributes="Bold"></Label>
-            <Label Text="{Binding DetalleLlamada.DeterminarNombreCliente}"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout Spacing="15">
-            <Image Source="status_icon" HeightRequest="18"/>
-            <Label Text="Estado Actual:" FontAttributes="Bold"/>
-            <Label Text="{Binding DetalleLlamada.DeterminarUltimoEstado}"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout Spacing="15">
-            <Image Source="clock_icon" HeightRequest="18"/>
-            <Label Text="Duracion llamada:" FontAttributes="Bold"/>
-            <Label Text="{Binding DetalleLlamada.Duracion}"/>
-        </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <Image Source="person_icon" HeightRequest="18"/>
+                    <Label Text="Cliente:" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding DetalleLlamada.DeterminarNombreCliente}"/>
+                </HorizontalStackLayout>
 
-        <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
-            <Image Source="answer_icon" HeightRequest="20"/>
-            <Label Text="Respuestas seleccionadas" FontSize="25"/>
-        </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <Image Source="status_icon" HeightRequest="18"/>
+                    <Label Text="Estado Actual:" FontAttributes="Bold"/>
+                    <Label Text="{Binding DetalleLlamada.DeterminarUltimoEstado}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <Image Source="clock_icon" HeightRequest="18"/>
+                    <Label Text="Duracion llamada:" FontAttributes="Bold"/>
+                    <Label Text="{Binding DetalleLlamada.Duracion}"/>
+                </HorizontalStackLayout>
 
-        <CollectionView ItemsSource="{Binding DetalleLlamada.RespuestasDeEncuesta}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:RespuestaCliente">
-                    <Frame>
-                        <VerticalStackLayout>
-                            <Label Text="Pregunta:" FontAttributes="Bold"/>
-                            <Label Text="{Binding RespuestaSeleccionada.Pregunta.StrPregunta}"/>
-                            <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
-                            <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
-                            <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
-                            <Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
-                        </VerticalStackLayout>
-                    </Frame>
-                    
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+                    <Image Source="answer_icon" HeightRequest="20"/>
+                    <Label Text="Respuestas seleccionadas" FontSize="25"/>
+                </HorizontalStackLayout>
 
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
-            </CollectionView.ItemsLayout>
-        </CollectionView>
+                <CollectionView ItemsSource="{Binding DetalleLlamada.RespuestasDeEncuesta}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:RespuestaCliente">
+                            <Frame>
+                                <VerticalStackLayout>
+                                    <Label Text="Pregunta:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding RespuestaSeleccionada.Pregunta.StrPregunta}"/>
+                                    <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
+                                    <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
+                                    <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
+                                </VerticalStackLayout>
+                            </Frame>
 
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+
+                <Button Text="Generar CSV" Command="{Binding GenerarCSVCommand}"/>
+
+                <Label x:Name="fileSaverResult" 
+                       Text=""/>
+
+            </VerticalStackLayout>
+        </ScrollView>
 
     </VerticalStackLayout>
 </ContentPage>
