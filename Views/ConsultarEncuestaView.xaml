@@ -39,6 +39,11 @@
                                 
                             </Grid>
                         </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:ConsultarEncuestaViewModel}},Path=GoToDetailCommand}"
+                                                  CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                        
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

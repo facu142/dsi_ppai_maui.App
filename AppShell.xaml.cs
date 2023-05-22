@@ -8,5 +8,6 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 		Routing.RegisterRoute(nameof(ConsultarEncuestaView), typeof(ConsultarEncuestaView));
-	}
+        Routing.RegisterRoute(nameof(DetalleLlamadaView), typeof(DetalleLlamadaView));
+    }
 }

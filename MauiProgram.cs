@@ -30,6 +30,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<ConsultarEncuestaView>();
         builder.Services.AddSingleton<ConsultarEncuestaViewModel>();
 
+		// Detalle llamada
+        builder.Services.AddTransient<DetalleLlamadaView>();
+		builder.Services.AddTransient<DetalleLlamadaViewModel>();
 
         return builder.Build();
 	}

@@ -17,4 +17,9 @@
         ContentTemplate="{DataTemplate views:ConsultarEncuestaView}"
         Route="ConsutarEncuesta" />
 
+    <ShellContent
+        Title="Detalle Llamada"
+        ContentTemplate="{DataTemplate views:DetalleLlamadaView}"
+        Route="DetalleLlamada" />
+
 </Shell>

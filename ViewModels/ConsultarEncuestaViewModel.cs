@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using dsi_ppai_maui.Models;
+using dsi_ppai_maui.Views;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -41,6 +43,12 @@ namespace dsi_ppai_maui.ViewModels
 
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
+        }
+
+        [RelayCommand]
+        public async void GoToDetail( Llamada llamada )
+        {
+           await Shell.Current.GoToAsync(nameof(DetalleLlamadaView));
         }
 
     }
