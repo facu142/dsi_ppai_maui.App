@@ -5,11 +5,27 @@
              Title="DetalleLlamadaView"
              xmlns:viewModels="clr-namespace:dsi_ppai_maui.ViewModels"
              x:DataType="viewModels:DetalleLlamadaViewModel">
-    <VerticalStackLayout Margin="15">
+    <VerticalStackLayout Margin="15" Spacing="10">
 
         <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
             <Image Source="detalle" HeightRequest="20"/>
             <Label Text="Detalle de Llamada" FontSize="25"/>
+        </HorizontalStackLayout>
+ 
+        <HorizontalStackLayout Spacing="15">
+            <Image Source="person_icon" HeightRequest="18"/>
+            <Label Text="Cliente:" FontAttributes="Bold"></Label>
+            <Label Text="{Binding DetalleLlamada.DeterminarNombreCliente}"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="15">
+            <Image Source="status_icon" HeightRequest="18"/>
+            <Label Text="Estado Actual:" FontAttributes="Bold"/>
+            <Label Text="{Binding DetalleLlamada.DeterminarUltimoEstado}"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="15">
+            <Image Source="clock_icon" HeightRequest="18"/>
+            <Label Text="Duracion llamada:" FontAttributes="Bold"/>
+            <Label Text="{Binding DetalleLlamada.Duracion}"/>
         </HorizontalStackLayout>
 
     </VerticalStackLayout>

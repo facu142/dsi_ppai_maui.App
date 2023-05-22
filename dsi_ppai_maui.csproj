@@ -49,9 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\clock_icon.png" />
 	  <None Remove="Resources\Images\detalle.png" />
+	  <None Remove="Resources\Images\dni_icon.png" />
 	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\person_icon.png" />
 	  <None Remove="Resources\Images\phone.png" />
+	  <None Remove="Resources\Images\status_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
