@@ -9,6 +9,11 @@
 
     <VerticalStackLayout Margin="15">
 
+        <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+            <Image Source="phone" HeightRequest="20"/>
+            <Label Text="Listado de Llamadas" FontSize="25"/>
+        </HorizontalStackLayout>
+
         <Label Text="Fecha desde"/>
         <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" DateSelected="FechaSeleccionada"/>
 
@@ -21,16 +26,17 @@
                 <DataTemplate x:DataType="models:Llamada">
                     <Frame>
                         <VerticalStackLayout>
-                            <Grid RowDefinitions="*,*" ColumnDefinitions="20,*,*" ColumnSpacing="10">
+                            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" ColumnSpacing="10">
 
-                                <Image Grid.Column="0" Grid.RowSpan="2" Source="phone.png"/>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="DescripcionOperador:"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Fecha y Hora:" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
                                 
-                                <Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="DescripcionOperador:"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding DescripcionOperador}"/>
-
-                                <Label Grid.Row="1" Grid.Column="1" FontAttributes="Bold" Text="Estado:" />
-                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding DeterminarUltimoEstado}"/>
-
                             </Grid>
                         </VerticalStackLayout>
                     </Frame>

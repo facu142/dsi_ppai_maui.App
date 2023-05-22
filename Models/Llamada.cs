@@ -19,6 +19,8 @@ namespace dsi_ppai_maui.Models
         public List<CambioEstado> CambioDeEstado {get; set;}
         public string DeterminarUltimoEstado => CambioDeEstado.LastOrDefault()?.Estado?.Nombre;
 
+        public string DeterminarFechaHoraUltimoEstado => CambioDeEstado.LastOrDefault().FechaHoraInicio.ToString();
+
         public Llamada()
         {
             RespuestasDeEncuesta = new List<RespuestaCliente>();
