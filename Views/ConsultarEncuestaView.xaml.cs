@@ -18,7 +18,7 @@ public partial class ConsultarEncuestaView : ContentPage
 
     private void FechaSeleccionada(object sender, DateChangedEventArgs e)
     {
-        LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().Estado.Esfinalizada() &&
-                                                                        i.CambioDeEstado != null);
+        //LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().Estado.Esfinalizada() &&
+        //                                                                i.CambioDeEstado != null);
     }
 }

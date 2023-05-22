@@ -7,7 +7,7 @@
              x:DataType="ViewModels:ConsultarEncuestaViewModel"
              xmlns:models="clr-namespace:dsi_ppai_maui.Models">
 
-    <VerticalStackLayout>
+    <VerticalStackLayout Margin="15">
 
         <Label Text="Fecha desde"/>
         <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" DateSelected="FechaSeleccionada"/>
@@ -15,24 +15,34 @@
         <Label Text="Fecha hasta"/>
         <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" DateSelected="FechaSeleccionada"/>
 
-        <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}">
+        <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
             <CollectionView.ItemTemplate>
+                
+                
                 <DataTemplate x:DataType="models:Llamada">
                     <Frame>
                         <VerticalStackLayout>
-                            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="20,*,*" ColumnSpacing="10">
 
-                                <Label Grid.Row="0" Grid.Column="0" Text="DescripcionOperador:"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
+                                <Image Grid.Column="0" Grid.RowSpan="2" Source="phone.png"/>
+                                
+                                <Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="DescripcionOperador:"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding DescripcionOperador}"/>
 
-                                <Label Grid.Row="1" Grid.Column="0" Text="Estado:" />
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
+                                <Label Grid.Row="1" Grid.Column="1" FontAttributes="Bold" Text="Estado:" />
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding DeterminarUltimoEstado}"/>
 
                             </Grid>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="8"/>
+            </CollectionView.ItemsLayout>
+
+
         </CollectionView>
         
     </VerticalStackLayout>
