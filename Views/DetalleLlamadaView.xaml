@@ -6,9 +6,11 @@
              xmlns:viewModels="clr-namespace:dsi_ppai_maui.ViewModels"
              x:DataType="viewModels:DetalleLlamadaViewModel"
              xmlns:models="clr-namespace:dsi_ppai_maui.Models">
-    <VerticalStackLayout Margin="15" Spacing="10">
 
-        <ScrollView>
+    <ScrollView>
+        <VerticalStackLayout Margin="15" Spacing="10">
+
+
             <VerticalStackLayout>
                 <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
                     <Image Source="detalle" HeightRequest="20"/>
@@ -65,7 +67,7 @@
                        Text=""/>
 
             </VerticalStackLayout>
-        </ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
 
-    </VerticalStackLayout>
 </ContentPage>

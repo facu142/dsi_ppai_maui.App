@@ -7,51 +7,56 @@
              x:DataType="ViewModels:ConsultarEncuestaViewModel"
              xmlns:models="clr-namespace:dsi_ppai_maui.Models">
 
-    <VerticalStackLayout Margin="15">
 
-        <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
-            <Image Source="phone" HeightRequest="20"/>
-            <Label Text="Listado de Llamadas" FontSize="25"/>
-        </HorizontalStackLayout>
+    <ScrollView Margin="15">
+        <VerticalStackLayout Spacing="15">
+            <VerticalStackLayout>
+                <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+                    <Image Source="phone" HeightRequest="20"/>
+                    <Label Text="Listado de Llamadas" FontSize="25"/>
+                </HorizontalStackLayout>
 
-        <Label Text="Fecha desde"/>
-        <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" DateSelected="FechaSeleccionada"/>
+                <Label Text="Fecha desde"/>
+                <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" DateSelected="FechaSeleccionada"/>
 
-        <Label Text="Fecha hasta"/>
-        <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" DateSelected="FechaSeleccionada"/>
+                <Label Text="Fecha hasta"/>
+                <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" DateSelected="FechaSeleccionada"/>
 
-        <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
-            <CollectionView.ItemTemplate>
-                
-                <DataTemplate x:DataType="models:Llamada">
-                    <Frame>
-                        <VerticalStackLayout>
-                            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" ColumnSpacing="10">
+                <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
+                    <CollectionView.ItemTemplate>
 
-                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="DescripcionOperador:"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
+                        <DataTemplate x:DataType="models:Llamada">
+                            <Frame>
+                                <VerticalStackLayout>
+                                    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" ColumnSpacing="10">
 
-                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Fecha y Hora:" />
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
+                                        <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="DescripcionOperador:"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
 
-                                <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
-                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
-                                
-                            </Grid>
-                        </VerticalStackLayout>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:ConsultarEncuestaViewModel}},Path=GoToDetailCommand}"
+                                        <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Fecha y Hora:" />
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
+
+                                        <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
+
+                                    </Grid>
+                                </VerticalStackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:ConsultarEncuestaViewModel}},Path=GoToDetailCommand}"
                                                   CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                        
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                                </Frame.GestureRecognizers>
 
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
-            </CollectionView.ItemsLayout>
-        </CollectionView>
-        
-    </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
