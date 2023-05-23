@@ -18,18 +18,14 @@ public partial class ConsultarEncuestaView : ContentPage
 
     private void FechaSeleccionada(object sender, DateChangedEventArgs e)
     {
-        ConsultarEncuestasRespondidas();
-        EsDePeriodo();
+        LlamadasCollectionView.IsVisible = true;
+        FiltrarporPeriodo();
     }
 
-    private void ConsultarEncuestasRespondidas()
-    {
-        LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.RespuestasDeEncuesta.Count > 0);
-    }
-
-    private void EsDePeriodo()
+    private void FiltrarporPeriodo()
     {
         LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().FechaHoraInicio >= FechaDesde.Date
-                                                                         && i.CambioDeEstado.Last().FechaHoraInicio <= FechaHasta.Date);
+                                                                         && i.CambioDeEstado.Last().FechaHoraInicio <= FechaHasta.Date
+                                                                         && i.RespuestasDeEncuesta.Count > 0);
     }
 }

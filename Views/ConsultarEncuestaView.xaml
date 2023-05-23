@@ -22,7 +22,7 @@
                 <Label Text="Fecha hasta"/>
                 <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" DateSelected="FechaSeleccionada"/>
 
-                <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
+                <CollectionView x:Name="LlamadasCollectionView" IsVisible="false" ItemsSource="{Binding Llamadas}" >
                     <CollectionView.ItemTemplate>
 
                         <DataTemplate x:DataType="models:Llamada">

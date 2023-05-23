@@ -101,11 +101,11 @@ namespace dsi_ppai_maui.ViewModels
 
 
             Pregunta pregunta1 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas, Encuesta = Encuesta1 };
-            Pregunta pregunta2 = new() { StrPregunta = "¿En una escala del 1 al 5, ¿qué tan probable es que vuelvas a utilizar nuestros productos/servicios en el futuro?", Respuestas = respuestas1, Encuesta = Encuesta1 };
-            Pregunta pregunta3 = new() { StrPregunta = "¿El personal de atención al cliente fue capaz de resolver tus dudas o inquietudes?", Respuestas = respuestas2, Encuesta = Encuesta1 };
+            Pregunta pregunta2 = new() { StrPregunta = "¿En una escala del 1 al 5, ¿qué tan probable es que vuelvas a utilizar nuestros productos/servicios en el futuro?", Respuestas = respuestas1, Encuesta = Encuesta2 };
+            Pregunta pregunta3 = new() { StrPregunta = "¿El personal de atención al cliente fue capaz de resolver tus dudas o inquietudes?", Respuestas = respuestas2, Encuesta = Encuesta3 };
             Pregunta pregunta4 = new() { StrPregunta = "¿La solución proporcionada a tu consulta/problema fue satisfactoria?", Respuestas = respuestas3, Encuesta = Encuesta1 };
-            Pregunta pregunta5 = new() { StrPregunta = "¿La atención al cliente que recibiste fue amable y cordial?", Respuestas = respuestas4, Encuesta = Encuesta1 };
-            Pregunta pregunta6 = new() { StrPregunta = "¿Recomendarías nuestros productos/servicios a otros?", Respuestas = respuestas5, Encuesta = Encuesta1 };
+            Pregunta pregunta5 = new() { StrPregunta = "¿La atención al cliente que recibiste fue amable y cordial?", Respuestas = respuestas4, Encuesta = Encuesta2 };
+            Pregunta pregunta6 = new() { StrPregunta = "¿Recomendarías nuestros productos/servicios a otros?", Respuestas = respuestas5, Encuesta = Encuesta3 };
 
 
             List<Pregunta> preguntas = new()
@@ -117,6 +117,18 @@ namespace dsi_ppai_maui.ViewModels
                 pregunta5,
                 pregunta6
 
+            };
+
+            List<Pregunta> preguntas1 = new()
+            {
+                pregunta3,
+                pregunta4
+            };
+
+            List<Pregunta> preguntas2 = new()
+            {
+                pregunta4,
+                pregunta5
             };
 
             respuestaPosible0.Pregunta = pregunta1;
@@ -145,6 +157,16 @@ namespace dsi_ppai_maui.ViewModels
 
             Encuesta1.Preguntas = preguntas;
             pregunta1.Encuesta = Encuesta1;
+            pregunta2.Encuesta = Encuesta1;
+
+            Encuesta2.Preguntas = preguntas1;
+            pregunta3.Encuesta = Encuesta1;
+            pregunta4.Encuesta = Encuesta1;
+
+            Encuesta3.Preguntas = preguntas2;
+            pregunta5.Encuesta = Encuesta1;
+            pregunta6.Encuesta = Encuesta1;
+
 
             Estado finalizada = new() { Nombre = "Finalizada" };
             Estado iniciada = new() { Nombre = "Iniciada" };
@@ -337,9 +359,36 @@ namespace dsi_ppai_maui.ViewModels
             RespuestasDeEncuesta1.Add(respuestaCliente1);
             RespuestasDeEncuesta1.Add(respuestaCliente2);
 
+            RespuestasDeEncuesta2.Add(respuestaCliente3);
+            RespuestasDeEncuesta2.Add(respuestaCliente4);
+            RespuestasDeEncuesta2.Add(respuestaCliente8);
 
-            RespuestasDeEncuesta2.Add(respuestaCliente1);
-            RespuestasDeEncuesta2.Add(respuestaCliente2);
+            RespuestasDeEncuesta3.Add(respuestaCliente5);
+            RespuestasDeEncuesta3.Add(respuestaCliente6);
+
+            RespuestasDeEncuesta4.Add(respuestaCliente7);
+            RespuestasDeEncuesta4.Add(respuestaCliente8);
+            RespuestasDeEncuesta4.Add(respuestaCliente5);
+
+            RespuestasDeEncuesta5.Add(respuestaCliente9);
+            RespuestasDeEncuesta5.Add(respuestaCliente10);
+
+            RespuestasDeEncuesta6.Add(respuestaCliente1);
+            RespuestasDeEncuesta6.Add(respuestaCliente3);
+
+            RespuestasDeEncuesta7.Add(respuestaCliente1);
+            RespuestasDeEncuesta7.Add(respuestaCliente3);
+            RespuestasDeEncuesta7.Add(respuestaCliente3);
+
+            RespuestasDeEncuesta8.Add(respuestaCliente4);
+            RespuestasDeEncuesta8.Add(respuestaCliente5);
+
+            RespuestasDeEncuesta9.Add(respuestaCliente1);
+            RespuestasDeEncuesta9.Add(respuestaCliente5);
+            RespuestasDeEncuesta9.Add(respuestaCliente7);
+
+            RespuestasDeEncuesta10.Add(respuestaCliente4);
+            RespuestasDeEncuesta10.Add(respuestaCliente3);
 
             Llamada llamada1 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente = cliente1, RespuestasDeEncuesta = RespuestasDeEncuesta1 };
             Llamada llamada2 = new() { DescripcionOperador = "Desc ", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2, Cliente = cliente2, RespuestasDeEncuesta = RespuestasDeEncuesta2 };
@@ -351,6 +400,7 @@ namespace dsi_ppai_maui.ViewModels
             Llamada llamada8 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado8, Cliente = cliente8, RespuestasDeEncuesta = RespuestasDeEncuesta8 };
             Llamada llamada9 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado9, Cliente = cliente9, RespuestasDeEncuesta = RespuestasDeEncuesta9 };
             Llamada llamada10 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado10, Cliente = cliente10, RespuestasDeEncuesta = RespuestasDeEncuesta10 };
+
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
             Llamadas.Add(llamada3);
