@@ -248,6 +248,7 @@ namespace dsi_ppai_maui.ViewModels
             Llamadas.Add(llamada10);
         }
 
+        // TODO: seleccionarLlamada
         [RelayCommand]
         public async void GoToDetail(Llamada llamada)
         {
