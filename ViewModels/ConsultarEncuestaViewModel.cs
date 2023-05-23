@@ -22,31 +22,129 @@ namespace dsi_ppai_maui.ViewModels
             fechaDesde = new DateOnly();
             fechaHasta = new DateOnly();
 
-            RespuestaPosible respuestaPosible1 = new() { Descripcion = "muy satisfecho", Valor = "1" };
-            RespuestaPosible respuestaPosible2 = new() { Descripcion = "Satisfecho", Valor = "2" };
+            RespuestaPosible respuestaPosible0 = new() { Descripcion = "Muy insatisfecho", Valor = "1" };
+            RespuestaPosible respuestaPosible1 = new() { Descripcion = "Neutral", Valor = "2" };
+            RespuestaPosible respuestaPosible2 = new() { Descripcion = "Satisfecho", Valor = "3" };
+            RespuestaPosible respuestaPosible3 = new() { Descripcion = "Muy Satisfecho", Valor = "4" };
+            RespuestaPosible respuestaPosible4 = new() { Descripcion = "No es probable", Valor = "1" };
+            RespuestaPosible respuestaPosible5 = new() { Descripcion = "Es poco probable", Valor = "2" };
+            RespuestaPosible respuestaPosible6 = new() { Descripcion = "Es probable", Valor = "3" };
+            RespuestaPosible respuestaPosible7 = new() { Descripcion = "Es muy probable", Valor = "4" };
+            RespuestaPosible respuestaPosible8 = new() { Descripcion = "Es bastante probable", Valor = "5" };
+            RespuestaPosible respuestaPosible9 = new() { Descripcion = "Si", Valor = "1" };
+            RespuestaPosible respuestaPosible10 = new() { Descripcion = "No", Valor = "2" };
+            RespuestaPosible respuestaPosible11 = new() { Descripcion = "Si", Valor = "1" };
+            RespuestaPosible respuestaPosible12 = new() { Descripcion = "No", Valor = "2" };
+            RespuestaPosible respuestaPosible13 = new() { Descripcion = "Si", Valor = "1" };
+            RespuestaPosible respuestaPosible14 = new() { Descripcion = "No", Valor = "2" };
+            RespuestaPosible respuestaPosible15 = new() { Descripcion = "Si", Valor = "1" };
+            RespuestaPosible respuestaPosible16 = new() { Descripcion = "No", Valor = "2" };
 
+            /*1 - Muy insatisfecho
+            2 - Insatisfecho
+            3 - Algo insatisfecho
+            4 - Neutral
+            5 - Algo satisfecho
+            6 - Satisfecho
+            7 - Bastante satisfecho
+            8 - Muy satisfecho
+            9 - Extremadamente satisfecho
+            10 - Completamente satisfecho*/
 
             List<RespuestaPosible> respuestas = new()
             {
+                respuestaPosible0,
                 respuestaPosible1,
-                respuestaPosible1
+                respuestaPosible2,
+                respuestaPosible3,
+
+            };
+            List<RespuestaPosible> respuestas1 = new()
+            {
+
+                respuestaPosible4,
+                respuestaPosible5,
+                respuestaPosible6,
+                respuestaPosible7,
+                respuestaPosible8,
+
+            };
+            List<RespuestaPosible> respuestas2 = new()
+            {
+                respuestaPosible9,
+                respuestaPosible10,
+            };
+            List<RespuestaPosible> respuestas3 = new()
+            {
+                respuestaPosible11,
+                respuestaPosible12,
+            };
+            List<RespuestaPosible> respuestas4 = new()
+            {
+                respuestaPosible13,
+                respuestaPosible14,
+            };
+            List<RespuestaPosible> respuestas5 = new()
+            {
+                respuestaPosible15,
+                respuestaPosible16,
             };
 
-            Encuesta Encuesta1 = new() { Descripcion = "Descripcion de la encuesta 1", FechaFinVigencia = DateTime.Now };
+            /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
+
+            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
+            Encuesta Encuesta2 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
+            Encuesta Encuesta3 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
+
+
+
+
 
             Pregunta pregunta1 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas, Encuesta = Encuesta1 };
-            Pregunta pregunta2 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas, Encuesta = Encuesta1 };
+            Pregunta pregunta2 = new() { StrPregunta = "¿En una escala del 1 al 5, ¿qué tan probable es que vuelvas a utilizar nuestros productos/servicios en el futuro?", Respuestas = respuestas1, Encuesta = Encuesta1 };
+            Pregunta pregunta3 = new() { StrPregunta = "¿El personal de atención al cliente fue capaz de resolver tus dudas o inquietudes?", Respuestas = respuestas2, Encuesta = Encuesta1 };
+            Pregunta pregunta4 = new() { StrPregunta = "¿La solución proporcionada a tu consulta/problema fue satisfactoria?", Respuestas = respuestas3, Encuesta = Encuesta1 };
+            Pregunta pregunta5 = new() { StrPregunta = "¿La atención al cliente que recibiste fue amable y cordial?", Respuestas = respuestas4, Encuesta = Encuesta1 };
+            Pregunta pregunta6 = new() { StrPregunta = "¿Recomendarías nuestros productos/servicios a otros?", Respuestas = respuestas5, Encuesta = Encuesta1 };
+
 
             List<Pregunta> preguntas = new()
             {
                 pregunta1,
-                pregunta2
+                pregunta2,
+                pregunta3,
+                pregunta4,
+                pregunta5,
+                pregunta6
+
             };
 
+            respuestaPosible0.Pregunta = pregunta1;
             respuestaPosible1.Pregunta = pregunta1;
             respuestaPosible2.Pregunta = pregunta1;
+            respuestaPosible3.Pregunta = pregunta1;
+
+            respuestaPosible4.Pregunta = pregunta2;
+            respuestaPosible5.Pregunta = pregunta2;
+            respuestaPosible6.Pregunta = pregunta2;
+            respuestaPosible7.Pregunta = pregunta2;
+            respuestaPosible8.Pregunta = pregunta2;
+
+            respuestaPosible9.Pregunta = pregunta3;
+            respuestaPosible10.Pregunta = pregunta3;
+
+            respuestaPosible11.Pregunta = pregunta4;
+            respuestaPosible12.Pregunta = pregunta4;
+
+            respuestaPosible13.Pregunta = pregunta5;
+            respuestaPosible14.Pregunta = pregunta5;
+
+            respuestaPosible15.Pregunta = pregunta6;
+            respuestaPosible16.Pregunta = pregunta6;
+
 
             Encuesta1.Preguntas = preguntas;
+            pregunta1.Encuesta = Encuesta1;
 
             Estado finalizada = new() { Nombre = "Finalizada" };
             Estado iniciada = new() { Nombre = "Iniciada" };
@@ -60,74 +158,74 @@ namespace dsi_ppai_maui.ViewModels
 
 
             //cambio de estado de llamada 1
-            CambioEstado cambio11 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio21 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio31 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio41 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio11 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            CambioEstado cambio21 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-4) };
+            CambioEstado cambio31 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-3) };
+            CambioEstado cambio41 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-2) };
             CambioEstado cambio51 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-1) };
 
             //cambio de estado llamada 2
-            CambioEstado cambio12 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio22 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio32 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio42 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio52 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio12 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-10) };
+            CambioEstado cambio22 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-9) };
+            CambioEstado cambio32 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            CambioEstado cambio42 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            CambioEstado cambio52 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-6) };
 
             //cambio de estado llamada 3
-            CambioEstado cambio13 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio23 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio33 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio43 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio53 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio13 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-11) };
+            CambioEstado cambio23 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-10) };
+            CambioEstado cambio33 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-9) };
+            CambioEstado cambio43 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            CambioEstado cambio53 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-7) };
 
             //cambio de estado llamada 4
-            CambioEstado cambio14 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio24 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio34 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio44 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio54 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio14 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-12) };
+            CambioEstado cambio24 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-11) };
+            CambioEstado cambio34 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-10) };
+            CambioEstado cambio44 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-9) };
+            CambioEstado cambio54 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-8) };
 
             //cambio de estado llamada 5
-            CambioEstado cambio15 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio25 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio35 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio45 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio55 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio15 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            CambioEstado cambio25 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            CambioEstado cambio35 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-4) };
+            CambioEstado cambio45 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-3) };
+            CambioEstado cambio55 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-2) };
 
             //cambio de estado llamada 6
-            CambioEstado cambio16 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio26 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio36 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio46 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio56 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio16 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            CambioEstado cambio26 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            CambioEstado cambio36 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            CambioEstado cambio46 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            CambioEstado cambio56 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-4) };
 
             //cambio de estado llamada 7
-            CambioEstado cambio17 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio27 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio37 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio47 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio57 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio17 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-9) };
+            CambioEstado cambio27 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            CambioEstado cambio37 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            CambioEstado cambio47 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            CambioEstado cambio57 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-5) };
 
             //cambio de estado llamada 8
-            CambioEstado cambio18 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio28 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio38 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio48 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio58 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio18 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            CambioEstado cambio28 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            CambioEstado cambio38 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            CambioEstado cambio48 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-4) };
+            CambioEstado cambio58 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-3) };
 
             //cambio de estado llamada 9
-            CambioEstado cambio19 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio29 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio39 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio49 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio59 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio19 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            CambioEstado cambio29 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            CambioEstado cambio39 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            CambioEstado cambio49 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            CambioEstado cambio59 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-4) };
 
             //cambio de estado llamada 10
-            CambioEstado cambio110 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio210 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio310 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio410 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-1) };
-            CambioEstado cambio510 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio110 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-9) };
+            CambioEstado cambio210 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            CambioEstado cambio310 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            CambioEstado cambio410 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            CambioEstado cambio510 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-5) };
 
 
             // Listado de cambios de estado
@@ -248,7 +346,6 @@ namespace dsi_ppai_maui.ViewModels
             Llamadas.Add(llamada10);
         }
 
-        // TODO: seleccionarLlamada
         [RelayCommand]
         public async void GoToDetail(Llamada llamada)
         {
