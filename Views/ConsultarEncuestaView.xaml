@@ -42,7 +42,7 @@
                                     </Grid>
                                 </VerticalStackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:ConsultarEncuestaViewModel}},Path=GoToDetailCommand}"
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:ConsultarEncuestaViewModel}},Path=SeleccionarLlamadaCommand}"
                                                   CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
 
