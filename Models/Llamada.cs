@@ -48,7 +48,7 @@ namespace dsi_ppai_maui.Models
             set { observacionAuditor = value;}
         }
 
-        public List<RespuestaCliente> RespuestasDeEncuestas
+        public List<RespuestaCliente> RespuestasDeEncuesta
         {
             get { return respuestasDeEncuesta;}
             set { respuestasDeEncuesta = value;}
