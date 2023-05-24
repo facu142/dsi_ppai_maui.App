@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace dsi_ppai_maui.ViewModels
 {
-    [QueryProperty(nameof(DetalleLlamada), "DetalleLlamada")]
+    [QueryProperty(nameof(LlamadaSeleccionada), "LlamadaSeleccionada")]
     public partial class GestorConsulta : ObservableObject
     {
 
         [ObservableProperty]
-        private Llamada _detalleLlamada;
+        private Llamada _llamadaSeleccionada;
 
         [ObservableProperty]
         DateOnly fechaDesde;
@@ -436,20 +436,21 @@ namespace dsi_ppai_maui.ViewModels
             await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView));
         }
 
+
+
+        // Llamados por ConsultarEncuestaView
+
         [RelayCommand]
         public async void Cancelar()
         {
             await Shell.Current.GoToAsync("..");
         }
 
-
-        // Llamados por ConsultarEncuestaView
-
         [RelayCommand]
         public async void SeleccionarLlamada(Llamada llamada)
         {
             var navParam = new Dictionary<string, object>();
-            navParam.Add("DetalleLlamada", llamada);
+            navParam.Add("LlamadaSeleccionada", llamada);
             await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
         }
 
@@ -477,9 +478,9 @@ namespace dsi_ppai_maui.ViewModels
         {
             string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
 
-            foreach (RespuestaCliente respuestaCliente in _detalleLlamada.RespuestasDeEncuesta)
+            foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
             {
-                str += _detalleLlamada.Cliente.NombreCompleto + ";" + _detalleLlamada.DeterminarUltimoEstado + ";" + _detalleLlamada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+                str += _llamadaSeleccionada.Cliente.NombreCompleto + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + _llamadaSeleccionada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
