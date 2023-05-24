@@ -8,20 +8,70 @@ namespace dsi_ppai_maui.Models
 {
     public class Llamada
     {
-        public string DescripcionOperador { get; set; }
-        public string DetalleAccionRequerida { get; set; }
-        public string Duracion { get; set; }
-        public string EncuestaEnviada { get; set; }
-        public string ObservacionAuditor { get; set; }
-        public List<RespuestaCliente> RespuestasDeEncuesta { get; set; }
-        public List<CambioEstado> CambioDeEstado {get; set;}
-        public Cliente Cliente { get; set; }
-        public string DeterminarUltimoEstado => CambioDeEstado.LastOrDefault()?.Estado?.Nombre;
-        public string DeterminarFechaHoraUltimoEstado => CambioDeEstado.LastOrDefault().FechaHoraInicio.ToString();
+        private string descripcionOperador;
+        private string detalleAccionRequerida;
+        private string duracion;
+        private string encuestaEnviada;
+        private string observacionAuditor;
+        private List<RespuestaCliente> respuestasDeEncuesta;
+        private List<CambioEstado> cambioDeEstado;
+        private Cliente cliente;
+
+
+        public string DescripcionOperador 
+        {
+            get {  return descripcionOperador; }
+            set { descripcionOperador = value; }
+        }
+
+        public string DetalleAccionRequerida
+        {
+            get { return detalleAccionRequerida; }
+            set { detalleAccionRequerida = value; }
+        }
+
+        public string Duracion
+        {
+            get { return duracion; }
+            set { duracion = value;}
+        }
+
+        public string EncuestaEnviada
+        {
+            get { return encuestaEnviada; }
+            set { encuestaEnviada = value; }
+        }
+
+        public string ObservacionAuditor
+        {
+            get { return observacionAuditor;}
+            set { observacionAuditor = value;}
+        }
+
+        public List<RespuestaCliente> RespuestasDeEncuestas
+        {
+            get { return respuestasDeEncuesta;}
+            set { respuestasDeEncuesta = value;}
+        }
+
+        public List<CambioEstado> CambioDeEstado
+        {
+            get { return cambioDeEstado; }
+            set { cambioDeEstado = value; }
+        }
+
+        public Cliente Cliente
+        {
+            get { return cliente; }
+            set { cliente = value; }
+        }
+
+        public string DeterminarUltimoEstado => cambioDeEstado.LastOrDefault()?.Estado?.Nombre;
+        public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString();
         public string DeterminarNombreCliente => Cliente.NombreCompleto;
         public Llamada()
         {
-            RespuestasDeEncuesta = new List<RespuestaCliente>();
+            respuestasDeEncuesta = new List<RespuestaCliente>();
         }
 
     }

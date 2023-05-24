@@ -8,28 +8,34 @@ namespace dsi_ppai_maui.Models
 {
     public class Estado
     {
-        public string Nombre { get; set; }
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
 
         public bool Esfinalizada()
         {
-            return Nombre == "Finalizada";
+            return nombre == "Finalizada";
         }
 
         public bool EsIniciada()
         {
-            return Nombre == "Iniciada";
+            return nombre == "Iniciada";
         }
         public bool EsEnCurso()
         {
-            return Nombre == "EnCurso";
+            return nombre == "EnCurso";
         }
         public bool EsDescartada()
         {
-            return Nombre == "Descartada";
+            return nombre == "Descartada";
         }
         public bool EsCancelada()
         {
-            return Nombre == "Cancelada";
+            return nombre == "Cancelada";
         }
 
     }
