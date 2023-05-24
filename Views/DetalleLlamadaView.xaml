@@ -4,7 +4,7 @@
              x:Class="dsi_ppai_maui.Views.DetalleLlamadaView"
              Title="Detalle de Llamada"
              xmlns:viewModels="clr-namespace:dsi_ppai_maui.ViewModels"
-             x:DataType="viewModels:DetalleLlamadaViewModel"
+             x:DataType="viewModels:GestorConsulta"
              xmlns:models="clr-namespace:dsi_ppai_maui.Models">
 
     <ScrollView>

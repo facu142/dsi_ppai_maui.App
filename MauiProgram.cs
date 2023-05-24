@@ -28,15 +28,17 @@ public static class MauiProgram
 
 		// Home
 		builder.Services.AddSingleton<HomeView>();
-		builder.Services.AddSingleton<HomeViewModel>();
+		//builder.Services.AddSingleton<HomeViewModel>();
 
         // Consultar encuesta
         builder.Services.AddSingleton<ConsultarEncuestaView>();
-        builder.Services.AddSingleton<ConsultarEncuestaViewModel>();
+        //builder.Services.AddSingleton<ConsultarEncuestaViewModel>();
 
 		// Detalle llamada
         builder.Services.AddTransient<DetalleLlamadaView>();
-		builder.Services.AddTransient<DetalleLlamadaViewModel>();
+		
+
+		builder.Services.AddSingleton<GestorConsulta>();
 
         return builder.Build();
 	}

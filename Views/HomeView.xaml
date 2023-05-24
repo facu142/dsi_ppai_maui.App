@@ -4,7 +4,7 @@
              x:Class="dsi_ppai_maui.Views.HomeView"
              Title="IVR APP"
              xmlns:viewModel="clr-namespace:dsi_ppai_maui.ViewModels"
-             x:DataType="viewModel:HomeViewModel"
+             x:DataType="viewModel:GestorConsulta"
              >
     <VerticalStackLayout>
 
@@ -12,5 +12,11 @@
 
         <Button Text="Consultar encuesta" Command="{Binding GoToConsultarEncuestaCommand}" />
 
+        <Frame>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToConsultarEncuestaCommand}" />
+            </Frame.GestureRecognizers>
+        </Frame>
+        
     </VerticalStackLayout>
 </ContentPage>

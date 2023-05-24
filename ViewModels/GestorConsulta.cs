@@ -1,14 +1,24 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using dsi_ppai_maui.Models;
 using dsi_ppai_maui.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace dsi_ppai_maui.ViewModels
 {
-    public partial class ConsultarEncuestaViewModel : ObservableObject
+    [QueryProperty(nameof(DetalleLlamada), "DetalleLlamada")]
+    public partial class GestorConsulta : ObservableObject
     {
+
+        [ObservableProperty]
+        private Llamada _detalleLlamada;
+
         [ObservableProperty]
         DateOnly fechaDesde;
 
@@ -17,8 +27,15 @@ namespace dsi_ppai_maui.ViewModels
 
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
-        public ConsultarEncuestaViewModel()
+
+        IFileSaver fileSaver;
+        CancellationTokenSource cancellationTokenSource = new();
+
+
+        public GestorConsulta(IFileSaver fileSaver)
         {
+            this.fileSaver = fileSaver;
+
             fechaDesde = new DateOnly();
             fechaHasta = new DateOnly();
 
@@ -178,9 +195,7 @@ namespace dsi_ppai_maui.ViewModels
             Estado descartado = new() { Nombre = "Descartado" };
 
 
-
             //cambio de estado de llamada 1
-            CambioEstado cambio11 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-5) };
             CambioEstado cambio21 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-4) };
             CambioEstado cambio31 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-3) };
             CambioEstado cambio41 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-2) };
@@ -262,7 +277,7 @@ namespace dsi_ppai_maui.ViewModels
             List<CambioEstado> cambiosDeEstado9 = new();
             List<CambioEstado> cambiosDeEstado10 = new();
 
-            cambiosDeEstado1.Add(cambio11);
+            //cambiosDeEstado1.Add(cambio11);
             cambiosDeEstado1.Add(cambio21);
             cambiosDeEstado1.Add(cambio31);
             cambiosDeEstado1.Add(cambio41);
@@ -322,16 +337,16 @@ namespace dsi_ppai_maui.ViewModels
             cambiosDeEstado10.Add(cambio410);
             cambiosDeEstado10.Add(cambio510);
 
-            Cliente cliente1 = new() { NombreCompleto = "John Doe", Dni = "33999999", nroCelular = "351678911" };
-            Cliente cliente2 = new() { NombreCompleto = "Jane Smith", Dni = "44888888", nroCelular = "351234567" };
-            Cliente cliente3 = new() { NombreCompleto = "Bob Johnson", Dni = "55666666", nroCelular = "351987654" };
-            Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", nroCelular = "351111111" };
-            Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", nroCelular = "351222222" };
-            Cliente cliente6 = new() { NombreCompleto = "Juan Mateo Blencio", Dni = "44240562", nroCelular = "3885325413" };
-            Cliente cliente7 = new() { NombreCompleto = "Zoi Lypnik", Dni = "47248442", nroCelular = "351263987" };
-            Cliente cliente8 = new() { NombreCompleto = "Mari Gonzales", Dni = "44489654", nroCelular = "351182233" };
-            Cliente cliente9 = new() { NombreCompleto = "Agustina Sola", Dni = "43654897", nroCelular = "0115346798" };
-            Cliente cliente10 = new() { NombreCompleto = "Valentin Ruiz", Dni = "46987531", nroCelular = "3875349784" };
+            Cliente cliente1 = new() { NombreCompleto = "John Doe", Dni = "33999999", NroCelular = "351678911" };
+            Cliente cliente2 = new() { NombreCompleto = "Jane Smith", Dni = "44888888", NroCelular = "351234567" };
+            Cliente cliente3 = new() { NombreCompleto = "Bob Johnson", Dni = "55666666", NroCelular = "351987654" };
+            Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", NroCelular = "351111111" };
+            Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", NroCelular = "351222222" };
+            Cliente cliente6 = new() { NombreCompleto = "Juan Mateo Blencio", Dni = "44240562", NroCelular = "3885325413" };
+            Cliente cliente7 = new() { NombreCompleto = "Zoi Lypnik", Dni = "47248442", NroCelular = "351263987" };
+            Cliente cliente8 = new() { NombreCompleto = "Mari Gonzales", Dni = "44489654", NroCelular = "351182233" };
+            Cliente cliente9 = new() { NombreCompleto = "Agustina Sola", Dni = "43654897", NroCelular = "0115346798" };
+            Cliente cliente10 = new() { NombreCompleto = "Valentin Ruiz", Dni = "46987531", NroCelular = "3875349784" };
 
 
             List<RespuestaCliente> RespuestasDeEncuesta1 = new();
@@ -413,6 +428,23 @@ namespace dsi_ppai_maui.ViewModels
             Llamadas.Add(llamada10);
         }
 
+
+        // Metodos llamados por el HomeView
+        [RelayCommand]
+        public async void GoToConsultarEncuesta()
+        {
+            await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView));
+        }
+
+        [RelayCommand]
+        public async void Cancelar()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
+
+        // Llamados por ConsultarEncuestaView
+
         [RelayCommand]
         public async void SeleccionarLlamada(Llamada llamada)
         {
@@ -420,6 +452,39 @@ namespace dsi_ppai_maui.ViewModels
             navParam.Add("DetalleLlamada", llamada);
             await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
         }
+
+        [RelayCommand]
+        public void FechaSeleccionada()
+        {
+            // TODO: implementar
+            //LlamadasCollectionView.IsVisible = true;
+            //FiltrarporPeriodo();
+        }
+
+        [RelayCommand]
+        public void FiltrarporPeriodo()
+        {
+            // TODO: implementar metodo
+            //LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().FechaHoraInicio >= FechaDesde.Date
+            //                                                                 && i.CambioDeEstado.Last().FechaHoraInicio <= FechaHasta.Date
+            //                                                                 && i.RespuestasDeEncuesta.Count > 0);
+        }
+
+        // Llamados por DetalleLlamadaView
+
+        [RelayCommand]
+        public async void GenerarCSV()
+        {
+            string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
+
+            foreach (RespuestaCliente respuestaCliente in _detalleLlamada.RespuestasDeEncuesta)
+            {
+                str += _detalleLlamada.Cliente.NombreCompleto + ";" + _detalleLlamada.DeterminarUltimoEstado + ";" + _detalleLlamada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+            }
+            using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
+            var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
+        }
+
 
     }
 }

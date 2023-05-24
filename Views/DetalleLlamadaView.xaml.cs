@@ -6,9 +6,9 @@ namespace dsi_ppai_maui.Views;
 
 public partial class DetalleLlamadaView : ContentPage
 {
-    public DetalleLlamadaView(DetalleLlamadaViewModel vm)
+    public DetalleLlamadaView(GestorConsulta gestorConsulta)
     {
-        BindingContext = vm;
-		InitializeComponent();
-	}
+        InitializeComponent();
+        BindingContext = gestorConsulta;
+    }
 }

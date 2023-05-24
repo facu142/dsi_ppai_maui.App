@@ -4,7 +4,7 @@
              x:Class="dsi_ppai_maui.Views.ConsultarEncuestaView"
              Title="Consultar Encuesta"
              xmlns:ViewModels="clr-namespace:dsi_ppai_maui.ViewModels"
-             x:DataType="ViewModels:ConsultarEncuestaViewModel"
+             x:DataType="ViewModels:GestorConsulta"
              xmlns:models="clr-namespace:dsi_ppai_maui.Models">
 
 
@@ -12,17 +12,21 @@
         <VerticalStackLayout Spacing="15">
             <VerticalStackLayout>
                 <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
-                    <Image Source="phone" HeightRequest="20"/>
+                    <Image Source="phone.png" HeightRequest="20"/>
                     <Label Text="Listado de Llamadas" FontSize="25"/>
                 </HorizontalStackLayout>
 
                 <Label Text="Fecha desde"/>
-                <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" DateSelected="FechaSeleccionada"/>
+                <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" 
+                            />
+                            <!--DateSelected="{Binding FechaSeleccionada}"-->
 
                 <Label Text="Fecha hasta"/>
-                <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" DateSelected="FechaSeleccionada"/>
+                <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" 
+                            />
+                            <!--DateSelected="{Binding FechaSeleccionada}"-->
 
-                <CollectionView x:Name="LlamadasCollectionView" IsVisible="false" ItemsSource="{Binding Llamadas}" >
+                <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
                     <CollectionView.ItemTemplate>
 
                         <DataTemplate x:DataType="models:Llamada">
@@ -42,7 +46,7 @@
                                     </Grid>
                                 </VerticalStackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:ConsultarEncuestaViewModel}},Path=SeleccionarLlamadaCommand}"
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:GestorConsulta}},Path=SeleccionarLlamadaCommand}"
                                                   CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
 
@@ -54,6 +58,9 @@
                         <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                 </CollectionView>
+
+                <Button Text="Cancelar" Command="{Binding CancelarCommand}"/>
+
             </VerticalStackLayout>
 
         </VerticalStackLayout>

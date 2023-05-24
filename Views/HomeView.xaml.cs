@@ -4,9 +4,9 @@ namespace dsi_ppai_maui.Views;
 
 public partial class HomeView : ContentPage
 {
-    public HomeView(HomeViewModel vm)
+    public HomeView(GestorConsulta gestorConsulta)
     {
         InitializeComponent();
-        BindingContext = vm;
+        BindingContext = gestorConsulta;
     }
 }
