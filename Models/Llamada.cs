@@ -66,6 +66,7 @@ namespace dsi_ppai_maui.Models
             set { cliente = value; }
         }
 
+        // TODO: ver estos metodos (devuelven null)
         public string DeterminarUltimoEstado => cambioDeEstado.LastOrDefault()?.Estado?.Nombre;
         public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString();
         public string DeterminarNombreCliente => Cliente.NombreCompleto;
