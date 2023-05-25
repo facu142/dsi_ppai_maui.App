@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Activation;
+using Windows.Media.Audio;
 
 namespace dsi_ppai_maui.Models
 {
@@ -75,6 +77,47 @@ namespace dsi_ppai_maui.Models
             respuestasDeEncuesta = new List<RespuestaCliente>();
         }
 
-    }
+        public bool consultarEncuestaRespondida()
+        {
+            if (this.RespuestasDeEncuesta.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        public bool esDePeriodo(DateTime fechaInicio, DateTime fechaFin) // REVISAR QUE SE CUMPLA EL PARADIGMA
+        {
+            // busca la menor fecha es decir la fecha de inicio, luego busca la mayor fecha 
+            // y se fija que entre dentro del periodo elegido
+
+            DateTime? fechaEstadoInicial = null;
+            DateTime? fechaEstadoFinal = null;
+
+            foreach (CambioEstado cambioEstado in CambioDeEstado)
+            {
+                if (fechaEstadoInicial >= cambioEstado.FechaHoraInicio || fechaEstadoInicial == null)
+                {
+                    fechaEstadoInicial = cambioEstado.FechaHoraInicio; 
+                }
+
+                if (fechaEstadoFinal <= cambioEstado.FechaHoraInicio || fechaEstadoFinal == null)
+                {
+                    fechaEstadoFinal = cambioEstado.FechaHoraInicio;
+                }
+            }
+
+            if (fechaEstadoInicial > fechaInicio && fechaEstadoFinal < fechaFin)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }
