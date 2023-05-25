@@ -23,5 +23,10 @@ namespace dsi_ppai_maui.Models
             set { estado = value; }
         }
 
+        public string getEstado()
+        {
+            return this.Estado.Nombre;
+        }
+
     }
 }

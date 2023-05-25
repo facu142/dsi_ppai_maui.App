@@ -68,9 +68,9 @@ namespace dsi_ppai_maui.Models
             set { cliente = value; }
         }
 
-        public string DeterminarUltimoEstado => cambioDeEstado.LastOrDefault()?.Estado?.Nombre;
-        public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString();
-        public string DeterminarNombreCliente => Cliente.NombreCompleto;
+        public string DeterminarUltimoEstado => cambioDeEstado.LastOrDefault()?.Estado?.Nombre; // Esta habria q borrar?
+        public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString(); // Esta habria q borrar?
+        public string DeterminarNombreCliente => Cliente.NombreCompleto; // Esto creo q deberia ir en cliente, o sea aca deberia ir una funcion 
         public Llamada()
         {
             respuestasDeEncuesta = new List<RespuestaCliente>();
@@ -117,6 +117,27 @@ namespace dsi_ppai_maui.Models
             {
                 return false;
             }
+        }
+
+        public List<string> seleccionarLlamada()
+        {
+            Cliente clienteDeLlamada = this.Cliente;
+            string nombreCliente = clienteDeLlamada.NombreCompleto.ToString();
+
+            string duracionLlamada = this.Duracion;
+
+            CambioEstado? estadoFinal = null;
+            foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
+            {
+                if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
+                {
+                    estadoFinal = cambioEstado;
+                }
+            }
+
+            string nombreUltimoEstado = estadoFinal.getEstado();
+
+            return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
         }
     }
 }
