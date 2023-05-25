@@ -68,6 +68,7 @@ namespace dsi_ppai_maui.Models
             set { cliente = value; }
         }
 
+        // Ver todo esto devuelve null
         public string DeterminarUltimoEstado => cambioDeEstado.LastOrDefault()?.Estado?.Nombre; // Esta habria q borrar?
         public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString(); // Esta habria q borrar?
         public string DeterminarNombreCliente => Cliente.NombreCompleto; // Esto creo q deberia ir en cliente, o sea aca deberia ir una funcion 

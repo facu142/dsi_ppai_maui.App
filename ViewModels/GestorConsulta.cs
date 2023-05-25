@@ -17,7 +17,7 @@ namespace dsi_ppai_maui.ViewModels
     {
 
         [ObservableProperty]
-        private Llamada _llamadaSeleccionada;
+        private Llamada _llamadaSeleccionada= new Llamada();
 
         [ObservableProperty]
         DateOnly fechaDesde;
