@@ -472,7 +472,7 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
-            EstadoActual = llamada.DeterminarUltimoEstado();
+            //EstadoActual = llamada.DeterminarUltimoEstado();
             NombreCliente = llamada.Cliente.NombreCompleto;
             Duracion = llamada.Duracion;
 

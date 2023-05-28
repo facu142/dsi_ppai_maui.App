@@ -41,7 +41,7 @@
                                         <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
 
                                         <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
-                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding CambioDeEstado}"/>
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
 
                                     </Grid>
                                 </VerticalStackLayout>

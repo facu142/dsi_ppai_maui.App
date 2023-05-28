@@ -68,21 +68,45 @@ namespace dsi_ppai_maui.Models
         }
 
 
-        public string DeterminarUltimoEstado()
+        //public string DeterminarUltimoEstado()
+        //{
+        //    CambioEstado estadoFinal = new();
+
+        //    foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
+        //    {
+        //        if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
+        //        {
+        //            estadoFinal = cambioEstado;
+        //        }
+        //    }
+
+        //    string nombreUltimoEstado = estadoFinal.getEstado().ToString();
+
+        //    return nombreUltimoEstado;
+
+        //}
+
+        public string DeterminarUltimoEstado
         {
-            CambioEstado estadoFinal = new();
-
-            foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
+            get
             {
-                if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
+                CambioEstado estadoFinal = null;
+
+                foreach (CambioEstado cambioEstado in CambioDeEstado)
                 {
-                    estadoFinal = cambioEstado;
+                    if (estadoFinal == null || estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio)
+                    {
+                        estadoFinal = cambioEstado;
+                    }
                 }
+
+                if (estadoFinal != null)
+                {
+                    return estadoFinal.getEstado().ToString();
+                }
+
+                return null; // Devuelve null si no se encuentra ningún estado
             }
-
-            string nombreUltimoEstado = estadoFinal.getEstado();
-
-            return nombreUltimoEstado;
         }
 
         public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString(); // Esta habria q borrar?
