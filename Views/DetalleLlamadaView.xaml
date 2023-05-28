@@ -40,7 +40,7 @@
                     <Label Text="Respuestas seleccionadas" FontSize="25"/>
                 </HorizontalStackLayout>
 
-                <CollectionView ItemsSource="{Binding LlamadaSeleccionada.RespuestasDeEncuesta}">
+                <CollectionView ItemsSource="{Binding RespuestaDeEncuesta}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:RespuestaCliente">
                             <Frame>

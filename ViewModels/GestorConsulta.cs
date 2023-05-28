@@ -34,8 +34,17 @@ namespace dsi_ppai_maui.ViewModels
         [ObservableProperty]
         string duracion;
 
-        List<RespuestaCliente>
-        RespuestaCliente;
+        [ObservableProperty]
+        List<RespuestaCliente> respuestaDeEncuesta;
+
+        [ObservableProperty]
+        string descripcionDeEncuesta;
+
+        [ObservableProperty]
+        string descripcionPregunta;
+
+        [ObservableProperty]
+        string descripcionRespuesta;
 
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
