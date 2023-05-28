@@ -431,12 +431,10 @@ namespace dsi_ppai_maui.ViewModels
 
         // Metodos llamados por el HomeView
         [RelayCommand]
-        public async void GoToConsultarEncuesta()
+        public async void ConsultarEncuesta()
         {
             await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView));
         }
-
-
 
         // Llamados por ConsultarEncuestaView
 

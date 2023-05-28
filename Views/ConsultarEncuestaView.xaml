@@ -18,13 +18,13 @@
 
                 <Label Text="Fecha desde"/>
                 <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" 
+                            DateSelected="FechaSeleccionada"
                             />
-                            <!--DateSelected="{Binding FechaSeleccionada}"-->
 
                 <Label Text="Fecha hasta"/>
                 <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" 
+                            DateSelected="FechaSeleccionada"
                             />
-                            <!--DateSelected="{Binding FechaSeleccionada}"-->
 
                 <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
                     <CollectionView.ItemTemplate>

@@ -10,13 +10,8 @@
 
         <Image HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="200" Source="logo.png"/>
 
-        <Button Text="Consultar encuesta" Command="{Binding GoToConsultarEncuestaCommand}" />
+        <Button Text="Consultar encuesta" Command="{Binding ConsultarEncuestaCommand}" />
 
-        <Frame>
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GoToConsultarEncuestaCommand}" />
-            </Frame.GestureRecognizers>
-        </Frame>
         
     </VerticalStackLayout>
 </ContentPage>
