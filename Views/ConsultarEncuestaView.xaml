@@ -26,7 +26,7 @@
                             DateSelected="FechaSeleccionada"
                             />
 
-                <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding Llamadas}" >
+                <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding LlamadasFiltradas}" >
                     <CollectionView.ItemTemplate>
 
                         <DataTemplate x:DataType="models:Llamada">

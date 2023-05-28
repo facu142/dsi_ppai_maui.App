@@ -20,13 +20,14 @@ namespace dsi_ppai_maui.ViewModels
         private Llamada _llamadaSeleccionada= new Llamada();
 
         [ObservableProperty]
-        DateOnly fechaDesde;
+        DateTime fechaDesde;
 
         [ObservableProperty]
-        DateOnly fechaHasta;
+        DateTime fechaHasta;
 
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
+        public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
 
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
@@ -36,8 +37,11 @@ namespace dsi_ppai_maui.ViewModels
         {
             this.fileSaver = fileSaver;
 
-            fechaDesde = new DateOnly();
-            fechaHasta = new DateOnly();
+            fechaDesde = new ();
+            fechaHasta = new ();
+
+            fechaDesde = DateTime.Now;
+            fechaHasta = DateTime.Now;
 
             RespuestaPosible respuestaPosible0 = new() { Descripcion = "Muy insatisfecho", Valor = "1" };
             RespuestaPosible respuestaPosible1 = new() { Descripcion = "Neutral", Valor = "2" };
@@ -455,18 +459,20 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public void FechaSeleccionada()
         {
-            // TODO: implementar
-            //LlamadasCollectionView.IsVisible = true;
-            //FiltrarporPeriodo();
+            FiltrarporPeriodo();
         }
 
         [RelayCommand]
         public void FiltrarporPeriodo()
         {
-            // TODO: implementar metodo
-            //LlamadasCollectionView.ItemsSource = _viewModel.Llamadas.Where(i => i.CambioDeEstado.Last().FechaHoraInicio >= FechaDesde.Date
-            //                                                                 && i.CambioDeEstado.Last().FechaHoraInicio <= FechaHasta.Date
-            //                                                                 && i.RespuestasDeEncuesta.Count > 0);
+            
+            foreach(Llamada llamada in Llamadas)
+            {
+                if (llamada.consultarEncuestaRespondida() && llamada.esDePeriodo(FechaDesde, FechaHasta))
+                {
+                    LlamadasFiltradas.Add(llamada);
+                }
+            }
         }
 
         // Llamados por DetalleLlamadaView
