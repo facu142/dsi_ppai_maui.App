@@ -449,7 +449,7 @@ namespace dsi_ppai_maui.ViewModels
         }
 
         [RelayCommand]
-        public async void SeleccionarLlamada(Llamada llamada)
+        public async void TomarSeleccionLlamada(Llamada llamada)
         {
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
@@ -465,6 +465,7 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public void FiltrarporPeriodo()
         {
+            LlamadasFiltradas.Clear();
             
             foreach(Llamada llamada in Llamadas)
             {

@@ -18,4 +18,9 @@ public partial class ConsultarEncuestaView : ContentPage
     {
         _gestorConsulta.FechaSeleccionadaCommand.Execute(null);
     }
+
+    private void TomarSeleccionLlamada(object sender, TappedEventArgs e)
+    {
+        _gestorConsulta.TomarSeleccionLlamadaCommand.Execute(e.Parameter);
+    }
 }

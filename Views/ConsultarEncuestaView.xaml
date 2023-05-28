@@ -41,15 +41,14 @@
                                         <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
 
                                         <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
-                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding CambioDeEstado}"/>
 
                                     </Grid>
                                 </VerticalStackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type ViewModels:GestorConsulta}},Path=SeleccionarLlamadaCommand}"
-                                                  CommandParameter="{Binding .}"/>
+                                    <TapGestureRecognizer Tapped="TomarSeleccionLlamada" CommandParameter="{Binding .}"> </TapGestureRecognizer>
                                 </Frame.GestureRecognizers>
-
+                                    
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
