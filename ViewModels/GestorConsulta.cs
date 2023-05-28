@@ -17,13 +17,25 @@ namespace dsi_ppai_maui.ViewModels
     {
 
         [ObservableProperty]
-        private Llamada _llamadaSeleccionada= new Llamada();
+        private Llamada _llamadaSeleccionada= new();
 
         [ObservableProperty]
         DateTime fechaDesde;
 
         [ObservableProperty]
         DateTime fechaHasta;
+
+        [ObservableProperty]
+        string estadoActual;
+
+        [ObservableProperty]
+        string nombreCliente;
+
+        [ObservableProperty]
+        string duracion;
+
+        List<RespuestaCliente>
+        RespuestaCliente;
 
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
@@ -451,6 +463,10 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
+            EstadoActual = llamada.DeterminarUltimoEstado();
+            NombreCliente = llamada.Cliente.NombreCompleto;
+            Duracion = llamada.Duracion;
+
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
             await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
@@ -485,7 +501,7 @@ namespace dsi_ppai_maui.ViewModels
 
             foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
             {
-                str += _llamadaSeleccionada.Cliente.NombreCompleto + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + _llamadaSeleccionada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+                str += NombreCliente + ";" + EstadoActual + ";" + Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
