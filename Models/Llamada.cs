@@ -19,9 +19,9 @@ namespace dsi_ppai_maui.Models
         private Cliente cliente;
 
 
-        public string DescripcionOperador 
+        public string DescripcionOperador
         {
-            get {  return descripcionOperador; }
+            get { return descripcionOperador; }
             set { descripcionOperador = value; }
         }
 
@@ -34,7 +34,7 @@ namespace dsi_ppai_maui.Models
         public string Duracion
         {
             get { return duracion; }
-            set { duracion = value;}
+            set { duracion = value; }
         }
 
         public string EncuestaEnviada
@@ -45,14 +45,14 @@ namespace dsi_ppai_maui.Models
 
         public string ObservacionAuditor
         {
-            get { return observacionAuditor;}
-            set { observacionAuditor = value;}
+            get { return observacionAuditor; }
+            set { observacionAuditor = value; }
         }
 
         public List<RespuestaCliente> RespuestasDeEncuesta
         {
-            get { return respuestasDeEncuesta;}
-            set { respuestasDeEncuesta = value;}
+            get { return respuestasDeEncuesta; }
+            set { respuestasDeEncuesta = value; }
         }
 
         public List<CambioEstado> CambioDeEstado
@@ -116,7 +116,7 @@ namespace dsi_ppai_maui.Models
             {
                 if (fechaEstadoInicial >= cambioEstado.FechaHoraInicio || fechaEstadoInicial == null)
                 {
-                    fechaEstadoInicial = cambioEstado.FechaHoraInicio; 
+                    fechaEstadoInicial = cambioEstado.FechaHoraInicio;
                 }
 
                 if (fechaEstadoFinal <= cambioEstado.FechaHoraInicio || fechaEstadoFinal == null)
@@ -142,16 +142,7 @@ namespace dsi_ppai_maui.Models
 
             string duracionLlamada = this.Duracion;
 
-            CambioEstado? estadoFinal = null;
-            foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
-            {
-                if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
-                {
-                    estadoFinal = cambioEstado;
-                }
-            }
-
-            string nombreUltimoEstado = estadoFinal.getEstado();
+            string nombreUltimoEstado = DeterminarUltimoEstado();
 
             return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
         }

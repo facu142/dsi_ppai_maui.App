@@ -17,7 +17,7 @@ namespace dsi_ppai_maui.ViewModels
     {
 
         [ObservableProperty]
-        private Llamada _llamadaSeleccionada= new Llamada();
+        private List<string> _llamadaSeleccionada = new List<string>();
 
         [ObservableProperty]
         DateTime fechaDesde;
@@ -452,7 +452,8 @@ namespace dsi_ppai_maui.ViewModels
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
             var navParam = new Dictionary<string, object>();
-            navParam.Add("LlamadaSeleccionada", llamada);
+            List<string> datosLlamada = llamada.seleccionarLlamada();
+            navParam.Add("LlamadaSeleccionada", datosLlamada);
             await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
         }
 
@@ -478,18 +479,18 @@ namespace dsi_ppai_maui.ViewModels
 
         // Llamados por DetalleLlamadaView
 
-        [RelayCommand]
-        public async void GenerarCSV()
-        {
-            string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
+        //[RelayCommand]
+        //public async void GenerarCSV()
+        //{
+        //    string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
 
-            foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
-            {
-                str += _llamadaSeleccionada.Cliente.NombreCompleto + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + _llamadaSeleccionada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
-            }
-            using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
-            var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
-        }
+        //    foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
+        //    {
+        //        str += _llamadaSeleccionada.Cliente.NombreCompleto + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + _llamadaSeleccionada.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+        //    }
+        //    using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
+        //    var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
+        //}
 
 
     }
