@@ -45,12 +45,12 @@
                         <DataTemplate x:DataType="models:RespuestaCliente">
                             <Frame>
                                 <VerticalStackLayout>
+                                    <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
                                     <Label Text="Pregunta:" FontAttributes="Bold"/>
                                     <Label Text="{Binding RespuestaSeleccionada.Pregunta.StrPregunta}"/>
                                     <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
                                     <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
-                                    <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
-                                    <Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
                                 </VerticalStackLayout>
                             </Frame>
 
