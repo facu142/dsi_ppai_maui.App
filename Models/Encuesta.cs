@@ -11,6 +11,7 @@ namespace dsi_ppai_maui.Models
         private string descripcion;
         private DateTime fechaFinVigencia;
         private List<Pregunta> preguntas;
+        private Cliente cliente; // new
 
         public string Descripcion
         {
@@ -28,6 +29,21 @@ namespace dsi_ppai_maui.Models
         {
             get { return preguntas; }
             set { preguntas = value; }
+        }
+
+        public Cliente Cliente
+        { 
+            get { return cliente; }
+            set { cliente = value; } // ??
+        }
+
+        public bool esEncuestaDeCliente(string nombreDeCliente)
+        {
+            if (this.Cliente.NombreCompleto == nombreDeCliente)
+            {
+                return true;
+            }
+            else { return false; }
         }
     }
 }

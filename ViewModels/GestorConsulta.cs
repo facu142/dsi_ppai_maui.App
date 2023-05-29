@@ -35,21 +35,29 @@ namespace dsi_ppai_maui.ViewModels
         string duracion;
 
         [ObservableProperty]
-        List<RespuestaCliente> respuestaDeEncuesta;
+        List<string> respuestasDeEncuestaDeCliente; // aca puse string
 
         [ObservableProperty]
         string descripcionDeEncuesta;
 
         [ObservableProperty]
-        string descripcionPregunta;
+        List<string> descripcionPreguntas; // aca puse string
 
         [ObservableProperty]
         string descripcionRespuesta;
+
+        [ObservableProperty]
+        List<Encuesta> encuestas; // new
+
+        [ObservableProperty]
+        List<RespuestaPosible> respuestasPosibles; // new SEGUN COMO LO DEJE NO HACE FALTA
 
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
         public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
 
+        
+        
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
 
@@ -475,6 +483,43 @@ namespace dsi_ppai_maui.ViewModels
             //EstadoActual = llamada.DeterminarUltimoEstado();
             NombreCliente = llamada.Cliente.NombreCompleto;
             Duracion = llamada.Duracion;
+
+            Encuesta nuestraEncuesta = new();
+            foreach (Encuesta encuesta in encuestas) // habria q ver el tema de la inicializacion new() o null?
+            {
+                if (encuesta.esEncuestaDeCliente(NombreCliente))
+                {
+                    nuestraEncuesta = encuesta;
+                }
+            }
+
+            descripcionDeEncuesta = nuestraEncuesta.Descripcion; // descripcion de la encuesta
+            
+            List<Pregunta> descripcionesPreguntas = nuestraEncuesta.Preguntas; // lista de descripcion de las preguntas
+            foreach (Pregunta dP in descripcionesPreguntas)
+            {
+                descripcionPreguntas.Add(dP.StrPregunta);
+            }
+
+            List<RespuestaCliente> respuestasDeEncuestaDeClienteObj = llamada.RespuestasDeEncuesta; // lista de respuestas seleccionadas, o sea las respuestas de cliente
+            foreach (RespuestaCliente rDEDC in respuestasDeEncuestaDeClienteObj)
+            {
+                respuestasDeEncuestaDeCliente.Add(rDEDC.RespuestaSeleccionada.Valor);
+            }
+
+
+            // en caso de querer verificar que la respuesta del cliente este dentro de las respuestas posibles habria que
+            // hacer sobre for y extender
+            //respuestasDeEncuestaDeCliente = llamada.RespuestasDeEncuesta;
+            //foreach (RespuestaCliente respuestaDeEncuestaDeCliente in respuestasDeEncuestaDeCliente)
+            //{ 
+            //    foreach (Pregunta descripcionPregunta in descripcionPreguntas)
+            //    {
+            //        if (respuestaDeEncuestaDeCliente in descripcionPregunta.Respuestas)
+            //        { 
+            //        }                        
+            //    }
+            //}
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
