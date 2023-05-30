@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace dsi_ppai_maui.ViewModels
     {
 
         [ObservableProperty]
-        private Llamada _llamadaSeleccionada= new();
+        private Llamada _llamadaSeleccionada = new();
 
         [ObservableProperty]
         DateTime fechaDesde;
@@ -56,8 +57,8 @@ namespace dsi_ppai_maui.ViewModels
 
         public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
 
-        
-        
+        public ObservableCollection<DatosRespuesta> DatosDeRespuestas { get; set; } = new ObservableCollection<DatosRespuesta>();
+
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
 
@@ -66,8 +67,8 @@ namespace dsi_ppai_maui.ViewModels
         {
             this.fileSaver = fileSaver;
 
-            fechaDesde = new ();
-            fechaHasta = new ();
+            fechaDesde = new();
+            fechaHasta = new();
 
             fechaDesde = DateTime.Now;
             fechaHasta = DateTime.Now;
@@ -477,50 +478,69 @@ namespace dsi_ppai_maui.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        public Encuesta EsEncuestaLlamada(Llamada llamadaSeleccionada)
+        public void EsEncuestaLlamada(Llamada llamadaSeleccionada)
         {
-            List<Encuesta> encuestasDelCliente = Encuesta.EncuestasCliente(llamadaSeleccionada);
-            foreach (Encuesta encuesta in encuestasDelCliente)
-            { for (int nro = 0; nro < encuesta.Preguntas.Count; nro++)
-                {
-                    List<Respuesta> respuestasPosibles = encuesta.Preguntas[nro].RespuestasPosibles.Select(respuesta => respuesta.Valor).ToList();
-                    Respuesta respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada;
-                    if (!respuestasPosibles.Contains(respuestaSeleccionada.Valor))
-                    { break;}
-                    else {return encuesta; }} }
-            return null; }
+
+            // Determinamos 
+
+            // determinamos de que encuesta es esa llamada
+
+            // Agregamos a la ObservableCollection
+
+
+
+            //foreach (Encuesta encuesta in encuestasDelCliente)
+            //{ for (int nro = 0; nro < encuesta.Preguntas.Count; nro++)
+            //    {
+            //        List<RespuestaPosible> respuestasPosibles = encuesta.Preguntas[nro].RespuestasPosibles.Select(respuesta => respuesta.Valor).ToList();
+            //        RespuestaPosible respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada;
+            //        if (!respuestasPosibles.Contains(respuestaSeleccionada.Valor))
+            //        { break;}
+            //        else {return encuesta; }} }
+            //return null; 
+        }
 
         [RelayCommand]
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
-            //EstadoActual = llamada.DeterminarUltimoEstado();
+            DatosDeRespuestas.Clear();
             NombreCliente = llamada.Cliente.NombreCompleto;
             Duracion = llamada.Duracion;
 
-            Encuesta EncuestasCliente = new();
-
-            foreach (Encuesta encuesta in encuestas) // habria q ver el tema de la inicializacion new() o null?
+            foreach (RespuestaCliente respuesta in LlamadaSeleccionada.RespuestasDeEncuesta)
             {
-                if (encuesta.esEncuestaDeCliente(NombreCliente))
+                DatosDeRespuestas.Add(new DatosRespuesta
                 {
-                    EncuestasCliente.Add(encuesta);
-                }
-            }
-            nuestraEncuesta=EsEncuestaLlamada(Llamada EncuestasCliente)
-
-            descripcionDeEncuesta = nuestraEncuesta.Descripcion; // descripcion de la encuesta
-            
-            List<Pregunta> descripcionesPreguntas = nuestraEncuesta.Preguntas; // lista de descripcion de las preguntas
-            foreach (Pregunta dP in descripcionesPreguntas)
-            {
-                descripcionPreguntas.Add(dP.StrPregunta);
+                    DescripcionEncuesta = respuesta.RespuestaSeleccionada.Pregunta.Encuesta.Descripcion,
+                    DescripcionPregunta = respuesta.RespuestaSeleccionada.Pregunta.StrPregunta,
+                    DescripcionRespuesta = respuesta.RespuestaSeleccionada.Descripcion
+                });
             }
 
-            List<RespuestaCliente> respuestasDeEncuestaDeClienteObj = llamada.RespuestasDeEncuesta; // lista de respuestas seleccionadas, o sea las respuestas de cliente
-            foreach (RespuestaCliente rDEDC in respuestasDeEncuestaDeClienteObj)
-            {
-                respuestasDeEncuestaDeCliente.Add(rDEDC.RespuestaSeleccionada.Valor);
-            }
+            //List<Encuesta>EncuestasCliente = new();
+
+            //foreach (Encuesta encuesta in encuestas) // habria q ver el tema de la inicializacion new() o null?
+            //{
+            //    if (encuesta.esEncuestaDeCliente(NombreCliente))
+            //    {
+            //        EncuestasCliente.Add(encuesta);
+            //    }
+            //}
+            //Encuesta nuestraEncuesta = EsEncuestaLlamada(Llamada EncuestasCliente);
+
+            //descripcionDeEncuesta = nuestraEncuesta.Descripcion; // descripcion de la encuesta
+
+            //List<Pregunta> descripcionesPreguntas = nuestraEncuesta.Preguntas; // lista de descripcion de las preguntas
+            //foreach (Pregunta dP in descripcionesPreguntas)
+            //{
+            //    descripcionPreguntas.Add(dP.StrPregunta);
+            //}
+
+            //List<RespuestaCliente> respuestasDeEncuestaDeClienteObj = llamada.RespuestasDeEncuesta; // lista de respuestas seleccionadas, o sea las respuestas de cliente
+            //foreach (RespuestaCliente rDEDC in respuestasDeEncuestaDeClienteObj)
+            //{
+            //    respuestasDeEncuestaDeCliente.Add(rDEDC.RespuestaSeleccionada.Valor);
+            //}
 
 
             // en caso de querer verificar que la respuesta del cliente este dentro de las respuestas posibles habria que
@@ -551,8 +571,8 @@ namespace dsi_ppai_maui.ViewModels
         public void FiltrarporPeriodo()
         {
             LlamadasFiltradas.Clear();
-            
-            foreach(Llamada llamada in Llamadas)
+
+            foreach (Llamada llamada in Llamadas)
             {
                 if (llamada.consultarEncuestaRespondida() && llamada.esDePeriodo(FechaDesde, FechaHasta))
                 {
@@ -570,12 +590,39 @@ namespace dsi_ppai_maui.ViewModels
 
             foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
             {
-                str += NombreCliente + ";" + EstadoActual + ";" + Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+                str += NombreCliente + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
-            var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
+            var path = await fileSaver.SaveAsync(DateTime.Now.ToString()+".csv", stream, cancellationTokenSource.Token);
         }
 
 
     }
+
+    public class DatosRespuesta
+    {
+        private string descripcionEncuesta;
+        private string descripcionPregunta;
+        private string descripcionRespuesta; 
+
+
+        public string DescripcionEncuesta
+        {
+            get { return descripcionEncuesta; }
+            set { descripcionEncuesta = value; }
+        }
+
+        public string DescripcionPregunta
+        {
+            get { return descripcionPregunta; }
+            set { descripcionPregunta = value; }
+        }
+
+        public string DescripcionRespuesta
+        {
+            get { return descripcionRespuesta; }
+            set { descripcionRespuesta = value; }
+        }
+    }
+
 }

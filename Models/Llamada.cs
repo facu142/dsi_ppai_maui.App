@@ -18,10 +18,15 @@ namespace dsi_ppai_maui.Models
         private List<CambioEstado> cambioDeEstado;
         private Cliente cliente;
 
-
-        public string DescripcionOperador 
+        public Llamada()
         {
-            get {  return descripcionOperador; }
+            cambioDeEstado = new List<CambioEstado>();
+            respuestasDeEncuesta = new List<RespuestaCliente>();
+        }
+
+        public string DescripcionOperador
+        {
+            get { return descripcionOperador; }
             set { descripcionOperador = value; }
         }
 
@@ -34,7 +39,7 @@ namespace dsi_ppai_maui.Models
         public string Duracion
         {
             get { return duracion; }
-            set { duracion = value;}
+            set { duracion = value; }
         }
 
         public string EncuestaEnviada
@@ -45,14 +50,14 @@ namespace dsi_ppai_maui.Models
 
         public string ObservacionAuditor
         {
-            get { return observacionAuditor;}
-            set { observacionAuditor = value;}
+            get { return observacionAuditor; }
+            set { observacionAuditor = value; }
         }
 
         public List<RespuestaCliente> RespuestasDeEncuesta
         {
-            get { return respuestasDeEncuesta;}
-            set { respuestasDeEncuesta = value;}
+            get { return respuestasDeEncuesta; }
+            set { respuestasDeEncuesta = value; }
         }
 
         public List<CambioEstado> CambioDeEstado
@@ -66,7 +71,6 @@ namespace dsi_ppai_maui.Models
             get { return cliente; }
             set { cliente = value; }
         }
-
 
         //public string DeterminarUltimoEstado()
         //{
@@ -92,7 +96,7 @@ namespace dsi_ppai_maui.Models
             {
                 CambioEstado estadoFinal = null;
 
-                foreach (CambioEstado cambioEstado in CambioDeEstado)
+                foreach (CambioEstado cambioEstado in cambioDeEstado)
                 {
                     if (estadoFinal == null || estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio)
                     {
@@ -105,16 +109,15 @@ namespace dsi_ppai_maui.Models
                     return estadoFinal.getEstado().ToString();
                 }
 
-                return null; // Devuelve null si no se encuentra ningún estado
+                return string.Empty; // Devuelve una cadena vacía en lugar de null si no se encuentra ningún estado.
             }
         }
 
+
+
+
         public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString(); // Esta habria q borrar?
         public string DeterminarNombreCliente => Cliente.NombreCompleto; // Esto creo q deberia ir en cliente, o sea aca deberia ir una funcion 
-        public Llamada()
-        {
-            respuestasDeEncuesta = new List<RespuestaCliente>();
-        }
 
         public bool consultarEncuestaRespondida()
         {
@@ -140,7 +143,7 @@ namespace dsi_ppai_maui.Models
             {
                 if (fechaEstadoInicial >= cambioEstado.FechaHoraInicio || fechaEstadoInicial == null)
                 {
-                    fechaEstadoInicial = cambioEstado.FechaHoraInicio; 
+                    fechaEstadoInicial = cambioEstado.FechaHoraInicio;
                 }
 
                 if (fechaEstadoFinal <= cambioEstado.FechaHoraInicio || fechaEstadoFinal == null)

@@ -39,37 +39,34 @@
                     <Image Source="answer_icon" HeightRequest="20"/>
                     <Label Text="Respuestas seleccionadas" FontSize="25"/>
                 </HorizontalStackLayout>
-                <!--
-                <CollectionView ItemsSource="{Binding RespuestaDeEncuesta}">
+
+                <CollectionView ItemsSource="{Binding DatosDeRespuestas}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:RespuestaCliente">
+                        <DataTemplate x:DataType="viewModels:DatosRespuesta">
                             <Frame>
                                 <VerticalStackLayout>
-                                    //no iria 
-                                    //<Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
-                                    //<Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
-                                    //<Label Text="Pregunta:" FontAttributes="Bold"/>
-                                    // <Label Text="{Binding RespuestaSeleccionada.Pregunta.StrPregunta}"/>
+
+                                    <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DescripcionEncuesta}"/>
+                                    <Label Text="Pregunta:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DescripcionPregunta}"/>
                                     <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
-                                    <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
+                                    <Label Text="{Binding DescripcionRespuesta}"/>
                                 </VerticalStackLayout>
                             </Frame>
 
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                --> 
-                        
-                    
+                
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
-                
+
+                </CollectionView>
 
                 <Button Text="Generar CSV" Command="{Binding GenerarCSVCommand}"/>
-
                 <Label x:Name="fileSaverResult" 
                        Text=""/>
-
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
