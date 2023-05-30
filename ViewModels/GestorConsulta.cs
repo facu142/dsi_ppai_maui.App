@@ -477,6 +477,19 @@ namespace dsi_ppai_maui.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
+        public Encuesta EsEncuestaLlamada(Llamada llamadaSeleccionada)
+        {
+            List<Encuesta> encuestasDelCliente = Encuesta.EncuestasCliente(llamadaSeleccionada);
+            foreach (Encuesta encuesta in encuestasDelCliente)
+            { for (int nro = 0; nro < encuesta.Preguntas.Count; nro++)
+                {
+                    List<Respuesta> respuestasPosibles = encuesta.Preguntas[nro].RespuestasPosibles.Select(respuesta => respuesta.Valor).ToList();
+                    Respuesta respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada;
+                    if (!respuestasPosibles.Contains(respuestaSeleccionada.Valor))
+                    { break;}
+                    else {return encuesta; }} }
+            return null; }
+
         [RelayCommand]
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
@@ -484,14 +497,16 @@ namespace dsi_ppai_maui.ViewModels
             NombreCliente = llamada.Cliente.NombreCompleto;
             Duracion = llamada.Duracion;
 
-            Encuesta nuestraEncuesta = new();
+            Encuesta EncuestasCliente = new();
+
             foreach (Encuesta encuesta in encuestas) // habria q ver el tema de la inicializacion new() o null?
             {
                 if (encuesta.esEncuestaDeCliente(NombreCliente))
                 {
-                    nuestraEncuesta = encuesta;
+                    EncuestasCliente.Add(encuesta);
                 }
             }
+            nuestraEncuesta=EsEncuestaLlamada(Llamada EncuestasCliente)
 
             descripcionDeEncuesta = nuestraEncuesta.Descripcion; // descripcion de la encuesta
             
