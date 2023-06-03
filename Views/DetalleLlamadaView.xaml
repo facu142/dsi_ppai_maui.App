@@ -21,19 +21,19 @@
                 <HorizontalStackLayout Spacing="15">
                     <Image Source="person_icon.png" HeightRequest="18"/>
                     <Label Text="Cliente:" FontAttributes="Bold"></Label>
-                    <Label Text="{Binding NombreCliente}"/>
+                    <Label Text="{Binding LlamadaDto.Cliente}"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout Spacing="15">
                     <Image Source="status_icon.png" HeightRequest="18"/>
                     <Label Text="Estado Actual:" FontAttributes="Bold"/>
-                    <Label Text="{Binding LlamadaSeleccionada.DeterminarUltimoEstado}"/>
+                    <Label Text="{Binding LlamadaDto.UltimoEstado}"/>
                 </HorizontalStackLayout>
                     
                 <HorizontalStackLayout Spacing="15">
                     <Image Source="clock_icon.png" HeightRequest="18"/>
                     <Label Text="Duracion llamada:" FontAttributes="Bold"/>
-                    <Label Text="{Binding Duracion}"/>
+                    <Label Text="{Binding LlamadaDto.Duracion}"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">

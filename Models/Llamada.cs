@@ -164,26 +164,17 @@ namespace dsi_ppai_maui.Models
             }
         }
 
-        //public List<string> seleccionarLlamada()
-        //{
-        //    Cliente clienteDeLlamada = this.Cliente;
-        //    string nombreCliente = clienteDeLlamada.NombreCompleto.ToString();
+        public LlamadaDto seleccionarLlamada()
+        {
+            LlamadaDto llamadaDto = new() //crea objeto de tipo llamada 
+            {
+                Cliente = this.Cliente.NombreCompleto,
+                Duracion = this.Duracion,
+                UltimoEstado = DeterminarUltimoEstado
+            };
 
-        //    string duracionLlamada = this.Duracion;
-
-        //    CambioEstado? estadoFinal = null;
-        //    foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
-        //    {
-        //        if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
-        //        {
-        //            estadoFinal = cambioEstado;
-        //        }
-        //    }
-
-        //    string nombreUltimoEstado = estadoFinal.getEstado();
-
-        //    return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
-        //}
+            return llamadaDto;
+        }
 
 
         public ObservableCollection<RespuestasDeLlamadaDto> getRespuestasDeEncuesta()
@@ -206,10 +197,6 @@ namespace dsi_ppai_maui.Models
             }
             return DatosDeRespuestas;
         }
-
     }
-
-
-
 }
 

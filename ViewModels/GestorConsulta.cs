@@ -27,25 +27,7 @@ namespace dsi_ppai_maui.ViewModels
         DateTime fechaHasta;
 
         [ObservableProperty]
-        string estadoActual;
-
-        [ObservableProperty]
-        string nombreCliente;
-
-        [ObservableProperty]
-        string duracion;
-
-        [ObservableProperty]
-        List<RespuestaCliente> respuestaDeEncuesta;
-
-        [ObservableProperty]
-        string descripcionDeEncuesta;
-
-        [ObservableProperty]
-        string descripcionPregunta;
-
-        [ObservableProperty]
-        string descripcionRespuesta;
+        LlamadaDto llamadaDto;
 
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
@@ -476,12 +458,7 @@ namespace dsi_ppai_maui.ViewModels
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
 
-            // TODO: borrar estas tres lineas 
-            //EstadoActual = llamada.DeterminarUltimoEstado();
-            //NombreCliente = llamada.Cliente.NombreCompleto;
-            //Duracion = llamada.Duracion;
-
-            // y hacer llamada.tomarSeleccionLlamada, devuelve nombre de cliente, duracion y ultimo estado
+            LlamadaDto = llamada.seleccionarLlamada();
 
             RespuestasDeEncuestas = llamada.getRespuestasDeEncuesta();
 
@@ -518,7 +495,7 @@ namespace dsi_ppai_maui.ViewModels
 
             foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
             {
-                str += NombreCliente + ";" + EstadoActual + ";" + Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+                str += LlamadaDto.Cliente + ";" + LlamadaDto.UltimoEstado + ";" + LlamadaDto.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
