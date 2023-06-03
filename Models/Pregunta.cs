@@ -10,7 +10,7 @@ namespace dsi_ppai_maui.Models
     {
         private string strPregunta;
         private List<RespuestaPosible> respuestas;
-        private Encuesta encuesta; // dependencia
+        private Encuesta encuesta; // dependencia  NO VA ESTO
         
         
         public string StrPregunta
