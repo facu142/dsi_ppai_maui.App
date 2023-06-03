@@ -1,5 +1,7 @@
-﻿using System;
+﻿using dsi_ppai_maui.Dto;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -162,26 +164,52 @@ namespace dsi_ppai_maui.Models
             }
         }
 
-        public List<string> seleccionarLlamada()
+        //public List<string> seleccionarLlamada()
+        //{
+        //    Cliente clienteDeLlamada = this.Cliente;
+        //    string nombreCliente = clienteDeLlamada.NombreCompleto.ToString();
+
+        //    string duracionLlamada = this.Duracion;
+
+        //    CambioEstado? estadoFinal = null;
+        //    foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
+        //    {
+        //        if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
+        //        {
+        //            estadoFinal = cambioEstado;
+        //        }
+        //    }
+
+        //    string nombreUltimoEstado = estadoFinal.getEstado();
+
+        //    return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
+        //}
+
+
+        public ObservableCollection<RespuestasDeLlamadaDto> getRespuestasDeEncuesta()
         {
-            Cliente clienteDeLlamada = this.Cliente;
-            string nombreCliente = clienteDeLlamada.NombreCompleto.ToString();
+            ObservableCollection<RespuestasDeLlamadaDto> DatosDeRespuestas = new();
 
-            string duracionLlamada = this.Duracion;
-
-            CambioEstado? estadoFinal = null;
-            foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
+            foreach (RespuestaCliente respuesta in RespuestasDeEncuesta)
             {
-                if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
+                RespuestasDeLlamadaDto resp = new();
+                string DescEncuesta = respuesta.RespuestaSeleccionada.Pregunta.Encuesta.Descripcion;
+                string DescPregunta = respuesta.RespuestaSeleccionada.Pregunta.StrPregunta;
+                string DescRespuesta = respuesta.RespuestaSeleccionada.Descripcion;
+
+                DatosDeRespuestas.Add(new RespuestasDeLlamadaDto
                 {
-                    estadoFinal = cambioEstado;
-                }
+                    DescripcionEncuesta = DescEncuesta,
+                    DescripcionPregunta = DescPregunta,
+                    RespuestaSeleccionada = DescRespuesta
+                });
             }
-
-            string nombreUltimoEstado = estadoFinal.getEstado();
-
-            return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
+            return DatosDeRespuestas;
         }
+
     }
+
+
+
 }
 

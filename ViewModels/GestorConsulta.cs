@@ -51,7 +51,7 @@ namespace dsi_ppai_maui.ViewModels
 
         public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
 
-        public ObservableCollection<RespuestasDeLlamadaDto> RespuestasDeLlamadas { get; set; } = new ObservableCollection<RespuestasDeLlamadaDto>();
+        public ObservableCollection<RespuestasDeLlamadaDto> RespuestasDeEncuestas { get; set; } = new ObservableCollection<RespuestasDeLlamadaDto>();
 
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
@@ -482,6 +482,8 @@ namespace dsi_ppai_maui.ViewModels
             //Duracion = llamada.Duracion;
 
             // y hacer llamada.tomarSeleccionLlamada, devuelve nombre de cliente, duracion y ultimo estado
+
+            RespuestasDeEncuestas = llamada.getRespuestasDeEncuesta();
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
