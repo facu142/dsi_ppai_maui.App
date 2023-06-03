@@ -487,6 +487,37 @@ namespace dsi_ppai_maui.ViewModels
             }
         }
 
+        public Encuesta esEncuestaLlamada(Llamada llamadaSeleccionada)
+        {
+            List<Encuesta> encuestasDelCliente = Encuesta.esEncuestaDelCliente(llamadaSeleccionada.Cliente.NombreCompleto);
+
+            foreach (Encuesta encuesta in encuestasDelCliente)
+            {
+                bool encuestaCoincide = true;
+
+                for (int nro = 0; nro < encuesta.Preguntas.Count; nro++)
+                {
+                    List<string> respuestasPosibles = encuesta.Preguntas[nro].Respuestas.Select(respuesta => respuesta.Valor).ToList();
+                    string respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada?.Valor;
+
+                    if (respuestaSeleccionada == null || !respuestasPosibles.Contains(respuestaSeleccionada))
+                    {
+                        encuestaCoincide = false;
+                        break;
+                    }
+                }
+
+                if (encuestaCoincide)
+                {
+                    return encuesta;
+                }
+            }
+
+            return null;
+        }
+
+
+
         // Llamados por DetalleLlamadaView
         [RelayCommand]
         public async void GenerarCSV()
