@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using dsi_ppai_maui.Dto;
 using dsi_ppai_maui.Models;
 using dsi_ppai_maui.Views;
 using System;
@@ -17,7 +18,7 @@ namespace dsi_ppai_maui.ViewModels
     {
 
         [ObservableProperty]
-        private Llamada _llamadaSeleccionada= new();
+        private Llamada _llamadaSeleccionada = new();
 
         [ObservableProperty]
         DateTime fechaDesde;
@@ -49,6 +50,8 @@ namespace dsi_ppai_maui.ViewModels
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
 
         public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
+
+        public ObservableCollection<RespuestasDeLlamadaDto> RespuestasDeLlamadas { get; set; } = new ObservableCollection<RespuestasDeLlamadaDto>();
 
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
@@ -472,9 +475,13 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
+
+            // TODO: borrar estas tres lineas 
             //EstadoActual = llamada.DeterminarUltimoEstado();
-            NombreCliente = llamada.Cliente.NombreCompleto;
-            Duracion = llamada.Duracion;
+            //NombreCliente = llamada.Cliente.NombreCompleto;
+            //Duracion = llamada.Duracion;
+
+            // y hacer llamada.tomarSeleccionLlamada, devuelve nombre de cliente, duracion y ultimo estado
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
@@ -502,7 +509,6 @@ namespace dsi_ppai_maui.ViewModels
         }
 
         // Llamados por DetalleLlamadaView
-
         [RelayCommand]
         public async void GenerarCSV()
         {
@@ -515,7 +521,5 @@ namespace dsi_ppai_maui.ViewModels
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);
         }
-
-
     }
 }

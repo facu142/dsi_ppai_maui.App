@@ -5,7 +5,8 @@
              Title="Detalle de Llamada"
              xmlns:viewModels="clr-namespace:dsi_ppai_maui.ViewModels"
              x:DataType="viewModels:GestorConsulta"
-             xmlns:models="clr-namespace:dsi_ppai_maui.Models">
+             xmlns:models="clr-namespace:dsi_ppai_maui.Models"
+             xmlns:dto="clr-namespace:dsi_ppai_maui.Dto">
 
     <ScrollView>
         <VerticalStackLayout Margin="15" Spacing="10">
@@ -40,17 +41,17 @@
                     <Label Text="Respuestas seleccionadas" FontSize="25"/>
                 </HorizontalStackLayout>
 
-                <CollectionView ItemsSource="{Binding RespuestaDeEncuesta}">
+                <CollectionView ItemsSource="{Binding RespuestasDeLlamadas}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:RespuestaCliente">
+                        <DataTemplate x:DataType="dto:RespuestasDeLlamadaDto">
                             <Frame>
                                 <VerticalStackLayout>
                                     <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
-                                    <Label Text="{Binding RespuestaSeleccionada.Pregunta.Encuesta.Descripcion}"/>
+                                    <Label Text="{Binding DescripcionEncuesta}"/>
                                     <Label Text="Pregunta:" FontAttributes="Bold"/>
-                                    <Label Text="{Binding RespuestaSeleccionada.Pregunta.StrPregunta}"/>
+                                    <Label Text="{Binding DescripcionPregunta}"/>
                                     <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
-                                    <Label Text="{Binding RespuestaSeleccionada.Descripcion}"/>
+                                    <Label Text="{Binding RespuestaSeleccionada}"/>
                                 </VerticalStackLayout>
                             </Frame>
 
