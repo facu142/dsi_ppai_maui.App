@@ -23,4 +23,9 @@ public partial class ConsultarEncuestaView : ContentPage
     {
         _gestorConsulta.TomarSeleccionLlamadaCommand.Execute(e.Parameter);
     }
+
+    public async void SolicitarPeriodoDeLlamada()
+    {
+        await DisplayAlert("Ingrese el periodo de la llamada", "", "OK");
+    }
 }

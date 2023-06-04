@@ -10,7 +10,7 @@
 
         <Image HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="200" Source="logo.png"/>
 
-        <Button Text="Consultar encuesta" Command="{Binding ConsultarEncuestaCommand}" />
+        <Button Text="Consultar encuesta" Clicked="OpcionConsultarEncuesta" />
 
         
     </VerticalStackLayout>

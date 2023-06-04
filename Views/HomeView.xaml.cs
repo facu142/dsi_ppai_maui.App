@@ -4,9 +4,16 @@ namespace dsi_ppai_maui.Views;
 
 public partial class HomeView : ContentPage
 {
+    private readonly GestorConsulta _gestorConsulta;
     public HomeView(GestorConsulta gestorConsulta)
     {
         InitializeComponent();
+        _gestorConsulta = gestorConsulta;
         BindingContext = gestorConsulta;
+    }
+
+    private void OpcionConsultarEncuesta(object sender, EventArgs e)
+    {
+        _gestorConsulta.ConsultarEncuestaCommand.Execute(null);
     }
 }
