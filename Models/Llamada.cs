@@ -177,26 +177,25 @@ namespace dsi_ppai_maui.Models
         }
 
 
-        public ObservableCollection<RespuestasDeLlamadaDto> getRespuestasDeEncuesta()
+public ObservableCollection<RespuestasDeLlamadaDto> getRespuestasDeEncuesta(Encuesta encuesta)
+{
+    ObservableCollection<RespuestasDeLlamadaDto> DatosDeRespuestas = new ObservableCollection<RespuestasDeLlamadaDto>();
+
+    for (int i = 0; i < encuesta.Preguntas.Length; i++)
+    {
+        RespuestaCliente respuesta = RespuestasDeEncuesta[i];
+        Pregunta pregunta = encuesta.Preguntas[i];
+
+        string DescPregunta = pregunta.StrPregunta;
+        string DescRespuesta = respuesta.RespuestaSeleccionada.Descripcion;
+
+        DatosDeRespuestas.Add(new RespuestasDeLlamadaDto
         {
-            ObservableCollection<RespuestasDeLlamadaDto> DatosDeRespuestas = new();
-
-            foreach (RespuestaCliente respuesta in RespuestasDeEncuesta)
-            {
-                RespuestasDeLlamadaDto resp = new();
-                string DescEncuesta = respuesta.RespuestaSeleccionada.Pregunta.Encuesta.Descripcion;
-                string DescPregunta = respuesta.RespuestaSeleccionada.Pregunta.StrPregunta;
-                string DescRespuesta = respuesta.RespuestaSeleccionada.Descripcion;
-
-                DatosDeRespuestas.Add(new RespuestasDeLlamadaDto
-                {
-                    DescripcionEncuesta = DescEncuesta,
-                    DescripcionPregunta = DescPregunta,
-                    RespuestaSeleccionada = DescRespuesta
-                });
-            }
-            return DatosDeRespuestas;
-        }
+            DescripcionEncuesta = encuesta.Descripcion,
+            DescripcionPregunta = DescPregunta,
+            RespuestaSeleccionada = DescRespuesta
+        });
     }
+    return DatosDeRespuestas;
 }
 
