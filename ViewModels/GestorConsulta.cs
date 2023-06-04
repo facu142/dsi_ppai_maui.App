@@ -432,7 +432,7 @@ namespace dsi_ppai_maui.ViewModels
                 }
             }
 
-            RespuestasDeEncuestas = llamada.getRespuestasDeEncuesta(EncuestaAsociada);
+            RespuestasDeEncuestas = llamada.ArmarDetalle(EncuestaAsociada);
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);

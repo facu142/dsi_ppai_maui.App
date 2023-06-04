@@ -9,9 +9,7 @@ namespace dsi_ppai_maui.Models
     public class Pregunta
     {
         private string strPregunta;
-        private List<RespuestaPosible> respuestas;
-        private Encuesta encuesta; // dependencia  NO VA ESTO
-        
+        private List<RespuestaPosible> respuestas;      
         
         public string StrPregunta
         {
@@ -23,12 +21,13 @@ namespace dsi_ppai_maui.Models
         { 
             get { return respuestas; } 
             set { respuestas = value; }
+
         }
 
-        public Encuesta Encuesta
+        public List<string> ObtenerRespuestasPosibles()
         {
-            get { return encuesta; }
-            set { encuesta = value; }
+            List<string> valoresRespuestas = respuestas.Select(respuesta => respuesta.Valor).ToList();
+            return valoresRespuestas;
         }
 
         public Pregunta()

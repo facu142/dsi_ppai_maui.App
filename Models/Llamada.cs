@@ -108,7 +108,7 @@ namespace dsi_ppai_maui.Models
 
                 if (estadoFinal != null)
                 {
-                    return estadoFinal.getEstado().ToString();
+                    return estadoFinal.getEstadoNombre().ToString();
                 }
 
                 return string.Empty; // Devuelve una cadena vacía en lugar de null si no se encuentra ningún estado.
@@ -116,9 +116,7 @@ namespace dsi_ppai_maui.Models
         }
 
 
-
-
-        public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString(); // Esta habria q borrar?
+        public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString();
         public string DeterminarNombreCliente => Cliente.NombreCompleto; // Esto creo q deberia ir en cliente, o sea aca deberia ir una funcion 
 
         public bool consultarEncuestaRespondida()
@@ -133,28 +131,44 @@ namespace dsi_ppai_maui.Models
             }
         }
 
-        public bool esDePeriodo(DateTime fechaInicio, DateTime fechaFin) // REVISAR QUE SE CUMPLA EL PARADIGMA
+
+        public CambioEstado DeterminarUltimoCambioEstado()
         {
-            // busca la menor fecha es decir la fecha de inicio, luego busca la mayor fecha 
-            // y se fija que entre dentro del periodo elegido
+            CambioEstado estadoFinal = null;
 
-            DateTime? fechaEstadoInicial = null;
-            DateTime? fechaEstadoFinal = null;
-
-            foreach (CambioEstado cambioEstado in CambioDeEstado)
+            foreach (CambioEstado cambioEstado in cambioDeEstado)
             {
-                if (fechaEstadoInicial >= cambioEstado.FechaHoraInicio || fechaEstadoInicial == null)
+                if (estadoFinal == null || estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio)
                 {
-                    fechaEstadoInicial = cambioEstado.FechaHoraInicio;
-                }
-
-                if (fechaEstadoFinal <= cambioEstado.FechaHoraInicio || fechaEstadoFinal == null)
-                {
-                    fechaEstadoFinal = cambioEstado.FechaHoraInicio;
+                    estadoFinal = cambioEstado;
                 }
             }
 
-            if (fechaEstadoInicial > fechaInicio && fechaEstadoFinal < fechaFin)
+            return estadoFinal;
+        }
+        
+        public CambioEstado DeterminarPrimerCambioEstado()
+        {
+            CambioEstado estadoInicial = null;
+
+            foreach (CambioEstado cambioEstado in cambioDeEstado)
+            {
+                if (estadoInicial == null || estadoInicial.FechaHoraInicio >= cambioEstado.FechaHoraInicio)
+                {
+                    estadoInicial = cambioEstado;
+                }
+            }
+
+            return estadoInicial;
+        }
+
+        public bool esDePeriodo(DateTime fechaInicio, DateTime fechaFin) 
+        {
+
+            CambioEstado PrimerEstado = this.DeterminarPrimerCambioEstado();
+            CambioEstado UltimoEstado = this.DeterminarUltimoCambioEstado();
+
+            if (PrimerEstado.FechaHoraInicio > fechaInicio && UltimoEstado.FechaHoraInicio < fechaFin)
             {
                 return true;
             }
@@ -163,6 +177,7 @@ namespace dsi_ppai_maui.Models
                 return false;
             }
         }
+
 
         public LlamadaDto seleccionarLlamada()
         {
@@ -176,15 +191,16 @@ namespace dsi_ppai_maui.Models
             return llamadaDto;
         }
 
-
-        public ObservableCollection<RespuestasDeLlamadaDto> getRespuestasDeEncuesta(Encuesta encuesta)
+        //ArmarDetalle
+        public ObservableCollection<RespuestasDeLlamadaDto> ArmarDetalle(Encuesta encuesta)
         {
             ObservableCollection<RespuestasDeLlamadaDto> DatosDeRespuestas = new ObservableCollection<RespuestasDeLlamadaDto>();
 
             for (int i = 0; i < encuesta.Preguntas.Count ; i++)
             {
-                RespuestaCliente respuesta = RespuestasDeEncuesta[i];
                 Pregunta pregunta = encuesta.Preguntas[i];
+                RespuestaCliente respuesta = RespuestasDeEncuesta[i];
+  
 
                 string DescPregunta = pregunta.StrPregunta;
                 string DescRespuesta = respuesta.RespuestaSeleccionada.Descripcion;

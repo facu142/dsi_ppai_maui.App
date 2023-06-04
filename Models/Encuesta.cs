@@ -41,11 +41,13 @@ namespace dsi_ppai_maui.Models
             {
                 bool encuestaCoincide = true;
 
-
-                for (int nro = 0; nro < this.Preguntas.Count; nro++)
+                List<Pregunta> PreguntasEncuesta = this.Preguntas;
+                List<RespuestaCliente> respuestasEncuesta = llamadaSeleccionada.RespuestasDeEncuesta;
+                
+                for (int nro = 0; nro < PreguntasEncuesta.Count; nro++)
                 {
-                    List<string> respuestasPosibles = this.Preguntas[nro].Respuestas.Select(respuesta => respuesta.Valor).ToList();
-                    string respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada?.Valor;
+                    List<string> respuestasPosibles = PreguntasEncuesta[nro].ObtenerRespuestasPosibles();
+                    string respuestaSeleccionada = respuestasEncuesta[nro].RespuestaSeleccionada?.Valor;
 
                     if (respuestaSeleccionada == null || !respuestasPosibles.Contains(respuestaSeleccionada))
                     {
