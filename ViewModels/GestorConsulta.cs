@@ -29,7 +29,11 @@ namespace dsi_ppai_maui.ViewModels
         [ObservableProperty]
         LlamadaDto llamadaDto;
 
+        public Encuesta EncuestaAsociada { get; set; }
+
         public ObservableCollection<Llamada> Llamadas { get; set; } = new ObservableCollection<Llamada>();
+
+        public ObservableCollection<Encuesta> Encuestas { get; set; } = new ObservableCollection<Encuesta>();
 
         public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
 
@@ -203,7 +207,16 @@ namespace dsi_ppai_maui.ViewModels
             cambiosDeEstado10.Add(cambio410);
             cambiosDeEstado10.Add(cambio510);
 
-
+            Cliente cliente1 = new() { NombreCompleto = "John Doe", Dni = "33999999", NroCelular = "351678911" };
+            Cliente cliente2 = new() { NombreCompleto = "Jane Smith", Dni = "44888888", NroCelular = "351234567" };
+            Cliente cliente3 = new() { NombreCompleto = "Bob Johnson", Dni = "55666666", NroCelular = "351987654" };
+            Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", NroCelular = "351111111" };
+            Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", NroCelular = "351222222" };
+            Cliente cliente6 = new() { NombreCompleto = "Juan Mateo Blencio", Dni = "44240562", NroCelular = "3885325413" };
+            Cliente cliente7 = new() { NombreCompleto = "Zoi Lypnik", Dni = "47248442", NroCelular = "351263987" };
+            Cliente cliente8 = new() { NombreCompleto = "Mari Gonzales", Dni = "44489654", NroCelular = "351182233" };
+            Cliente cliente9 = new() { NombreCompleto = "Agustina Sola", Dni = "43654897", NroCelular = "0115346798" };
+            Cliente cliente10 = new() { NombreCompleto = "Valentin Ruiz", Dni = "46987531", NroCelular = "3875349784" };
 
             RespuestaPosible respuestaPosible0 = new() { Descripcion = "Muy insatisfecho", Valor = "1" };
             RespuestaPosible respuestaPosible1 = new() { Descripcion = "Neutral", Valor = "2" };
@@ -255,10 +268,14 @@ namespace dsi_ppai_maui.ViewModels
             };
             /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
 
-            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
+            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now, Cliente = cliente1 };
             Encuesta Encuesta2 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
             Encuesta Encuesta3 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
 
+            List<Encuesta> encuestas = new();
+            Encuestas.Add(Encuesta1);
+            Encuestas.Add(Encuesta2);
+            Encuestas.Add(Encuesta3);
 
             //creacion de Preguntas
             Pregunta pregunta1 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas};
@@ -272,7 +289,7 @@ namespace dsi_ppai_maui.ViewModels
             List<Pregunta> preguntasE1 = new()
             {
                 pregunta1,
-                pregunta2
+                pregunta1
 
             };
 
@@ -291,19 +308,6 @@ namespace dsi_ppai_maui.ViewModels
             Encuesta1.Preguntas = preguntasE1;
             Encuesta2.Preguntas = preguntasE2;
             Encuesta3.Preguntas = preguntasE3;
-
-
-            Cliente cliente1 = new() { NombreCompleto = "John Doe", Dni = "33999999", NroCelular = "351678911" };
-            Cliente cliente2 = new() { NombreCompleto = "Jane Smith", Dni = "44888888", NroCelular = "351234567" };
-            Cliente cliente3 = new() { NombreCompleto = "Bob Johnson", Dni = "55666666", NroCelular = "351987654" };
-            Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", NroCelular = "351111111" };
-            Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", NroCelular = "351222222" };
-            Cliente cliente6 = new() { NombreCompleto = "Juan Mateo Blencio", Dni = "44240562", NroCelular = "3885325413" };
-            Cliente cliente7 = new() { NombreCompleto = "Zoi Lypnik", Dni = "47248442", NroCelular = "351263987" };
-            Cliente cliente8 = new() { NombreCompleto = "Mari Gonzales", Dni = "44489654", NroCelular = "351182233" };
-            Cliente cliente9 = new() { NombreCompleto = "Agustina Sola", Dni = "43654897", NroCelular = "0115346798" };
-            Cliente cliente10 = new() { NombreCompleto = "Valentin Ruiz", Dni = "46987531", NroCelular = "3875349784" };
-
 
             List<RespuestaCliente> RespuestasDeEncuesta1 = new();
             List<RespuestaCliente> RespuestasDeEncuesta2 = new();
@@ -415,7 +419,16 @@ namespace dsi_ppai_maui.ViewModels
 
             LlamadaDto = llamada.seleccionarLlamada();
 
-            RespuestasDeEncuestas = llamada.getRespuestasDeEncuesta();
+            foreach (Encuesta encuesta in Encuestas)
+            {
+                EncuestaAsociada = encuesta.esEncuestaLlamada(llamada);
+                if (EncuestaAsociada != null)
+                {
+                    break;
+                }
+            }
+
+            RespuestasDeEncuestas = llamada.getRespuestasDeEncuesta(EncuestaAsociada);
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
@@ -441,37 +454,6 @@ namespace dsi_ppai_maui.ViewModels
                 }
             }
         }
-
-        public Encuesta esEncuestaLlamada(Llamada llamadaSeleccionada)
-        {
-            List<Encuesta> encuestasDelCliente = Encuesta.esEncuestaDelCliente(llamadaSeleccionada.Cliente.NombreCompleto);
-
-            foreach (Encuesta encuesta in encuestasDelCliente)
-            {
-                bool encuestaCoincide = true;
-
-                for (int nro = 0; nro < encuesta.Preguntas.Count; nro++)
-                {
-                    List<string> respuestasPosibles = encuesta.Preguntas[nro].Respuestas.Select(respuesta => respuesta.Valor).ToList();
-                    string respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada?.Valor;
-
-                    if (respuestaSeleccionada == null || !respuestasPosibles.Contains(respuestaSeleccionada))
-                    {
-                        encuestaCoincide = false;
-                        break;
-                    }
-                }
-
-                if (encuestaCoincide)
-                {
-                    return encuesta;
-                }
-            }
-
-            return null;
-        }
-
-
 
         // Llamados por DetalleLlamadaView
         [RelayCommand]
