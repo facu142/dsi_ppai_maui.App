@@ -209,12 +209,12 @@ namespace dsi_ppai_maui.ViewModels
 
             Cliente cliente1 = new() { NombreCompleto = "John Doe", Dni = "33999999", NroCelular = "351678911" };
             Cliente cliente2 = new() { NombreCompleto = "Jane Smith", Dni = "44888888", NroCelular = "351234567" };
-            Cliente cliente3 = new() { NombreCompleto = "Bob Johnson", Dni = "55666666", NroCelular = "351987654" };
+            Cliente cliente3 = new() { NombreCompleto = "Muhammad Ali", Dni = "55666666", NroCelular = "351987654" };
             Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", NroCelular = "351111111" };
             Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", NroCelular = "351222222" };
             Cliente cliente6 = new() { NombreCompleto = "Juan Mateo Blencio", Dni = "44240562", NroCelular = "3885325413" };
             Cliente cliente7 = new() { NombreCompleto = "Zoi Lypnik", Dni = "47248442", NroCelular = "351263987" };
-            Cliente cliente8 = new() { NombreCompleto = "Mari Gonzales", Dni = "44489654", NroCelular = "351182233" };
+            Cliente cliente8 = new() { NombreCompleto = "Lionel Messi", Dni = "44489654", NroCelular = "351182233" };
             Cliente cliente9 = new() { NombreCompleto = "Agustina Sola", Dni = "43654897", NroCelular = "0115346798" };
             Cliente cliente10 = new() { NombreCompleto = "Valentin Ruiz", Dni = "46987531", NroCelular = "3875349784" };
 
@@ -268,14 +268,9 @@ namespace dsi_ppai_maui.ViewModels
             };
             /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
 
-            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now, Cliente = cliente1 };
-            Encuesta Encuesta2 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-            Encuesta Encuesta3 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-
-            List<Encuesta> encuestas = new();
-            Encuestas.Add(Encuesta1);
-            Encuestas.Add(Encuesta2);
-            Encuestas.Add(Encuesta3);
+            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now, Cliente = cliente8 };
+            Encuesta Encuesta2 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now, Cliente = cliente4 };
+            Encuesta Encuesta3 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now, Cliente = cliente3 };
 
             //creacion de Preguntas
             Pregunta pregunta1 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas};
@@ -288,22 +283,23 @@ namespace dsi_ppai_maui.ViewModels
 
             List<Pregunta> preguntasE1 = new()
             {
-                pregunta1,
-                pregunta1
-
-            };
+                pregunta2,
+                pregunta6,
+                pregunta5            };
 
             List<Pregunta> preguntasE2 = new()
             {
-                pregunta3,
-                pregunta4
+                pregunta6,
+                pregunta2,
+                pregunta3
             };
 
             List<Pregunta> preguntasE3 = new()
             {
-                pregunta5,
-                pregunta6
+                pregunta4,
+                pregunta5
             };
+
 
             Encuesta1.Preguntas = preguntasE1;
             Encuesta2.Preguntas = preguntasE2;
@@ -319,10 +315,7 @@ namespace dsi_ppai_maui.ViewModels
             List<RespuestaCliente> RespuestasDeEncuesta8 = new();
             List<RespuestaCliente> RespuestasDeEncuesta9 = new();
             List<RespuestaCliente> RespuestasDeEncuesta10 = new();
-            List<RespuestaCliente> RespuestasDeEncuesta11 = new();
-            List<RespuestaCliente> RespuestasDeEncuesta12 = new();
-            List<RespuestaCliente> RespuestasDeEncuesta13 = new();
-            List<RespuestaCliente> RespuestasDeEncuesta14 = new();
+
 
             RespuestaCliente respuestaCliente1 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible1 };
             RespuestaCliente respuestaCliente2 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible2 };
@@ -340,51 +333,62 @@ namespace dsi_ppai_maui.ViewModels
             RespuestaCliente respuestaCliente14 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible14 };
            
 
-            RespuestasDeEncuesta1.Add(respuestaCliente1);
-            RespuestasDeEncuesta1.Add(respuestaCliente2);
+            //RespuestasDeEncuesta1.Add(respuestaCliente1);
+            //RespuestasDeEncuesta1.Add(respuestaCliente2);
 
-            RespuestasDeEncuesta2.Add(respuestaCliente3);
-            RespuestasDeEncuesta2.Add(respuestaCliente4);
-            RespuestasDeEncuesta2.Add(respuestaCliente8);
+            //RespuestasDeEncuesta2.Add(respuestaCliente3);
+            //RespuestasDeEncuesta2.Add(respuestaCliente4);
+            //RespuestasDeEncuesta2.Add(respuestaCliente8);
 
-            RespuestasDeEncuesta3.Add(respuestaCliente5);
-            RespuestasDeEncuesta3.Add(respuestaCliente6);
+            //RespuestasDeEncuesta3.Add(respuestaCliente5);
+            //RespuestasDeEncuesta3.Add(respuestaCliente6);
+            //esta tiene encuesta 2
+            RespuestasDeEncuesta4.Add(respuestaCliente14);
+            RespuestasDeEncuesta4.Add(respuestaCliente9);
+            RespuestasDeEncuesta4.Add(respuestaCliente10);
 
-            RespuestasDeEncuesta4.Add(respuestaCliente7);
-            RespuestasDeEncuesta4.Add(respuestaCliente8);
-            RespuestasDeEncuesta4.Add(respuestaCliente5);
-
+            //esta tiene encuesta 3
             RespuestasDeEncuesta5.Add(respuestaCliente9);
-            RespuestasDeEncuesta5.Add(respuestaCliente10);
+            RespuestasDeEncuesta5.Add(respuestaCliente12);
 
-            RespuestasDeEncuesta6.Add(respuestaCliente1);
-            RespuestasDeEncuesta6.Add(respuestaCliente3);
+            //RespuestasDeEncuesta6.Add(respuestaCliente1);
+            //RespuestasDeEncuesta6.Add(respuestaCliente3);
 
-            RespuestasDeEncuesta7.Add(respuestaCliente1);
-            RespuestasDeEncuesta7.Add(respuestaCliente3);
-            RespuestasDeEncuesta7.Add(respuestaCliente3);
+            //RespuestasDeEncuesta7.Add(respuestaCliente1);
+            //RespuestasDeEncuesta7.Add(respuestaCliente3);
+            //RespuestasDeEncuesta7.Add(respuestaCliente3);
 
-            RespuestasDeEncuesta8.Add(respuestaCliente4);
+            //esta tiene encuesta 1
             RespuestasDeEncuesta8.Add(respuestaCliente5);
+            RespuestasDeEncuesta8.Add(respuestaCliente14);
+            RespuestasDeEncuesta8.Add(respuestaCliente11);
 
-            RespuestasDeEncuesta9.Add(respuestaCliente1);
-            RespuestasDeEncuesta9.Add(respuestaCliente5);
-            RespuestasDeEncuesta9.Add(respuestaCliente7);
+            //RespuestasDeEncuesta9.Add(respuestaCliente1);
+            //RespuestasDeEncuesta9.Add(respuestaCliente5);
+            //RespuestasDeEncuesta9.Add(respuestaCliente7);
 
-            RespuestasDeEncuesta10.Add(respuestaCliente4);
-            RespuestasDeEncuesta10.Add(respuestaCliente3);
+            //RespuestasDeEncuesta10.Add(respuestaCliente4);
+            //RespuestasDeEncuesta10.Add(respuestaCliente3);
 
             Llamada llamada1 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente = cliente1, RespuestasDeEncuesta = RespuestasDeEncuesta1 };
             Llamada llamada2 = new() { DescripcionOperador = "Desc ", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2, Cliente = cliente2, RespuestasDeEncuesta = RespuestasDeEncuesta2 };
-            Llamada llamada3 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado3, Cliente = cliente3, RespuestasDeEncuesta = RespuestasDeEncuesta3 };
+            Llamada llamada3 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado3, Cliente = cliente1, RespuestasDeEncuesta = RespuestasDeEncuesta3 };
             Llamada llamada4 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado4, Cliente = cliente4, RespuestasDeEncuesta = RespuestasDeEncuesta4 };
-            Llamada llamada5 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado5, Cliente = cliente5, RespuestasDeEncuesta = RespuestasDeEncuesta5 };
-            Llamada llamada6 = new() { DescripcionOperador = "Desc  ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado6, Cliente = cliente6, RespuestasDeEncuesta = RespuestasDeEncuesta6 };
-            Llamada llamada7 = new() { DescripcionOperador = "Desc ", Duracion = "50", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado7, Cliente = cliente7, RespuestasDeEncuesta = RespuestasDeEncuesta7 };
+            Llamada llamada5 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado5, Cliente = cliente3, RespuestasDeEncuesta = RespuestasDeEncuesta5 };
+            Llamada llamada6 = new() { DescripcionOperador = "Desc  ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado6, Cliente = cliente5, RespuestasDeEncuesta = RespuestasDeEncuesta6 };
+            Llamada llamada7 = new() { DescripcionOperador = "Desc ", Duracion = "50", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado7, Cliente = cliente8, RespuestasDeEncuesta = RespuestasDeEncuesta7 };
             Llamada llamada8 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado8, Cliente = cliente8, RespuestasDeEncuesta = RespuestasDeEncuesta8 };
-            Llamada llamada9 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado9, Cliente = cliente9, RespuestasDeEncuesta = RespuestasDeEncuesta9 };
+            Llamada llamada9 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado9, Cliente = cliente2, RespuestasDeEncuesta = RespuestasDeEncuesta9 };
             Llamada llamada10 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado10, Cliente = cliente10, RespuestasDeEncuesta = RespuestasDeEncuesta10 };
 
+            //agrego las encuestas
+            List<Encuesta> encuestas = new();
+            Encuestas.Add(Encuesta1); 
+            Encuestas.Add(Encuesta2);
+            Encuestas.Add(Encuesta3);
+
+
+            //agrego las llamadas
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
             Llamadas.Add(llamada3);

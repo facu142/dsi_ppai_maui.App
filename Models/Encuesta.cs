@@ -33,19 +33,6 @@ namespace dsi_ppai_maui.Models
 
         public Cliente Cliente { get; set; }
 
-        private static List<Encuesta> ObtenerTodasLasEncuestas()
-        {
-            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-            Encuesta Encuesta2 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-            Encuesta Encuesta3 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-            List<Encuesta> todasLasEncuestas = new List<Encuesta>();
-
-            todasLasEncuestas.Add(Encuesta1);
-            todasLasEncuestas.Add(Encuesta2);
-            todasLasEncuestas.Add(Encuesta3);
-
-            return todasLasEncuestas;
-        }
 
         public Encuesta esEncuestaLlamada(Llamada llamadaSeleccionada)
         {
