@@ -42,9 +42,11 @@ namespace dsi_ppai_maui.ViewModels
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
 
+        ConsultarEncuestaView consultarEncuesta;
 
-        public GestorConsulta(IFileSaver fileSaver)
+        public GestorConsulta(IFileSaver fileSaver, ConsultarEncuestaView consultarEncuesta )
         {
+            this.consultarEncuesta = consultarEncuesta;
             this.fileSaver = fileSaver;
 
             fechaDesde = new ();
@@ -406,6 +408,7 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void ConsultarEncuesta()
         {
+            consultarEncuesta.SolicitarPeriodoDeLlamada();
             await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView));
         }
 
