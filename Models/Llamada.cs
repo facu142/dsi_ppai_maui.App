@@ -196,13 +196,10 @@ namespace dsi_ppai_maui.Models
         {
             ObservableCollection<RespuestaDeLlamadaDto> DatosDeRespuestas = new();
 
-            for (int i = 0; i < encuesta.Preguntas.Count ; i++)
+            for (int i = 0; i < RespuestasDeEncuesta.Count ; i++)
             {
-                Pregunta pregunta = encuesta.Preguntas[i];
-                RespuestaCliente respuesta = RespuestasDeEncuesta[i];
-  
-                string DescPregunta = pregunta.StrPregunta;
-                string DescRespuesta = respuesta.RespuestaSeleccionada.Descripcion;
+                string DescPregunta = encuesta.Preguntas[i].StrPregunta;
+                string DescRespuesta = RespuestasDeEncuesta[i].RespuestaSeleccionada.Descripcion;
                 string DescEncuesta = encuesta.Descripcion;
 
                 RespuestaDeLlamadaDto respuestaDeLlamadaDto = new(){
