@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,29 +33,38 @@ namespace dsi_ppai_maui.Models
 
         public Cliente Cliente { get; set; }
 
-        public static List<Encuesta> esEncuestaDelCliente(string nombreCliente)
+
+        public Encuesta esEncuestaLlamada(Llamada llamadaSeleccionada)
+        {
+
+            if (this.Cliente.NombreCompleto == llamadaSeleccionada.Cliente.NombreCompleto)
             {
-                // lógica para obtener las encuestas del cliente
+                bool encuestaCoincide = true;
 
-                //lista de todas las encuestas disponibles
-                List<Encuesta> todasLasEncuestas = ObtenerTodasLasEncuestas();
+                List<Pregunta> PreguntasEncuesta = this.Preguntas;
+                List<RespuestaCliente> respuestasEncuesta = llamadaSeleccionada.RespuestasDeEncuesta;
+                
+                for (int nro = 0; nro < PreguntasEncuesta.Count; nro++)
+                {
+                    List<string> respuestasPosibles = PreguntasEncuesta[nro].ObtenerRespuestasPosibles();
+                    string respuestaSeleccionada = respuestasEncuesta[nro].RespuestaSeleccionada?.Valor;
 
-                // Filtras las encuestas por el nombre del cliente
-                List<Encuesta> encuestasDelCliente = todasLasEncuestas.Where(encuesta => encuesta.Cliente.NombreCompleto == nombreCliente).ToList();
+                    if (respuestaSeleccionada == null || !respuestasPosibles.Contains(respuestaSeleccionada))
+                    {
+                        encuestaCoincide = false;
+                        break;
+                    }
+                }
 
-                return encuestasDelCliente;
+                if (encuestaCoincide)
+                {
+                    return this;
+                }
+
+                return null;
             }
-
-            private static List<Encuesta> ObtenerTodasLasEncuestas()
-            {
-                // Implementación para obtener todas las encuestas disponibles
-           
-                List<Encuesta> todasLasEncuestas = new List<Encuesta>();
-
-                // Agregar encuestas a la lista...
-
-                return todasLasEncuestas;
-            }
+            return null;
         }
-
     }
+
+}
