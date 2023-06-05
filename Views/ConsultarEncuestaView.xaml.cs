@@ -14,9 +14,13 @@ public partial class ConsultarEncuestaView : ContentPage
 
     }
 
-    private void FechaSeleccionada(object sender, DateChangedEventArgs e)
+    private void TomarSeleccionFechaInicio(object sender, DateChangedEventArgs e)
     {
-        _gestorConsulta.FechaSeleccionadaCommand.Execute(null);
+        _gestorConsulta.TomarSeleccionPeriodoCommand.Execute(null);
+    }
+    private void TomarSeleccionFechaFin(object sender, DateChangedEventArgs e)
+    {
+        _gestorConsulta.TomarSeleccionPeriodoCommand.Execute(null);
     }
 
     private void TomarSeleccionLlamada(object sender, TappedEventArgs e)

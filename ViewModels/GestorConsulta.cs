@@ -440,7 +440,7 @@ namespace dsi_ppai_maui.ViewModels
         }
 
         [RelayCommand]
-        public void FechaSeleccionada()
+        public void TomarSeleccionPeriodo()
         {
             FiltrarporPeriodo();
         }

@@ -7,7 +7,7 @@ public partial class HomeView : ContentPage
     private readonly GestorConsulta _gestorConsulta;
     public HomeView(GestorConsulta gestorConsulta)
     {
-        InitializeComponent();
+        HabilitarVentana();
         _gestorConsulta = gestorConsulta;
         BindingContext = gestorConsulta;
     }
@@ -15,5 +15,10 @@ public partial class HomeView : ContentPage
     private void OpcionConsultarEncuesta(object sender, EventArgs e)
     {
         _gestorConsulta.ConsultarEncuestaCommand.Execute(null);
+    }
+
+    private void HabilitarVentana()
+    {
+        InitializeComponent();
     }
 }
