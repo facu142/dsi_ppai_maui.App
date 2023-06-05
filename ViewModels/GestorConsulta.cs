@@ -465,9 +465,13 @@ namespace dsi_ppai_maui.ViewModels
         {
             string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
 
-            foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
+            for (int i = 0; i < EncuestaAsociada.Preguntas.Count; i++)
             {
-                str += LlamadaDto.Cliente + ";" + LlamadaDto.UltimoEstado + ";" + LlamadaDto.Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+                str += LlamadaDto.Cliente + ";" +
+                    LlamadaDto.UltimoEstado + ";" + 
+                    LlamadaDto.Duracion + ";" + 
+                    EncuestaAsociada.Preguntas[i].StrPregunta + ";" + 
+                    LlamadaSeleccionada.RespuestasDeEncuesta[i].RespuestaSeleccionada.Descripcion + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync("suscribe.csv", stream, cancellationTokenSource.Token);

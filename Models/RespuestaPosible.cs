@@ -10,8 +10,6 @@ namespace dsi_ppai_maui.Models
     {
         private string descripcion;
         private string valor;
-        private Pregunta pregunta; // dependencia
-
 
         public string Descripcion
         { 
@@ -23,12 +21,6 @@ namespace dsi_ppai_maui.Models
         {
             get { return valor; }
             set { valor = value; }
-        }
-
-        public Pregunta Pregunta
-        {
-            get { return pregunta; }
-            set { pregunta = value; }
         }
 
     }
