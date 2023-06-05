@@ -43,7 +43,7 @@
 
                 <CollectionView ItemsSource="{Binding RespuestasDeEncuestas}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="dto:RespuestasDeLlamadaDto">
+                        <DataTemplate x:DataType="dto:RespuestaDeLlamadaDto">
                             <Frame>
                                 <VerticalStackLayout>
                                     <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>

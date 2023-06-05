@@ -192,25 +192,26 @@ namespace dsi_ppai_maui.Models
         }
 
         //ArmarDetalle
-        public ObservableCollection<RespuestasDeLlamadaDto> ArmarDetalle(Encuesta encuesta)
+        public ObservableCollection<RespuestaDeLlamadaDto> ArmarDetalle(Encuesta encuesta)
         {
-            ObservableCollection<RespuestasDeLlamadaDto> DatosDeRespuestas = new ObservableCollection<RespuestasDeLlamadaDto>();
+            ObservableCollection<RespuestaDeLlamadaDto> DatosDeRespuestas = new();
 
             for (int i = 0; i < encuesta.Preguntas.Count ; i++)
             {
                 Pregunta pregunta = encuesta.Preguntas[i];
                 RespuestaCliente respuesta = RespuestasDeEncuesta[i];
   
-
                 string DescPregunta = pregunta.StrPregunta;
                 string DescRespuesta = respuesta.RespuestaSeleccionada.Descripcion;
+                string DescEncuesta = encuesta.Descripcion;
 
-                DatosDeRespuestas.Add(new RespuestasDeLlamadaDto
-                {
-                    DescripcionEncuesta = encuesta.Descripcion,
+                RespuestaDeLlamadaDto respuestaDeLlamadaDto = new(){
+                    DescripcionEncuesta = DescEncuesta,
                     DescripcionPregunta = DescPregunta,
                     RespuestaSeleccionada = DescRespuesta
-                });
+                };
+
+                DatosDeRespuestas.Add(respuestaDeLlamadaDto);
             }
             return DatosDeRespuestas;
         }

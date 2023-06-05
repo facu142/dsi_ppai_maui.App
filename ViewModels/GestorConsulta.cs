@@ -37,7 +37,7 @@ namespace dsi_ppai_maui.ViewModels
 
         public ObservableCollection<Llamada> LlamadasFiltradas { get; set; } = new ObservableCollection<Llamada>();
 
-        public ObservableCollection<RespuestasDeLlamadaDto> RespuestasDeEncuestas { get; set; } = new ObservableCollection<RespuestasDeLlamadaDto>();
+        public ObservableCollection<RespuestaDeLlamadaDto> RespuestasDeEncuestas { get; set; } = new ObservableCollection<RespuestaDeLlamadaDto>();
 
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
