@@ -63,7 +63,7 @@
                     </CollectionView.ItemsLayout>
                 </CollectionView>
 
-                <Button Text="Generar CSV" Command="{Binding GenerarCSVCommand}"/>
+                <Button Text="Generar CSV" Clicked="TomarSeleccionFormato"/>
 
                 <Label x:Name="fileSaverResult" 
                        Text=""/>

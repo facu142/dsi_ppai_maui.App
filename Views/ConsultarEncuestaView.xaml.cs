@@ -4,7 +4,7 @@ namespace dsi_ppai_maui.Views;
 
 public partial class ConsultarEncuestaView : ContentPage
 {
-     private readonly GestorConsulta _gestorConsulta;
+    private readonly GestorConsulta _gestorConsulta;
 
     public ConsultarEncuestaView(GestorConsulta gestorConsulta)
     {
@@ -32,4 +32,15 @@ public partial class ConsultarEncuestaView : ContentPage
     {
         await DisplayAlert("Ingrese el periodo de la llamada", "", "OK");
     }
+
+    public async void SolicitarSeleccionLlamada()
+    {
+        await DisplayAlert("Seleccione una llamada", "", "OK");
+    }
+
+    public async void SolicitarFormatoDeVisualizacion()
+    {
+        await DisplayAlert("Seleccione un formato de visualizacion", "", "OK");
+    }
+
 }

@@ -440,6 +440,8 @@ namespace dsi_ppai_maui.ViewModels
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
             await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
+
+            consultarEncuesta.SolicitarFormatoDeVisualizacion();
         }
 
         [RelayCommand]
@@ -460,6 +462,8 @@ namespace dsi_ppai_maui.ViewModels
                     LlamadasFiltradas.Add(llamada);
                 }
             }
+
+            consultarEncuesta.SolicitarPeriodoDeLlamada();
         }
 
         // Llamados por DetalleLlamadaView
