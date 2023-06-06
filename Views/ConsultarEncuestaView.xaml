@@ -5,64 +5,140 @@
              Title="Consultar Encuesta"
              xmlns:ViewModels="clr-namespace:dsi_ppai_maui.ViewModels"
              x:DataType="ViewModels:GestorConsulta"
-             xmlns:models="clr-namespace:dsi_ppai_maui.Models">
+             xmlns:models="clr-namespace:dsi_ppai_maui.Models"
+             xmlns:dto="clr-namespace:dsi_ppai_maui.Dto"
+             >
+
+    
 
 
-    <ScrollView Margin="15">
-        <VerticalStackLayout Spacing="15">
-            <VerticalStackLayout>
-                <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
-                    <Image Source="phone.png" HeightRequest="20"/>
-                    <Label Text="Listado de Llamadas" FontSize="25"/>
-                </HorizontalStackLayout>
+    <VerticalStackLayout>
 
-                <Label Text="Fecha desde"/>
-                <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" 
+        <VerticalStackLayout IsVisible="{Binding HomeVisible}">
+            <Image HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="200" Source="logo.png"/>
+            <Button Text="Consultar encuesta" Clicked="OpcionConsultarEncuesta" />
+        </VerticalStackLayout>
+
+        <ScrollView Margin="15" x:Name="ConsultarEncuesta" IsVisible="{Binding ConsultarEncuestaVisible}">
+            <VerticalStackLayout Spacing="15">
+                <VerticalStackLayout>
+                    <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+                        <Image Source="phone.png" HeightRequest="20"/>
+                        <Label Text="Listado de Llamadas" FontSize="25"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Fecha desde"/>
+                    <DatePicker x:Name="FechaDesde" Date="{Binding FechaDesde}" 
                             DateSelected="TomarSeleccionFechaInicio"
                             />
 
-                <Label Text="Fecha hasta"/>
-                <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" 
+                    <Label Text="Fecha hasta"/>
+                    <DatePicker x:Name="FechaHasta" Date="{Binding FechaHasta}" 
                             DateSelected="TomarSeleccionFechaFin"
                             />
 
-                <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding LlamadasFiltradas}" >
-                    <CollectionView.ItemTemplate>
+                    <CollectionView x:Name="LlamadasCollectionView" ItemsSource="{Binding LlamadasFiltradas}" >
+                        <CollectionView.ItemTemplate>
 
-                        <DataTemplate x:DataType="models:Llamada">
-                            <Frame>
-                                <VerticalStackLayout>
-                                    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <DataTemplate x:DataType="models:Llamada">
+                                <Frame>
+                                    <VerticalStackLayout>
+                                        <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" ColumnSpacing="10">
 
-                                        <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="DescripcionOperador:"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
+                                            <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="DescripcionOperador:"/>
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding DescripcionOperador}"/>
 
-                                        <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Fecha y Hora:" />
-                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
+                                            <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Fecha y Hora:" />
+                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding DeterminarFechaHoraUltimoEstado }"/>
 
-                                        <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
-                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
+                                            <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Text="Estado:" />
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeterminarUltimoEstado}"/>
 
-                                    </Grid>
-                                </VerticalStackLayout>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TomarSeleccionLlamada" CommandParameter="{Binding .}"> </TapGestureRecognizer>
-                                </Frame.GestureRecognizers>
-                                    
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TomarSeleccionLlamada" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
 
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
-                    </CollectionView.ItemsLayout>
-                </CollectionView>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
 
-                <Button Text="Cancelar" Command="{Binding CancelarCommand}"/>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+
+                    <Button Text="Cancelar" Command="{Binding CancelarCommand}"/>
+
+                </VerticalStackLayout>
 
             </VerticalStackLayout>
+        </ScrollView>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <ScrollView x:Name="DetalleLlamada" IsVisible="{Binding DetalleVisible}">
+            <VerticalStackLayout Margin="15" Spacing="10">
+
+                <VerticalStackLayout>
+                    <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+                        <Image Source="detalle.png" HeightRequest="20"/>
+                        <Label Text="Detalle de Llamada" FontSize="25"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="15">
+                        <Image Source="person_icon.png" HeightRequest="18"/>
+                        <Label Text="Cliente:" FontAttributes="Bold"></Label>
+                        <Label Text="{Binding LlamadaDto.Cliente}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="15">
+                        <Image Source="status_icon.png" HeightRequest="18"/>
+                        <Label Text="Estado Actual:" FontAttributes="Bold"/>
+                        <Label Text="{Binding LlamadaDto.UltimoEstado}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="15">
+                        <Image Source="clock_icon.png" HeightRequest="18"/>
+                        <Label Text="Duracion llamada:" FontAttributes="Bold"/>
+                        <Label Text="{Binding LlamadaDto.Duracion}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10" Margin="0,0,0,20">
+                        <Image Source="answer_icon" HeightRequest="20"/>
+                        <Label Text="Respuestas seleccionadas" FontSize="25"/>
+                    </HorizontalStackLayout>
+
+                    <CollectionView ItemsSource="{Binding RespuestasDeEncuestas}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="dto:RespuestaDeLlamadaDto">
+                                <Frame>
+                                    <VerticalStackLayout>
+                                        <Label Text="Descripcion de la encuesta:" FontAttributes="Bold"/>
+                                        <Label Text="{Binding DescripcionEncuesta}"/>
+                                        <Label Text="Pregunta:" FontAttributes="Bold"/>
+                                        <Label Text="{Binding DescripcionPregunta}"/>
+                                        <Label Text=" Respuesta seleccionada: " FontAttributes="Bold"/>
+                                        <Label Text="{Binding RespuestaSeleccionada}"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+
+                    <Button Text="Generar CSV" Command="{Binding GenerarCSVCommand}"/>
+                    <Button Text="Cancelar" Command="{Binding CancelarCommand}"/>
+
+                    <Label x:Name="fileSaverResult" 
+                       Text=""/>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
 
 </ContentPage>

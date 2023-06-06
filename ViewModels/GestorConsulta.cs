@@ -42,9 +42,18 @@ namespace dsi_ppai_maui.ViewModels
         IFileSaver fileSaver;
         CancellationTokenSource cancellationTokenSource = new();
 
+        [ObservableProperty]
+        public bool homeVisible = true;
+
+        [ObservableProperty]
+        public bool consultarEncuestaVisible = false;
+
+        [ObservableProperty]
+        public bool detalleVisible = false;
 
         public GestorConsulta(IFileSaver fileSaver)
         {
+            HomeVisible = true;
             this.fileSaver = fileSaver;
 
             fechaDesde = new ();
@@ -406,6 +415,8 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void ConsultarEncuesta()
         {
+            HomeVisible = false;
+            ConsultarEncuestaVisible = true;
             await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView));
         }
 
@@ -414,7 +425,10 @@ namespace dsi_ppai_maui.ViewModels
         [RelayCommand]
         public async void Cancelar()
         {
-            await Shell.Current.GoToAsync("..");
+            HomeVisible = true;
+            ConsultarEncuestaVisible = false;
+            DetalleVisible = false;
+            // await Shell.Current.GoToAsync("..");
         }
 
         [RelayCommand]
@@ -436,7 +450,9 @@ namespace dsi_ppai_maui.ViewModels
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
-            await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
+            DetalleVisible = true;
+            ConsultarEncuestaVisible = false;
+            await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView), navParam);
         }
 
         [RelayCommand]

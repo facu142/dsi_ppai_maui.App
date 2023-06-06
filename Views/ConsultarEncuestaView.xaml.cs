@@ -8,7 +8,7 @@ public partial class ConsultarEncuestaView : ContentPage
 
     public ConsultarEncuestaView(GestorConsulta gestorConsulta)
     {
-        InitializeComponent();
+        HabilitarVentana();
         _gestorConsulta = gestorConsulta;
         BindingContext = gestorConsulta;
 
@@ -31,5 +31,15 @@ public partial class ConsultarEncuestaView : ContentPage
     public async void SolicitarPeriodoDeLlamada()
     {
         await DisplayAlert("Ingrese el periodo de la llamada", "", "OK");
+    }
+
+    private void OpcionConsultarEncuesta(object sender, EventArgs e)
+    {
+        _gestorConsulta.ConsultarEncuestaCommand.Execute(null);
+    }
+
+    private void HabilitarVentana()
+    {
+        InitializeComponent();
     }
 }

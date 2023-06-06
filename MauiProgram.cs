@@ -27,7 +27,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IFileSaver>(FileSaver.Default);
 
 		// Home
-		builder.Services.AddSingleton<HomeView>();
+		//builder.Services.AddSingleton<HomeView>();
 		//builder.Services.AddSingleton<HomeViewModel>();
 
         // Consultar encuesta
@@ -35,7 +35,7 @@ public static class MauiProgram
         //builder.Services.AddSingleton<ConsultarEncuestaViewModel>();
 
 		// Detalle llamada
-        builder.Services.AddTransient<DetalleLlamadaView>();
+        //builder.Services.AddTransient<DetalleLlamadaView>();
 		
 
 		builder.Services.AddSingleton<GestorConsulta>();

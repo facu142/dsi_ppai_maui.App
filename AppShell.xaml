@@ -9,10 +9,10 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate views:HomeView}"
+        ContentTemplate="{DataTemplate views:ConsultarEncuestaView}"
         Route="MainPage" />
 
-    <ShellContent
+    <!--<ShellContent
         Title="Consultar Encuesta"
         ContentTemplate="{DataTemplate views:ConsultarEncuestaView}"
         Route="ConsutarEncuesta" />
@@ -20,6 +20,6 @@
     <ShellContent
         Title="Detalle Llamada"
         ContentTemplate="{DataTemplate views:DetalleLlamadaView}"
-        Route="DetalleLlamada" />
+        Route="DetalleLlamada" />-->
 
 </Shell>
