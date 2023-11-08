@@ -10,26 +10,42 @@ namespace dsi_ppai_maui.Models
     {
         private string descripcion;
         private string valor;
-        private Pregunta pregunta; // dependencia
+        private Pregunta pregunta; // Dependencia
 
-
-        public string Descripcion
-        { 
-            get { return descripcion; } 
-            set {  descripcion = value; } 
-        }
-
-        public string Valor
+        public RespuestaPosible(string descripcion, string valor)
         {
-            get { return valor; }
-            set { valor = value; }
+            this.descripcion = descripcion;
+            this.valor = valor;
         }
 
-        public Pregunta Pregunta
+        public string getDescripcion()
         {
-            get { return pregunta; }
-            set { pregunta = value; }
+            return descripcion;
         }
 
+        public void setDescripcion(string value)
+        {
+            descripcion = value;
+        }
+
+        public string getValor()
+        {
+            return valor;
+        }
+
+        public void setValor(string value)
+        {
+            valor = value;
+        }
+
+        public Pregunta getPregunta()
+        {
+            return pregunta;
+        }
+
+        public void setPregunta(Pregunta value)
+        {
+            pregunta = value;
+        }
     }
 }

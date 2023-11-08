@@ -7,89 +7,128 @@ using System.Threading.Tasks;
 
 namespace dsi_ppai_maui.Models
 {
-    public class Llamada
-    {
-        private string descripcionOperador;
-        private string detalleAccionRequerida;
-        private string duracion;
-        private string encuestaEnviada;
-        private string observacionAuditor;
-        private List<RespuestaCliente> respuestasDeEncuesta;
-        private List<CambioEstado> cambioDeEstado;
-        private Cliente cliente;
-
+        public class Llamada
+        {
+            private string descripcionOperador;
+            private string detalleAccionRequerida;
+            private string duracion;
+            private string encuestaEnviada;
+            private string observacionAuditor;
+            private List<RespuestaCliente> respuestasDeEncuesta;
+            private List<CambioEstado> cambioDeEstado;
+            private Cliente cliente;
+        //constructor
+        public Llamada(
+      string descripcionOperador,
+      string detalleAccionRequerida,
+      string duracion,
+      string encuestaEnviada,
+      string observacionAuditor,
+      List<RespuestaCliente> respuestasDeEncuesta,
+      List<CambioEstado> cambioDeEstado,
+      Cliente cliente)
+        {
+            this.descripcionOperador = descripcionOperador;
+            this.duracion = duracion;
+            this.detalleAccionRequerida = detalleAccionRequerida;
+            this.encuestaEnviada = encuestaEnviada;
+            this.observacionAuditor = observacionAuditor;
+            this.cambioDeEstado = cambioDeEstado;
+            this.cliente = cliente;
+            this.respuestasDeEncuesta = respuestasDeEncuesta;
+        }
+        // no se si esta bien lo de abajo
         public Llamada()
+            {
+                cambioDeEstado = new List<CambioEstado>();
+                respuestasDeEncuesta = new List<RespuestaCliente>();
+            }
+
+        public Llamada(string v1, string v2, string v3, string v4, string v5, List<CambioEstado> cambiosDeEstado1, Cliente cliente1, List<RespuestaCliente> respuestasDeEncuesta1)
         {
-            cambioDeEstado = new List<CambioEstado>();
-            respuestasDeEncuesta = new List<RespuestaCliente>();
         }
 
-        public string DescripcionOperador
-        {
-            get { return descripcionOperador; }
-            set { descripcionOperador = value; }
-        }
+        public string getDescripcionOperador()
+            {
+                return descripcionOperador;
+            }
 
-        public string DetalleAccionRequerida
-        {
-            get { return detalleAccionRequerida; }
-            set { detalleAccionRequerida = value; }
-        }
+            public void setDescripcionOperador(string value)
+            {
+                descripcionOperador = value;
+            }
 
-        public string Duracion
-        {
-            get { return duracion; }
-            set { duracion = value; }
-        }
+            public string getDetalleAccionRequerida()
+            {
+                return detalleAccionRequerida;
+            }
 
-        public string EncuestaEnviada
-        {
-            get { return encuestaEnviada; }
-            set { encuestaEnviada = value; }
-        }
+            public void setDetalleAccionRequerida(string value)
+            {
+                detalleAccionRequerida = value;
+            }
 
-        public string ObservacionAuditor
-        {
-            get { return observacionAuditor; }
-            set { observacionAuditor = value; }
-        }
+            public string getDuracion()
+            {
+                return duracion;
+            }
 
-        public List<RespuestaCliente> RespuestasDeEncuesta
-        {
-            get { return respuestasDeEncuesta; }
-            set { respuestasDeEncuesta = value; }
-        }
+            public void setDuracion(string value)
+            {
+                duracion = value;
+            }
 
-        public List<CambioEstado> CambioDeEstado
-        {
-            get { return cambioDeEstado; }
-            set { cambioDeEstado = value; }
-        }
+            public string getEncuestaEnviada()
+            {
+                return encuestaEnviada;
+            }
 
-        public Cliente Cliente
-        {
-            get { return cliente; }
-            set { cliente = value; }
-        }
+            public void setEncuestaEnviada(string value)
+            {
+                encuestaEnviada = value;
+            }
 
-        //public string DeterminarUltimoEstado()
-        //{
-        //    CambioEstado estadoFinal = new();
+            public string getObservacionAuditor()
+            {
+                return observacionAuditor;
+            }
 
-        //    foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
-        //    {
-        //        if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
-        //        {
-        //            estadoFinal = cambioEstado;
-        //        }
-        //    }
+            public void setObservacionAuditor(string value)
+            {
+                observacionAuditor = value;
+            }
 
-        //    string nombreUltimoEstado = estadoFinal.getEstado().ToString();
+            public List<RespuestaCliente> getRespuestasDeEncuesta()
+            {
+                return respuestasDeEncuesta;
+            }
 
-        //    return nombreUltimoEstado;
+            public void setRespuestasDeEncuesta(List<RespuestaCliente> value)
+            {
+                respuestasDeEncuesta = value;
+            }
 
-        //}
+            public List<CambioEstado> getCambioDeEstado()
+            {
+                return cambioDeEstado;
+            }
 
+            public void setCambioDeEstado(List<CambioEstado> value)
+            {
+                cambioDeEstado = value;
+            }
+
+            public Cliente getCliente()
+            {
+                return cliente;
+            }
+
+            public void setCliente(Cliente value)
+            {
+                cliente = value;
+            }
+
+        public string DescripcionOperador => descripcionOperador;
         public string DeterminarUltimoEstado
         {
             get
@@ -98,7 +137,7 @@ namespace dsi_ppai_maui.Models
 
                 foreach (CambioEstado cambioEstado in cambioDeEstado)
                 {
-                    if (estadoFinal == null || estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio)
+                    if (estadoFinal == null || estadoFinal.getFechaHoraInicio() <= cambioEstado.getFechaHoraInicio())
                     {
                         estadoFinal = cambioEstado;
                     }
@@ -115,13 +154,12 @@ namespace dsi_ppai_maui.Models
 
 
 
+    public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().getFechaHoraInicio().ToString(); // Esta habria q borrar?
+        public string DeterminarNombreCliente => cliente.getNombreCompleto(); // Esto creo q deberia ir en cliente, o sea aca deberia ir una funcion 
 
-        public string DeterminarFechaHoraUltimoEstado => cambioDeEstado.LastOrDefault().FechaHoraInicio.ToString(); // Esta habria q borrar?
-        public string DeterminarNombreCliente => Cliente.NombreCompleto; // Esto creo q deberia ir en cliente, o sea aca deberia ir una funcion 
-
-        public bool consultarEncuestaRespondida()
+        public bool ConsultarEncuestaRespondida()
         {
-            if (this.RespuestasDeEncuesta.Count > 0)
+            if (this.respuestasDeEncuesta.Count > 0)
             {
                 return true;
             }
@@ -138,17 +176,17 @@ namespace dsi_ppai_maui.Models
 
             DateTime? fechaEstadoInicial = null;
             DateTime? fechaEstadoFinal = null;
-
-            foreach (CambioEstado cambioEstado in CambioDeEstado)
+           
+            foreach (CambioEstado cambioEstado in cambioDeEstado)
             {
-                if (fechaEstadoInicial >= cambioEstado.FechaHoraInicio || fechaEstadoInicial == null)
+                if (fechaEstadoInicial >= cambioEstado.getFechaHoraInicio() || fechaEstadoInicial == null)
                 {
-                    fechaEstadoInicial = cambioEstado.FechaHoraInicio;
+                    fechaEstadoInicial = cambioEstado.getFechaHoraInicio();
                 }
 
-                if (fechaEstadoFinal <= cambioEstado.FechaHoraInicio || fechaEstadoFinal == null)
+                if (fechaEstadoFinal <= cambioEstado.getFechaHoraInicio() || fechaEstadoFinal == null)
                 {
-                    fechaEstadoFinal = cambioEstado.FechaHoraInicio;
+                    fechaEstadoFinal = cambioEstado.getFechaHoraInicio();
                 }
             }
 
@@ -161,24 +199,24 @@ namespace dsi_ppai_maui.Models
                 return false;
             }
         }
-
+        //esto habra que reveer
         public List<string> seleccionarLlamada()
         {
-            Cliente clienteDeLlamada = this.Cliente;
-            string nombreCliente = clienteDeLlamada.NombreCompleto.ToString();
+            Cliente clienteDeLlamada = this.cliente;
+            string nombreCliente = clienteDeLlamada.getNombreCompleto().ToString();
 
-            string duracionLlamada = this.Duracion;
+            string duracionLlamada = this.getDuracion();
 
             CambioEstado? estadoFinal = null;
-            foreach (CambioEstado cambioEstado in CambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
+            foreach (CambioEstado cambioEstado in cambioDeEstado) // En estadoFinal va a terminar quedando el ultimo cambio
             {
-                if (estadoFinal.FechaHoraInicio <= cambioEstado.FechaHoraInicio || estadoFinal == null)
+                if (estadoFinal.getFechaHoraInicio() <= cambioEstado.getFechaHoraInicio() || estadoFinal == null)
                 {
                     estadoFinal = cambioEstado;
                 }
             }
 
-            string nombreUltimoEstado = estadoFinal.getEstado();
+            string nombreUltimoEstado = estadoFinal.getNombreEstado();
 
             return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
         }

@@ -11,29 +11,42 @@ namespace dsi_ppai_maui.Models
         private string strPregunta;
         private List<RespuestaPosible> respuestas;
         private Encuesta encuesta; // dependencia
-        
-        
-        public string StrPregunta
+
+        public Pregunta(string strPregunta, List<RespuestaPosible> respuestas, Encuesta encuesta)
         {
-            get { return strPregunta; }
-            set { strPregunta = value; }
+            this.strPregunta = strPregunta;
+            this.respuestas = respuestas;
+            this.encuesta = encuesta;
+        }
+        public string getStrPregunta()
+        {
+            return strPregunta;
         }
 
-        public List<RespuestaPosible> Respuestas
-        { 
-            get { return respuestas; } 
-            set { respuestas = value; }
+        public void setStrPregunta(string value)
+        {
+            strPregunta = value;
         }
 
-        public Encuesta Encuesta
+        public List<RespuestaPosible> getRespuestas()
         {
-            get { return encuesta; }
-            set { encuesta = value; }
+            return respuestas;
         }
 
-        public Pregunta()
+        public void setRespuestas(List<RespuestaPosible> value)
         {
-            Respuestas = new List<RespuestaPosible>();
+            respuestas = value;
         }
+
+        public Encuesta getEncuesta()
+        {
+            return encuesta;
+        }
+
+        public void setEncuesta(Encuesta value)
+        {
+            encuesta = value;
+        }
+
     }
 }

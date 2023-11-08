@@ -10,23 +10,36 @@ namespace dsi_ppai_maui.Models
     {
         private DateTime fechaHoraInicio;
         private Estado estado;
-
-        public DateTime FechaHoraInicio
+        public CambioEstado( Estado estado, DateTime fechaHoraInicio)
         {
-            get { return fechaHoraInicio; }
-            set { fechaHoraInicio = value; }
+            this.fechaHoraInicio = fechaHoraInicio;
+            this.estado = estado;
         }
 
-        public Estado Estado
+        public DateTime getFechaHoraInicio()
         {
-            get { return estado; }
-            set { estado = value; }
+            return fechaHoraInicio;
         }
 
-        public string getEstado()
+        public void setFechaHoraInicio(DateTime valor)
         {
-            return this.Estado.Nombre;
+            fechaHoraInicio = valor;
         }
 
+        public Estado getEstado()
+        {
+            return estado;
+        }
+
+        public void setEstado(Estado valor)
+        {
+            estado = valor;
+        }
+
+        public string getNombreEstado()
+        {
+            return estado.getNombre();
+        }
     }
+
 }

@@ -36,7 +36,7 @@ namespace dsi_ppai_maui.ViewModels
         string duracion;
 
         [ObservableProperty]
-        List<string> respuestasDeEncuestaDeCliente; // aca puse string
+        List<string> respuestasDeEncuestaCliente; // aca puse string
 
         [ObservableProperty]
         string descripcionDeEncuesta;
@@ -73,23 +73,24 @@ namespace dsi_ppai_maui.ViewModels
             fechaDesde = DateTime.Now;
             fechaHasta = DateTime.Now;
 
-            RespuestaPosible respuestaPosible0 = new() { Descripcion = "Muy insatisfecho", Valor = "1" };
-            RespuestaPosible respuestaPosible1 = new() { Descripcion = "Neutral", Valor = "2" };
-            RespuestaPosible respuestaPosible2 = new() { Descripcion = "Satisfecho", Valor = "3" };
-            RespuestaPosible respuestaPosible3 = new() { Descripcion = "Muy Satisfecho", Valor = "4" };
-            RespuestaPosible respuestaPosible4 = new() { Descripcion = "No es probable", Valor = "1" };
-            RespuestaPosible respuestaPosible5 = new() { Descripcion = "Es poco probable", Valor = "2" };
-            RespuestaPosible respuestaPosible6 = new() { Descripcion = "Es probable", Valor = "3" };
-            RespuestaPosible respuestaPosible7 = new() { Descripcion = "Es muy probable", Valor = "4" };
-            RespuestaPosible respuestaPosible8 = new() { Descripcion = "Es bastante probable", Valor = "5" };
-            RespuestaPosible respuestaPosible9 = new() { Descripcion = "Si", Valor = "1" };
-            RespuestaPosible respuestaPosible10 = new() { Descripcion = "No", Valor = "2" };
-            RespuestaPosible respuestaPosible11 = new() { Descripcion = "Si", Valor = "1" };
-            RespuestaPosible respuestaPosible12 = new() { Descripcion = "No", Valor = "2" };
-            RespuestaPosible respuestaPosible13 = new() { Descripcion = "Si", Valor = "1" };
-            RespuestaPosible respuestaPosible14 = new() { Descripcion = "No", Valor = "2" };
-            RespuestaPosible respuestaPosible15 = new() { Descripcion = "Si", Valor = "1" };
-            RespuestaPosible respuestaPosible16 = new() { Descripcion = "No", Valor = "2" };
+            RespuestaPosible respuestaPosible0 = new RespuestaPosible( "Muy insatisfecho", "1");
+            RespuestaPosible respuestaPosible1 = new RespuestaPosible("Neutral", "2");
+            RespuestaPosible respuestaPosible2 = new RespuestaPosible("Satisfecho", "3");
+            RespuestaPosible respuestaPosible3 = new RespuestaPosible("Muy Satisfecho", "4");
+            RespuestaPosible respuestaPosible4 = new RespuestaPosible("No es probable", "1");
+            RespuestaPosible respuestaPosible5 = new RespuestaPosible("Es poco probable", "2");
+            RespuestaPosible respuestaPosible6 = new RespuestaPosible("Es probable", "3");
+            RespuestaPosible respuestaPosible7 = new RespuestaPosible("Es muy probable", "4");
+            RespuestaPosible respuestaPosible8 = new RespuestaPosible("Es bastante probable", "5");
+            RespuestaPosible respuestaPosible9 = new RespuestaPosible("Si", "1");
+            RespuestaPosible respuestaPosible10 = new RespuestaPosible("No", "2");
+            RespuestaPosible respuestaPosible11 = new RespuestaPosible("Si", "1");
+            RespuestaPosible respuestaPosible12 = new RespuestaPosible("No", "2");
+            RespuestaPosible respuestaPosible13 = new RespuestaPosible("Si", "1");
+            RespuestaPosible respuestaPosible14 = new RespuestaPosible("No", "2");
+            RespuestaPosible respuestaPosible15 = new RespuestaPosible("Si", "1");
+            RespuestaPosible respuestaPosible16 = new RespuestaPosible("No", "2");
+
 
             /*1 - Muy insatisfecho
             2 - Insatisfecho
@@ -143,21 +144,25 @@ namespace dsi_ppai_maui.ViewModels
 
             /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
 
-            Encuesta Encuesta1 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-            Encuesta Encuesta2 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
-            Encuesta Encuesta3 = new() { Descripcion = "Conteste ésta encuesta...", FechaFinVigencia = DateTime.Now };
+            Encuesta Encuesta1 = new Encuesta( "Conteste ésta encuesta...", DateTime.Now);
+            Encuesta Encuesta2 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
+            Encuesta Encuesta3 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
 
 
 
 
 
-            Pregunta pregunta1 = new() { StrPregunta = "¿Cuan satisfecho estas de los servicios?", Respuestas = respuestas, Encuesta = Encuesta1 };
-            Pregunta pregunta2 = new() { StrPregunta = "¿En una escala del 1 al 5, ¿qué tan probable es que vuelvas a utilizar nuestros productos/servicios en el futuro?", Respuestas = respuestas1, Encuesta = Encuesta2 };
-            Pregunta pregunta3 = new() { StrPregunta = "¿El personal de atención al cliente fue capaz de resolver tus dudas o inquietudes?", Respuestas = respuestas2, Encuesta = Encuesta3 };
-            Pregunta pregunta4 = new() { StrPregunta = "¿La solución proporcionada a tu consulta/problema fue satisfactoria?", Respuestas = respuestas3, Encuesta = Encuesta1 };
-            Pregunta pregunta5 = new() { StrPregunta = "¿La atención al cliente que recibiste fue amable y cordial?", Respuestas = respuestas4, Encuesta = Encuesta2 };
-            Pregunta pregunta6 = new() { StrPregunta = "¿Recomendarías nuestros productos/servicios a otros?", Respuestas = respuestas5, Encuesta = Encuesta3 };
+            Pregunta pregunta1 = new Pregunta("¿Cuan satisfecho estas de los servicios?", respuestas, Encuesta1);
+            Pregunta pregunta2 = new Pregunta("¿En una escala del 1 al 5, ¿qué tan probable es que vuelvas a utilizar nuestros productos/servicios en el futuro?",respuestas1, Encuesta2  );
 
+            Pregunta pregunta3 = new Pregunta("¿El personal de atención al cliente fue capaz de resolver tus dudas o inquietudes?", respuestas2, Encuesta3);
+
+            Pregunta pregunta4 = new Pregunta("¿La solución proporcionada a tu consulta/problema fue satisfactoria?", respuestas3, Encuesta1);
+
+            Pregunta pregunta5 = new Pregunta("¿La atención al cliente que recibiste fue amable y cordial?", respuestas4, Encuesta2);
+
+            Pregunta pregunta6 = new Pregunta("¿Recomendarías nuestros productos/servicios a otros?", respuestas5, Encuesta3);
+   
 
             List<Pregunta> preguntas = new()
             {
@@ -182,121 +187,119 @@ namespace dsi_ppai_maui.ViewModels
                 pregunta5
             };
 
-            respuestaPosible0.Pregunta = pregunta1;
-            respuestaPosible1.Pregunta = pregunta1;
-            respuestaPosible2.Pregunta = pregunta1;
-            respuestaPosible3.Pregunta = pregunta1;
+            respuestaPosible0.setPregunta(pregunta1);
+            respuestaPosible1.setPregunta(pregunta1);
+            respuestaPosible2.setPregunta(pregunta1);
+            respuestaPosible3.setPregunta(pregunta1);
 
-            respuestaPosible4.Pregunta = pregunta2;
-            respuestaPosible5.Pregunta = pregunta2;
-            respuestaPosible6.Pregunta = pregunta2;
-            respuestaPosible7.Pregunta = pregunta2;
-            respuestaPosible8.Pregunta = pregunta2;
+            respuestaPosible4.setPregunta(pregunta2);
+            respuestaPosible5.setPregunta(pregunta2);
+            respuestaPosible6.setPregunta(pregunta2);
+            respuestaPosible7.setPregunta(pregunta2);
+            respuestaPosible8.setPregunta(pregunta2);
 
-            respuestaPosible9.Pregunta = pregunta3;
-            respuestaPosible10.Pregunta = pregunta3;
+            respuestaPosible9.setPregunta(pregunta3);
+            respuestaPosible10.setPregunta(pregunta3);
 
-            respuestaPosible11.Pregunta = pregunta4;
-            respuestaPosible12.Pregunta = pregunta4;
+            respuestaPosible11.setPregunta(pregunta4);
+            respuestaPosible12.setPregunta(pregunta4);
 
-            respuestaPosible13.Pregunta = pregunta5;
-            respuestaPosible14.Pregunta = pregunta5;
+            respuestaPosible13.setPregunta(pregunta5);
+            respuestaPosible14.setPregunta(pregunta5);
 
-            respuestaPosible15.Pregunta = pregunta6;
-            respuestaPosible16.Pregunta = pregunta6;
-
-
-            Encuesta1.Preguntas = preguntas;
-            pregunta1.Encuesta = Encuesta1;
-            pregunta2.Encuesta = Encuesta1;
-
-            Encuesta2.Preguntas = preguntas1;
-            pregunta3.Encuesta = Encuesta1;
-            pregunta4.Encuesta = Encuesta1;
-
-            Encuesta3.Preguntas = preguntas2;
-            pregunta5.Encuesta = Encuesta1;
-            pregunta6.Encuesta = Encuesta1;
+            respuestaPosible15.setPregunta(pregunta6);
+            respuestaPosible16.setPregunta(pregunta6);
 
 
-            Estado finalizada = new() { Nombre = "Finalizada" };
-            Estado iniciada = new() { Nombre = "Iniciada" };
-            Estado enCurso = new() { Nombre = "EnCurso" };
-            Estado cancelado = new() { Nombre = "Cancelado" };
-            Estado pendienteDeEscucha = new() { Nombre = "pendienteDeEscucha" };
-            Estado observacion = new() { Nombre = "Observacion" };
-            Estado correcta = new() { Nombre = "Correcta" };
-            Estado descartado = new() { Nombre = "Descartado" };
+            Encuesta1.setPreguntas(preguntas);
+            pregunta1.setEncuesta(Encuesta1);
+            pregunta2.setEncuesta(Encuesta1);
+            Encuesta2.setPreguntas(preguntas1);
+            pregunta3.setEncuesta(Encuesta1);
+            pregunta4.setEncuesta(Encuesta1);
+            Encuesta3.setPreguntas(preguntas2);
+            pregunta5.setEncuesta(Encuesta1);
+            pregunta6.setEncuesta(Encuesta1);
+
+
+            Estado finalizada = new Estado ("Finalizada");
+            Estado iniciada = new Estado("Iniciada");
+            Estado enCurso = new Estado("EnCurso");
+            Estado cancelado = new Estado("Cancelado");
+            Estado pendienteDeEscucha = new Estado("pendienteDeEscucha");
+            Estado observacion = new Estado("Observacion");
+            Estado correcta = new Estado("Correcta");
+            Estado descartado = new Estado("Descartado");
 
 
             //cambio de estado de llamada 1
-            CambioEstado cambio21 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-4) };
-            CambioEstado cambio31 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-3) };
-            CambioEstado cambio41 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-2) };
-            CambioEstado cambio51 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-1) };
+            CambioEstado cambio21 = new CambioEstado(enCurso, DateTime.Now.AddDays(-4));
+            CambioEstado cambio31 = new CambioEstado(finalizada, DateTime.Now.AddDays(-3));
+            CambioEstado cambio41 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-2));
+            CambioEstado cambio51 = new CambioEstado(observacion, DateTime.Now.AddDays(-1));
 
-            //cambio de estado llamada 2
-            CambioEstado cambio12 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-10) };
-            CambioEstado cambio22 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-9) };
-            CambioEstado cambio32 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-8) };
-            CambioEstado cambio42 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-7) };
-            CambioEstado cambio52 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-6) };
+            //cambio de estado de llamada 2
+            CambioEstado cambio12 = new CambioEstado(iniciada, DateTime.Now.AddDays(-10));
+            CambioEstado cambio22 = new CambioEstado(enCurso, DateTime.Now.AddDays(-9));
+            CambioEstado cambio32 = new CambioEstado(finalizada, DateTime.Now.AddDays(-8));
+            CambioEstado cambio42 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-7));
+            CambioEstado cambio52 = new CambioEstado(observacion, DateTime.Now.AddDays(-6));
 
-            //cambio de estado llamada 3
-            CambioEstado cambio13 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-11) };
-            CambioEstado cambio23 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-10) };
-            CambioEstado cambio33 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-9) };
-            CambioEstado cambio43 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-8) };
-            CambioEstado cambio53 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-7) };
+            //cambio de estado de llamada 3
+            CambioEstado cambio13 = new CambioEstado(iniciada, DateTime.Now.AddDays(-11));
+            CambioEstado cambio23 = new CambioEstado(enCurso, DateTime.Now.AddDays(-10));
+            CambioEstado cambio33 = new CambioEstado(finalizada, DateTime.Now.AddDays(-9));
+            CambioEstado cambio43 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-8));
+            CambioEstado cambio53 = new CambioEstado(observacion, DateTime.Now.AddDays(-7));
 
-            //cambio de estado llamada 4
-            CambioEstado cambio14 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-12) };
-            CambioEstado cambio24 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-11) };
-            CambioEstado cambio34 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-10) };
-            CambioEstado cambio44 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-9) };
-            CambioEstado cambio54 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-8) };
+            //cambio de estado de llamada 4
+            CambioEstado cambio14 = new CambioEstado(iniciada, DateTime.Now.AddDays(-12));
+            CambioEstado cambio24 = new CambioEstado(enCurso, DateTime.Now.AddDays(-11));
+            CambioEstado cambio34 = new CambioEstado(finalizada, DateTime.Now.AddDays(-10));
+            CambioEstado cambio44 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-9));
+            CambioEstado cambio54 = new CambioEstado(observacion, DateTime.Now.AddDays(-8));
 
-            //cambio de estado llamada 5
-            CambioEstado cambio15 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-6) };
-            CambioEstado cambio25 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-5) };
-            CambioEstado cambio35 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-4) };
-            CambioEstado cambio45 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-3) };
-            CambioEstado cambio55 = new() { Estado = observacion, FechaHoraInicio = DateTime.Now.AddDays(-2) };
+            //cambio de estado de llamada 5
+            CambioEstado cambio15 = new CambioEstado(iniciada, DateTime.Now.AddDays(-6));
+            CambioEstado cambio25 = new CambioEstado(enCurso, DateTime.Now.AddDays(-5));
+            CambioEstado cambio35 = new CambioEstado(finalizada, DateTime.Now.AddDays(-4));
+            CambioEstado cambio45 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-3));
+            CambioEstado cambio55 = new CambioEstado(observacion, DateTime.Now.AddDays(-2));
 
-            //cambio de estado llamada 6
-            CambioEstado cambio16 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-8) };
-            CambioEstado cambio26 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-7) };
-            CambioEstado cambio36 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-6) };
-            CambioEstado cambio46 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-5) };
-            CambioEstado cambio56 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-4) };
+            //cambio de estado de llamada 6
+            CambioEstado cambio16 = new CambioEstado(iniciada, DateTime.Now.AddDays(-8));
+            CambioEstado cambio26 = new CambioEstado(enCurso, DateTime.Now.AddDays(-7));
+            CambioEstado cambio36 = new CambioEstado(finalizada, DateTime.Now.AddDays(-6));
+            CambioEstado cambio46 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-5));
+            CambioEstado cambio56 = new CambioEstado(correcta, DateTime.Now.AddDays(-4));
 
-            //cambio de estado llamada 7
-            CambioEstado cambio17 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-9) };
-            CambioEstado cambio27 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-8) };
-            CambioEstado cambio37 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-7) };
-            CambioEstado cambio47 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-6) };
-            CambioEstado cambio57 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            //cambio de estado de llamada 7
+            CambioEstado cambio17 = new CambioEstado(iniciada, DateTime.Now.AddDays(-9));
+            CambioEstado cambio27 = new CambioEstado(enCurso, DateTime.Now.AddDays(-8));
+            CambioEstado cambio37 = new CambioEstado(finalizada, DateTime.Now.AddDays(-7));
+            CambioEstado cambio47 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-6));
+            CambioEstado cambio57 = new CambioEstado(correcta, DateTime.Now.AddDays(-5));
 
-            //cambio de estado llamada 8
-            CambioEstado cambio18 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-7) };
-            CambioEstado cambio28 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-6) };
-            CambioEstado cambio38 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-5) };
-            CambioEstado cambio48 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-4) };
-            CambioEstado cambio58 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-3) };
+            //cambio de estado de llamada 8
+            CambioEstado cambio18 = new CambioEstado(iniciada, DateTime.Now.AddDays(-7));
+            CambioEstado cambio28 = new CambioEstado(enCurso, DateTime.Now.AddDays(-6));
+            CambioEstado cambio38 = new CambioEstado(finalizada, DateTime.Now.AddDays(-5));
+            CambioEstado cambio48 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-4));
+            CambioEstado cambio58 = new CambioEstado(correcta, DateTime.Now.AddDays(-3));
 
-            //cambio de estado llamada 9
-            CambioEstado cambio19 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-8) };
-            CambioEstado cambio29 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-7) };
-            CambioEstado cambio39 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-6) };
-            CambioEstado cambio49 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-5) };
-            CambioEstado cambio59 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-4) };
+            //cambio de estado de llamada 9
+            CambioEstado cambio19 = new CambioEstado(iniciada, DateTime.Now.AddDays(-8));
+            CambioEstado cambio29 = new CambioEstado(enCurso, DateTime.Now.AddDays(-7));
+            CambioEstado cambio39 = new CambioEstado(finalizada, DateTime.Now.AddDays(-6));
+            CambioEstado cambio49 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-5));
+            CambioEstado cambio59 = new CambioEstado(correcta, DateTime.Now.AddDays(-4));
 
-            //cambio de estado llamada 10
-            CambioEstado cambio110 = new() { Estado = iniciada, FechaHoraInicio = DateTime.Now.AddDays(-9) };
-            CambioEstado cambio210 = new() { Estado = enCurso, FechaHoraInicio = DateTime.Now.AddDays(-8) };
-            CambioEstado cambio310 = new() { Estado = finalizada, FechaHoraInicio = DateTime.Now.AddDays(-7) };
-            CambioEstado cambio410 = new() { Estado = pendienteDeEscucha, FechaHoraInicio = DateTime.Now.AddDays(-6) };
-            CambioEstado cambio510 = new() { Estado = correcta, FechaHoraInicio = DateTime.Now.AddDays(-5) };
+            //cambio de estado de llamada 10
+            CambioEstado cambio110 = new CambioEstado(iniciada, DateTime.Now.AddDays(-9));
+            CambioEstado cambio210 = new CambioEstado(enCurso, DateTime.Now.AddDays(-8));
+            CambioEstado cambio310 = new CambioEstado(finalizada, DateTime.Now.AddDays(-7));
+            CambioEstado cambio410 = new CambioEstado(pendienteDeEscucha, DateTime.Now.AddDays(-6));
+            CambioEstado cambio510 = new CambioEstado(correcta, DateTime.Now.AddDays(-5));
 
 
             // Listado de cambios de estado
@@ -371,16 +374,16 @@ namespace dsi_ppai_maui.ViewModels
             cambiosDeEstado10.Add(cambio410);
             cambiosDeEstado10.Add(cambio510);
 
-            Cliente cliente1 = new() { NombreCompleto = "John Doe", Dni = "33999999", NroCelular = "351678911" };
-            Cliente cliente2 = new() { NombreCompleto = "Jane Smith", Dni = "44888888", NroCelular = "351234567" };
-            Cliente cliente3 = new() { NombreCompleto = "Bob Johnson", Dni = "55666666", NroCelular = "351987654" };
-            Cliente cliente4 = new() { NombreCompleto = "Alice Williams", Dni = "66777777", NroCelular = "351111111" };
-            Cliente cliente5 = new() { NombreCompleto = "Mike Davis", Dni = "77444444", NroCelular = "351222222" };
-            Cliente cliente6 = new() { NombreCompleto = "Juan Mateo Blencio", Dni = "44240562", NroCelular = "3885325413" };
-            Cliente cliente7 = new() { NombreCompleto = "Zoi Lypnik", Dni = "47248442", NroCelular = "351263987" };
-            Cliente cliente8 = new() { NombreCompleto = "Mari Gonzales", Dni = "44489654", NroCelular = "351182233" };
-            Cliente cliente9 = new() { NombreCompleto = "Agustina Sola", Dni = "43654897", NroCelular = "0115346798" };
-            Cliente cliente10 = new() { NombreCompleto = "Valentin Ruiz", Dni = "46987531", NroCelular = "3875349784" };
+            Cliente cliente1 = new Cliente ("John Doe","33999999","351678911" );
+            Cliente cliente2 = new Cliente("Jane Smith", "44888888", "351234567");
+            Cliente cliente3 = new Cliente("Bob Johnson", "55666666", "351987654");
+            Cliente cliente4 = new Cliente("Alice Williams", "66777777", "351111111");
+            Cliente cliente5 = new Cliente("Mike Davis", "77444444", "351222222");
+            Cliente cliente6 = new Cliente("Juan Mateo Blencio", "44240562", "3885325413");
+            Cliente cliente7 = new Cliente("Zoi Lypnik", "47248442", "351263987");
+            Cliente cliente8 = new Cliente("Mari Gonzales", "44489654", "351182233");
+            Cliente cliente9 = new Cliente("Agustina Sola", "43654897", "0115346798");
+            Cliente cliente10 = new Cliente("Valentin Ruiz", "46987531", "3875349784");
 
 
             List<RespuestaCliente> RespuestasDeEncuesta1 = new();
@@ -394,16 +397,17 @@ namespace dsi_ppai_maui.ViewModels
             List<RespuestaCliente> RespuestasDeEncuesta9 = new();
             List<RespuestaCliente> RespuestasDeEncuesta10 = new();
 
-            RespuestaCliente respuestaCliente1 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible1 };
-            RespuestaCliente respuestaCliente2 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible2 };
-            RespuestaCliente respuestaCliente3 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible3 };
-            RespuestaCliente respuestaCliente4 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible4 };
-            RespuestaCliente respuestaCliente5 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible5 };
-            RespuestaCliente respuestaCliente6 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible6 };
-            RespuestaCliente respuestaCliente7 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible7 };
-            RespuestaCliente respuestaCliente8 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible8 };
-            RespuestaCliente respuestaCliente9 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible9 };
-            RespuestaCliente respuestaCliente10 = new() { FechaEncuesta = DateTime.Now.AddDays(-5), RespuestaSeleccionada = respuestaPosible10 };
+            RespuestaCliente respuestaCliente1 = new RespuestaCliente (DateTime.Now.AddDays(-5), respuestaPosible1);
+            RespuestaCliente respuestaCliente2 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible2);
+            RespuestaCliente respuestaCliente3 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible3);
+            RespuestaCliente respuestaCliente4 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible4);
+            RespuestaCliente respuestaCliente5 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible5);
+            RespuestaCliente respuestaCliente6 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible6);
+            RespuestaCliente respuestaCliente7 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible7);
+            RespuestaCliente respuestaCliente8 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible8);
+            RespuestaCliente respuestaCliente9 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible9);
+            RespuestaCliente respuestaCliente10 = new RespuestaCliente(DateTime.Now.AddDays(-5), respuestaPosible10);
+
 
             RespuestasDeEncuesta1.Add(respuestaCliente1);
             RespuestasDeEncuesta1.Add(respuestaCliente2);
@@ -439,16 +443,16 @@ namespace dsi_ppai_maui.ViewModels
             RespuestasDeEncuesta10.Add(respuestaCliente4);
             RespuestasDeEncuesta10.Add(respuestaCliente3);
 
-            Llamada llamada1 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado1, Cliente = cliente1, RespuestasDeEncuesta = RespuestasDeEncuesta1 };
-            Llamada llamada2 = new() { DescripcionOperador = "Desc ", Duracion = "10", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado2, Cliente = cliente2, RespuestasDeEncuesta = RespuestasDeEncuesta2 };
-            Llamada llamada3 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado3, Cliente = cliente3, RespuestasDeEncuesta = RespuestasDeEncuesta3 };
-            Llamada llamada4 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado4, Cliente = cliente4, RespuestasDeEncuesta = RespuestasDeEncuesta4 };
-            Llamada llamada5 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado5, Cliente = cliente5, RespuestasDeEncuesta = RespuestasDeEncuesta5 };
-            Llamada llamada6 = new() { DescripcionOperador = "Desc  ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado6, Cliente = cliente6, RespuestasDeEncuesta = RespuestasDeEncuesta6 };
-            Llamada llamada7 = new() { DescripcionOperador = "Desc ", Duracion = "50", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado7, Cliente = cliente7, RespuestasDeEncuesta = RespuestasDeEncuesta7 };
-            Llamada llamada8 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado8, Cliente = cliente8, RespuestasDeEncuesta = RespuestasDeEncuesta8 };
-            Llamada llamada9 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado9, Cliente = cliente9, RespuestasDeEncuesta = RespuestasDeEncuesta9 };
-            Llamada llamada10 = new() { DescripcionOperador = "Desc ", Duracion = "20", DetalleAccionRequerida = "Detalle de Accion", EncuestaEnviada = "Encuesta enviada", ObservacionAuditor = "observacion Auditor", CambioDeEstado = cambiosDeEstado10, Cliente = cliente10, RespuestasDeEncuesta = RespuestasDeEncuesta10 };
+            Llamada llamada1 = new Llamada("Desc", "20", "Detalle de Accion", "Encuesta enviada", "observacion Auditor", cambiosDeEstado1, cliente1, RespuestasDeEncuesta1);
+            Llamada llamada2 = new Llamada("Desc", "10", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado2, cliente2, RespuestasDeEncuesta2);
+            Llamada llamada3 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado3, cliente3, RespuestasDeEncuesta3);
+            Llamada llamada4 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado4, cliente4, RespuestasDeEncuesta4);
+            Llamada llamada5 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado5, cliente5, RespuestasDeEncuesta5);
+            Llamada llamada6 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado6, cliente6, RespuestasDeEncuesta6);
+            Llamada llamada7 = new Llamada("Desc", "50", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado7, cliente7, RespuestasDeEncuesta7);
+            Llamada llamada8 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado8, cliente8, RespuestasDeEncuesta8);
+            Llamada llamada9 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado9, cliente9, RespuestasDeEncuesta9);
+            Llamada llamada10 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado10, cliente10, RespuestasDeEncuesta10);
 
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
@@ -470,7 +474,29 @@ namespace dsi_ppai_maui.ViewModels
             await Shell.Current.GoToAsync(nameof(ConsultarEncuestaView));
         }
 
-        // Llamados por ConsultarEncuestaView
+
+        //aca aplicaremos iterator!!!!!!!!!!!!!!!
+        //!!!!!!!!!!!!!
+        //!!!!!!!!!!!!
+        //!!!!!!!!!!!!!
+        //!!!!!!!!!!!!
+        //!!!!!!!!!!!!!
+        //!!!!!!!!!!!!
+
+        [RelayCommand]
+        public void FiltrarporPeriodo()
+        {
+            LlamadasFiltradas.Clear();
+
+            foreach (Llamada llamada in Llamadas)
+            {
+                if (llamada.ConsultarEncuestaRespondida() && llamada.esDePeriodo(FechaDesde, FechaHasta))
+                {
+                    LlamadasFiltradas.Add(llamada);
+                }
+            }
+        }
+
 
         [RelayCommand]
         public async void Cancelar()
@@ -478,83 +504,25 @@ namespace dsi_ppai_maui.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        public void EsEncuestaLlamada(Llamada llamadaSeleccionada)
-        {
-
-            // Determinamos 
-
-            // determinamos de que encuesta es esa llamada
-
-            // Agregamos a la ObservableCollection
-
-
-
-            //foreach (Encuesta encuesta in encuestasDelCliente)
-            //{ for (int nro = 0; nro < encuesta.Preguntas.Count; nro++)
-            //    {
-            //        List<RespuestaPosible> respuestasPosibles = encuesta.Preguntas[nro].RespuestasPosibles.Select(respuesta => respuesta.Valor).ToList();
-            //        RespuestaPosible respuestaSeleccionada = llamadaSeleccionada.RespuestasDeEncuesta[nro].RespuestaSeleccionada;
-            //        if (!respuestasPosibles.Contains(respuestaSeleccionada.Valor))
-            //        { break;}
-            //        else {return encuesta; }} }
-            //return null; 
-        }
-
         [RelayCommand]
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
+
+            //como que no se para que guardamos en variables nombre y duracion si la clase 
+            // llamada tiene el metodo este tomar seleccion y ya devuelve nomnbre duracion y utl estado.
+            // no se si estos atributos tengo que guardarlos en alguno de los atributos de arriba.
+            //en teoria con estas 3 atributos mas las respuestas deberian despues pasarse a la interfaz para 
+            //mostarse
             DatosDeRespuestas.Clear();
-            NombreCliente = llamada.Cliente.NombreCompleto;
-            Duracion = llamada.Duracion;
-
-            foreach (RespuestaCliente respuesta in LlamadaSeleccionada.RespuestasDeEncuesta)
+            NombreCliente = llamada.getCliente().getNombreCompleto();
+            Duracion = llamada.getDuracion();
+            object estadoActualLlamada = llamada.DeterminarUltimoEstado;
+            //en teoria aca guardo en respuestasdeencuestacliente todas las descripciones de la
+            //encuesta para despues en teoria comparar con todas las encuestas
+            foreach (RespuestaCliente respuesta in LlamadaSeleccionada.getRespuestasDeEncuesta())
             {
-                DatosDeRespuestas.Add(new DatosRespuesta
-                {
-                    DescripcionEncuesta = respuesta.RespuestaSeleccionada.Pregunta.Encuesta.Descripcion,
-                    DescripcionPregunta = respuesta.RespuestaSeleccionada.Pregunta.StrPregunta,
-                    DescripcionRespuesta = respuesta.RespuestaSeleccionada.Descripcion
-                });
+                respuestasDeEncuestaCliente.Add(respuesta.getRespuestaSeleccionada().getDescripcion());
             }
-
-            //List<Encuesta>EncuestasCliente = new();
-
-            //foreach (Encuesta encuesta in encuestas) // habria q ver el tema de la inicializacion new() o null?
-            //{
-            //    if (encuesta.esEncuestaDeCliente(NombreCliente))
-            //    {
-            //        EncuestasCliente.Add(encuesta);
-            //    }
-            //}
-            //Encuesta nuestraEncuesta = EsEncuestaLlamada(Llamada EncuestasCliente);
-
-            //descripcionDeEncuesta = nuestraEncuesta.Descripcion; // descripcion de la encuesta
-
-            //List<Pregunta> descripcionesPreguntas = nuestraEncuesta.Preguntas; // lista de descripcion de las preguntas
-            //foreach (Pregunta dP in descripcionesPreguntas)
-            //{
-            //    descripcionPreguntas.Add(dP.StrPregunta);
-            //}
-
-            //List<RespuestaCliente> respuestasDeEncuestaDeClienteObj = llamada.RespuestasDeEncuesta; // lista de respuestas seleccionadas, o sea las respuestas de cliente
-            //foreach (RespuestaCliente rDEDC in respuestasDeEncuestaDeClienteObj)
-            //{
-            //    respuestasDeEncuestaDeCliente.Add(rDEDC.RespuestaSeleccionada.Valor);
-            //}
-
-
-            // en caso de querer verificar que la respuesta del cliente este dentro de las respuestas posibles habria que
-            // hacer sobre for y extender
-            //respuestasDeEncuestaDeCliente = llamada.RespuestasDeEncuesta;
-            //foreach (RespuestaCliente respuestaDeEncuestaDeCliente in respuestasDeEncuestaDeCliente)
-            //{ 
-            //    foreach (Pregunta descripcionPregunta in descripcionPreguntas)
-            //    {
-            //        if (respuestaDeEncuestaDeCliente in descripcionPregunta.Respuestas)
-            //        { 
-            //        }                        
-            //    }
-            //}
 
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
@@ -566,20 +534,8 @@ namespace dsi_ppai_maui.ViewModels
         {
             FiltrarporPeriodo();
         }
-
-        [RelayCommand]
-        public void FiltrarporPeriodo()
-        {
-            LlamadasFiltradas.Clear();
-
-            foreach (Llamada llamada in Llamadas)
-            {
-                if (llamada.consultarEncuestaRespondida() && llamada.esDePeriodo(FechaDesde, FechaHasta))
-                {
-                    LlamadasFiltradas.Add(llamada);
-                }
-            }
-        }
+     
+      
 
         // Llamados por DetalleLlamadaView
 
@@ -588,9 +544,9 @@ namespace dsi_ppai_maui.ViewModels
         {
             string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
 
-            foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.RespuestasDeEncuesta)
+            foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.getRespuestasDeEncuesta())
             {
-                str += NombreCliente + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + Duracion + ";" + respuestaCliente.RespuestaSeleccionada.Pregunta.StrPregunta + ";" + respuestaCliente.RespuestaSeleccionada.Descripcion + "\n";
+                str += NombreCliente + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + Duracion + ";" + respuestaCliente.getRespuestaSeleccionada.getPregunta.getStrPregunta + ";" + respuestaCliente.getRespuestaSeleccionada.getDescripcion + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync(DateTime.Now.ToString()+".csv", stream, cancellationTokenSource.Token);
@@ -599,24 +555,11 @@ namespace dsi_ppai_maui.ViewModels
 
     }
 
+
+    //esto directamente se borraria por que no es necesario
     public class DatosRespuesta
     {
-        private string descripcionEncuesta;
-        private string descripcionPregunta;
         private string descripcionRespuesta; 
-
-
-        public string DescripcionEncuesta
-        {
-            get { return descripcionEncuesta; }
-            set { descripcionEncuesta = value; }
-        }
-
-        public string DescripcionPregunta
-        {
-            get { return descripcionPregunta; }
-            set { descripcionPregunta = value; }
-        }
 
         public string DescripcionRespuesta
         {

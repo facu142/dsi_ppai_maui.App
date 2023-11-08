@@ -10,10 +10,19 @@ namespace dsi_ppai_maui.Models
     {
         private string nombre;
 
-        public string Nombre
+        public Estado(string nombre)
         {
-            get { return nombre; }
-            set { nombre = value; }
+            this.nombre = nombre;
+        }
+
+        public string getNombre()
+        {
+            return nombre;
+        }
+
+        public void setNombre(string value)
+        {
+            nombre = value;
         }
 
         public bool Esfinalizada()

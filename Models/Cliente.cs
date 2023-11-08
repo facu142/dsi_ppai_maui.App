@@ -7,28 +7,48 @@ using System.Threading.Tasks;
 
 namespace dsi_ppai_maui.Models
 {
-    public class Cliente
-    {
-        private string dni;
-        private string nombreCompleto;
-        private string nroCelular;
-
-        public string Dni
+        public class Cliente
         {
-            get { return dni; }
-            set { dni = value; }
+            private string dni;
+            private string nombreCompleto;
+            private string nroCelular;
+
+        public Cliente(string dni, string nombreCompleto, string nroCelular)
+        {
+            this.dni = dni;
+            this.nombreCompleto = nombreCompleto;
+            this.nroCelular = nroCelular;
         }
 
-        public string NombreCompleto
-        {
-            get { return nombreCompleto; }
-            set { nombreCompleto = value; }
+        public string getDni()
+            {
+                return dni;
+            }
+
+            public void setDni(string value)
+            {
+                dni = value;
+            }
+
+            public string getNombreCompleto()
+            {
+                return nombreCompleto;
+            }
+
+            public void setNombreCompleto(string value)
+            {
+                nombreCompleto = value;
+            }
+
+            public string getNroCelular()
+            {
+                return nroCelular;
+            }
+
+            public void setNroCelular(string value)
+            {
+                nroCelular = value;
+            }
         }
 
-        public string NroCelular
-        {
-            get { return nroCelular; }
-            set { nroCelular = value;}
-        }
     }
-}

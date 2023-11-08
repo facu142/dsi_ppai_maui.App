@@ -11,17 +11,30 @@ namespace dsi_ppai_maui.Models
         private DateTime fechaEncuesta;
         private RespuestaPosible respuestaSeleccionada;
 
-
-        public DateTime FechaEncuesta
+        public RespuestaCliente(DateTime fechaEncuesta, RespuestaPosible respuestaSeleccionada)
         {
-            get {  return fechaEncuesta;}
-            set { fechaEncuesta = value;}
+            this.fechaEncuesta = fechaEncuesta;
+            this.respuestaSeleccionada = respuestaSeleccionada;
         }
 
-        public RespuestaPosible RespuestaSeleccionada
+        public DateTime getFechaEncuesta()
         {
-            get { return respuestaSeleccionada; }
-            set { respuestaSeleccionada = value; }
+            return fechaEncuesta;
+        }
+
+        public void setFechaEncuesta(DateTime value)
+        {
+            fechaEncuesta = value;
+        }
+
+        public RespuestaPosible getRespuestaSeleccionada()
+        {
+            return respuestaSeleccionada;
+        }
+
+        public void setRespuestaSeleccionada(RespuestaPosible value)
+        {
+            respuestaSeleccionada = value;
         }
     }
 }

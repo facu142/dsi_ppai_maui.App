@@ -6,40 +6,62 @@ using System.Threading.Tasks;
 
 namespace dsi_ppai_maui.Models
 {
+
     public class Encuesta
     {
         private string descripcion;
         private DateTime fechaFinVigencia;
         private List<Pregunta> preguntas;
-        private Cliente cliente; // new
-
-        public string Descripcion
+        private Cliente cliente;
+        public Encuesta(string descripcion, DateTime fechaFinVigencia)
         {
-            get { return descripcion; }
-            set { descripcion = value; }
+            this.descripcion = descripcion;
+            this.fechaFinVigencia = fechaFinVigencia;
         }
 
-        public DateTime FechaFinVigencia
+        public string getDescripcion()
         {
-            get { return fechaFinVigencia; }
-            set { fechaFinVigencia = value; }
+            return descripcion;
         }
 
-        public List<Pregunta> Preguntas
+        public void setDescripcion(string valor)
         {
-            get { return preguntas; }
-            set { preguntas = value; }
+            descripcion = valor;
         }
 
-        public Cliente Cliente
-        { 
-            get { return cliente; }
-            set { cliente = value; } // ??
+        public DateTime getFechaFinVigencia()
+        {
+            return fechaFinVigencia;
+        }
+
+        public void setFechaFinVigencia(DateTime valor)
+        {
+            fechaFinVigencia = valor;
+        }
+
+        public List<Pregunta> getPreguntas()
+        {
+            return preguntas;
+        }
+
+        public void setPreguntas(List<Pregunta> valor)
+        {
+            preguntas = valor;
+        }
+
+        public Cliente getCliente()
+        {
+            return cliente;
+        }
+
+        public void setCliente(Cliente valor)
+        {
+            cliente = valor;
         }
 
         public bool esEncuestaDeCliente(string nombreDeCliente)
         {
-            if (this.Cliente.NombreCompleto == nombreDeCliente)
+            if (this.cliente.getNombreCompleto() == nombreDeCliente)
             {
                 return true;
             }
