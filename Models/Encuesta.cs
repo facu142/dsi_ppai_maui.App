@@ -59,16 +59,6 @@ namespace dsi_ppai_maui.Models
             cliente = valor;
         }
 
-        public bool esEncuestaDeCliente(string nombreDeCliente)
-        {
-            if (this.cliente.getNombreCompleto() == nombreDeCliente)
-            {
-                return true;
-            }
-            else { return false; }
-        }
-
-      
         public bool EsEncuestaLlamada(List<string> respuestasDeEncuestaCliente)
         {
             List<Pregunta> arrayPreguntas = this.preguntas;

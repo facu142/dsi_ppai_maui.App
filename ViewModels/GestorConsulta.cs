@@ -147,16 +147,15 @@ namespace dsi_ppai_maui.ViewModels
                 respuestaPosible15,
                 respuestaPosible16,
             };
+           
 
-            /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
+        /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
 
-            Encuesta Encuesta1 = new Encuesta( "Conteste ésta encuesta...", DateTime.Now);
+        Encuesta Encuesta1 = new Encuesta( "Conteste ésta encuesta...", DateTime.Now);
             Encuesta Encuesta2 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
             Encuesta Encuesta3 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
 
-
-
-
+           
 
             Pregunta pregunta1 = new Pregunta("¿Cuan satisfecho estas de los servicios?", respuestas, Encuesta1);
             Pregunta pregunta2 = new Pregunta("¿En una escala del 1 al 5, ¿qué tan probable es que vuelvas a utilizar nuestros productos/servicios en el futuro?",respuestas1, Encuesta2  );
@@ -483,6 +482,7 @@ namespace dsi_ppai_maui.ViewModels
             llamada9.setRespuestasDeEncuesta(RespuestasDeEncuesta9);
             llamada10.setRespuestasDeEncuesta(RespuestasDeEncuesta10);
 
+
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
             Llamadas.Add(llamada3);
@@ -551,7 +551,7 @@ namespace dsi_ppai_maui.ViewModels
         public Encuesta BuscarEncuestaAsociada()
         {
             Encuesta encuestaAsociada = null;
-            foreach (Encuesta encuesta in Encuestas)
+            foreach (Encuesta encuesta in this.Encuestas)
             {
                 if (encuesta.EsEncuestaLlamada(this.RespuestasDeEncuestaCliente))
                 {
