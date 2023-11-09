@@ -20,8 +20,8 @@ namespace dsi_ppai_maui.Models
         //constructor
         public Llamada(
       string descripcionOperador,
-      string detalleAccionRequerida,
       string duracion,
+      string detalleAccionRequerida,
       string encuestaEnviada,
       string observacionAuditor,
       Cliente cliente)
@@ -152,7 +152,7 @@ namespace dsi_ppai_maui.Models
 
                 if (estadoFinal != null)
                 {
-                    return estadoFinal.getEstado().ToString();
+                    return estadoFinal.GetNombreEstado();
                 }
 
                 return string.Empty; // Devuelve una cadena vacía en lugar de null si no se encuentra ningún estado.
@@ -223,7 +223,7 @@ namespace dsi_ppai_maui.Models
                 }
             }
 
-            string nombreUltimoEstado = estadoFinal.getNombreEstado();
+            string nombreUltimoEstado = estadoFinal.GetNombreEstado();
 
             return new List<string> { nombreCliente, duracionLlamada, nombreUltimoEstado };
         }

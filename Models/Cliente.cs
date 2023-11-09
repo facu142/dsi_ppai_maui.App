@@ -13,7 +13,7 @@ namespace dsi_ppai_maui.Models
             private string nombreCompleto;
             private string nroCelular;
 
-        public Cliente(string dni, string nombreCompleto, string nroCelular)
+        public Cliente(string nombreCompleto, string dni, string nroCelular)
         {
             this.dni = dni;
             this.nombreCompleto = nombreCompleto;

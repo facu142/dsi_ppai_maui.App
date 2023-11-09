@@ -30,16 +30,18 @@ namespace dsi_ppai_maui.Models
         {
             return estado;
         }
+        public string GetNombreEstado()
+        {
+            return estado.getNombre();
+        }
+
 
         public void setEstado(Estado valor)
         {
             estado = valor;
         }
 
-        public string getNombreEstado()
-        {
-            return estado.getNombre();
-        }
+       
     }
 
 }

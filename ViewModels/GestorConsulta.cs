@@ -53,7 +53,7 @@ namespace dsi_ppai_maui.ViewModels
         Encuesta EncuestaAsociada;
 
         [ObservableProperty]
-        public List<Encuesta> encuestas; // new
+        List<Encuesta> encuestas; // new
 
         [ObservableProperty]
         List<RespuestaPosible> respuestasPosibles; // new SEGUN COMO LO DEJE NO HACE FALTA
@@ -77,6 +77,14 @@ namespace dsi_ppai_maui.ViewModels
 
             fechaDesde = DateTime.Now;
             fechaHasta = DateTime.Now;
+
+            encuestas = new List<Encuesta>();
+            Encuesta Encuesta1 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
+            Encuesta Encuesta2 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
+            Encuesta Encuesta3 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
+            encuestas.Add(Encuesta1);
+            encuestas.Add(Encuesta2);
+            encuestas.Add(Encuesta3);
 
             RespuestaPosible respuestaPosible0 = new RespuestaPosible( "Muy insatisfecho", "1");
             RespuestaPosible respuestaPosible1 = new RespuestaPosible("Neutral", "2");
@@ -151,9 +159,6 @@ namespace dsi_ppai_maui.ViewModels
 
         /* Cada encuesta tiene 2 preguntas y cada pregunta tiene 2 respuestas posibles y cada respuesta de cliente es una respuesta posible*/
 
-        Encuesta Encuesta1 = new Encuesta( "Conteste ésta encuesta...", DateTime.Now);
-            Encuesta Encuesta2 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
-            Encuesta Encuesta3 = new Encuesta("Conteste ésta encuesta...", DateTime.Now);
 
            
 
