@@ -24,8 +24,6 @@ namespace dsi_ppai_maui.Models
       string duracion,
       string encuestaEnviada,
       string observacionAuditor,
-      List<RespuestaCliente> respuestasDeEncuesta,
-      List<CambioEstado> cambioDeEstado,
       Cliente cliente)
         {
             this.descripcionOperador = descripcionOperador;
@@ -33,18 +31,11 @@ namespace dsi_ppai_maui.Models
             this.detalleAccionRequerida = detalleAccionRequerida;
             this.encuestaEnviada = encuestaEnviada;
             this.observacionAuditor = observacionAuditor;
-            this.cambioDeEstado = cambioDeEstado;
-            this.cliente = cliente;
-            this.respuestasDeEncuesta = respuestasDeEncuesta;
-        }
-        // no se si esta bien lo de abajo
-        public Llamada()
-            {
-                cambioDeEstado = new List<CambioEstado>();
-                respuestasDeEncuesta = new List<RespuestaCliente>();
-            }
+             this.cliente = cliente;
 
-        public Llamada(string v1, string v2, string v3, string v4, string v5, List<CambioEstado> cambiosDeEstado1, Cliente cliente1, List<RespuestaCliente> respuestasDeEncuesta1)
+        }
+
+        public Llamada()
         {
         }
 
@@ -122,13 +113,29 @@ namespace dsi_ppai_maui.Models
             {
                 return cliente;
             }
-
-            public void setCliente(Cliente value)
+        public string getNombreCliente()
+        {
+            return cliente.getNombreCompleto();
+        }
+        public void setCliente(Cliente value)
             {
                 cliente = value;
             }
 
-        public string DescripcionOperador => descripcionOperador;
+        public List<string> GetRespuestas()
+        {
+            List<string> arrayDescripcionesRta = new List<string>();
+
+            foreach (RespuestaCliente respuesta in respuestasDeEncuesta)
+            {
+                arrayDescripcionesRta.Add(respuesta.getDescripcionRespuestaSeleccionada());
+            }
+
+            return arrayDescripcionesRta;
+        }
+
+
+    public string DescripcionOperador => descripcionOperador;
         public string DeterminarUltimoEstado
         {
             get
@@ -199,7 +206,7 @@ namespace dsi_ppai_maui.Models
                 return false;
             }
         }
-        //esto habra que reveer
+        //esto no va
         public List<string> seleccionarLlamada()
         {
             Cliente clienteDeLlamada = this.cliente;

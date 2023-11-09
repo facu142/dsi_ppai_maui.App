@@ -67,5 +67,32 @@ namespace dsi_ppai_maui.Models
             }
             else { return false; }
         }
+
+      
+        public bool EsEncuestaLlamada(List<string> respuestasDeEncuestaCliente)
+        {
+            List<Pregunta> arrayPreguntas = this.preguntas;
+            int contador = 0;
+
+            foreach (Pregunta pregunta in arrayPreguntas)
+            {
+                if (pregunta.EsEncuestaLlamada(respuestasDeEncuestaCliente))
+                {
+                    contador++;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (respuestasDeEncuestaCliente.Count == contador)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

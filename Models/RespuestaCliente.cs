@@ -31,6 +31,10 @@ namespace dsi_ppai_maui.Models
         {
             return respuestaSeleccionada;
         }
+        public string getDescripcionRespuestaSeleccionada()
+        {
+            return respuestaSeleccionada.getDescripcion();
+        }
 
         public void setRespuestaSeleccionada(RespuestaPosible value)
         {

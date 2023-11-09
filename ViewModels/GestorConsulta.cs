@@ -36,6 +36,9 @@ namespace dsi_ppai_maui.ViewModels
         string duracion;
 
         [ObservableProperty]
+        string estadoActualLlamada;
+
+        [ObservableProperty]
         List<string> respuestasDeEncuestaCliente; // aca puse string
 
         [ObservableProperty]
@@ -47,8 +50,10 @@ namespace dsi_ppai_maui.ViewModels
         [ObservableProperty]
         string descripcionRespuesta;
 
+        Encuesta EncuestaAsociada;
+
         [ObservableProperty]
-        List<Encuesta> encuestas; // new
+        public List<Encuesta> encuestas; // new
 
         [ObservableProperty]
         List<RespuestaPosible> respuestasPosibles; // new SEGUN COMO LO DEJE NO HACE FALTA
@@ -91,6 +96,7 @@ namespace dsi_ppai_maui.ViewModels
             RespuestaPosible respuestaPosible15 = new RespuestaPosible("Si", "1");
             RespuestaPosible respuestaPosible16 = new RespuestaPosible("No", "2");
 
+        
 
             /*1 - Muy insatisfecho
             2 - Insatisfecho
@@ -214,12 +220,14 @@ namespace dsi_ppai_maui.ViewModels
             Encuesta1.setPreguntas(preguntas);
             pregunta1.setEncuesta(Encuesta1);
             pregunta2.setEncuesta(Encuesta1);
+
             Encuesta2.setPreguntas(preguntas1);
-            pregunta3.setEncuesta(Encuesta1);
-            pregunta4.setEncuesta(Encuesta1);
+            pregunta3.setEncuesta(Encuesta2);
+            pregunta4.setEncuesta(Encuesta2);
+            
             Encuesta3.setPreguntas(preguntas2);
-            pregunta5.setEncuesta(Encuesta1);
-            pregunta6.setEncuesta(Encuesta1);
+            pregunta5.setEncuesta(Encuesta3);
+            pregunta6.setEncuesta(Encuesta3);
 
 
             Estado finalizada = new Estado ("Finalizada");
@@ -443,16 +451,37 @@ namespace dsi_ppai_maui.ViewModels
             RespuestasDeEncuesta10.Add(respuestaCliente4);
             RespuestasDeEncuesta10.Add(respuestaCliente3);
 
-            Llamada llamada1 = new Llamada("Desc", "20", "Detalle de Accion", "Encuesta enviada", "observacion Auditor", cambiosDeEstado1, cliente1, RespuestasDeEncuesta1);
-            Llamada llamada2 = new Llamada("Desc", "10", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado2, cliente2, RespuestasDeEncuesta2);
-            Llamada llamada3 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado3, cliente3, RespuestasDeEncuesta3);
-            Llamada llamada4 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado4, cliente4, RespuestasDeEncuesta4);
-            Llamada llamada5 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado5, cliente5, RespuestasDeEncuesta5);
-            Llamada llamada6 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado6, cliente6, RespuestasDeEncuesta6);
-            Llamada llamada7 = new Llamada("Desc", "50", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado7, cliente7, RespuestasDeEncuesta7);
-            Llamada llamada8 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado8, cliente8, RespuestasDeEncuesta8);
-            Llamada llamada9 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado9, cliente9, RespuestasDeEncuesta9);
-            Llamada llamada10 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cambiosDeEstado10, cliente10, RespuestasDeEncuesta10);
+            Llamada llamada1 = new Llamada("Desc", "20", "Detalle de Accion", "Encuesta enviada", "observacion Auditor", cliente1);
+            Llamada llamada2 = new Llamada("Desc", "10", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente2);
+            Llamada llamada3 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente3);
+            Llamada llamada4 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente4);
+            Llamada llamada5 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente5);
+            Llamada llamada6 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente6);
+            Llamada llamada7 = new Llamada("Desc", "50", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente7);
+            Llamada llamada8 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente8);
+            Llamada llamada9 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente9);
+            Llamada llamada10 = new Llamada("Desc", "20", "Detalle de Acción", "Encuesta enviada", "observación Auditor", cliente10);
+
+            llamada1.setCambioDeEstado(cambiosDeEstado1);
+            llamada2.setCambioDeEstado(cambiosDeEstado2);
+            llamada3.setCambioDeEstado(cambiosDeEstado3);
+            llamada4.setCambioDeEstado(cambiosDeEstado4);
+            llamada5.setCambioDeEstado(cambiosDeEstado5);
+            llamada6.setCambioDeEstado(cambiosDeEstado6);
+            llamada7.setCambioDeEstado(cambiosDeEstado7);
+            llamada8.setCambioDeEstado(cambiosDeEstado8);
+            llamada9.setCambioDeEstado(cambiosDeEstado9);
+            llamada10.setCambioDeEstado(cambiosDeEstado10);
+            llamada1.setRespuestasDeEncuesta(RespuestasDeEncuesta1);
+            llamada2.setRespuestasDeEncuesta(RespuestasDeEncuesta2);
+            llamada3.setRespuestasDeEncuesta(RespuestasDeEncuesta3);
+            llamada4.setRespuestasDeEncuesta(RespuestasDeEncuesta4);
+            llamada5.setRespuestasDeEncuesta(RespuestasDeEncuesta5);
+            llamada6.setRespuestasDeEncuesta(RespuestasDeEncuesta6);
+            llamada7.setRespuestasDeEncuesta(RespuestasDeEncuesta7);
+            llamada8.setRespuestasDeEncuesta(RespuestasDeEncuesta8);
+            llamada9.setRespuestasDeEncuesta(RespuestasDeEncuesta9);
+            llamada10.setRespuestasDeEncuesta(RespuestasDeEncuesta10);
 
             Llamadas.Add(llamada1);
             Llamadas.Add(llamada2);
@@ -508,26 +537,32 @@ namespace dsi_ppai_maui.ViewModels
         public async void TomarSeleccionLlamada(Llamada llamada)
         {
 
-            //como que no se para que guardamos en variables nombre y duracion si la clase 
-            // llamada tiene el metodo este tomar seleccion y ya devuelve nomnbre duracion y utl estado.
-            // no se si estos atributos tengo que guardarlos en alguno de los atributos de arriba.
-            //en teoria con estas 3 atributos mas las respuestas deberian despues pasarse a la interfaz para 
-            //mostarse
             DatosDeRespuestas.Clear();
-            NombreCliente = llamada.getCliente().getNombreCompleto();
+            NombreCliente = llamada.getNombreCliente();
             Duracion = llamada.getDuracion();
-            object estadoActualLlamada = llamada.DeterminarUltimoEstado;
-            //en teoria aca guardo en respuestasdeencuestacliente todas las descripciones de la
-            //encuesta para despues en teoria comparar con todas las encuestas
-            foreach (RespuestaCliente respuesta in LlamadaSeleccionada.getRespuestasDeEncuesta())
-            {
-                respuestasDeEncuestaCliente.Add(respuesta.getRespuestaSeleccionada().getDescripcion());
-            }
-
+            EstadoActualLlamada = llamada.DeterminarUltimoEstado;
+            RespuestasDeEncuestaCliente = llamada.GetRespuestas();
+            EncuestaAsociada = BuscarEncuestaAsociada();
             var navParam = new Dictionary<string, object>();
             navParam.Add("LlamadaSeleccionada", llamada);
             await Shell.Current.GoToAsync(nameof(DetalleLlamadaView), navParam);
         }
+
+        public Encuesta BuscarEncuestaAsociada()
+        {
+            Encuesta encuestaAsociada = null;
+            foreach (Encuesta encuesta in Encuestas)
+            {
+                if (encuesta.EsEncuestaLlamada(this.RespuestasDeEncuestaCliente))
+                {
+                    encuestaAsociada = encuesta;
+                    return encuestaAsociada;
+                }
+            }
+
+            return null;
+        }
+
 
         [RelayCommand]
         public void FechaSeleccionada()
@@ -535,23 +570,20 @@ namespace dsi_ppai_maui.ViewModels
             FiltrarporPeriodo();
         }
      
-      
-
-        // Llamados por DetalleLlamadaView
+              // Llamados por DetalleLlamadaView
 
         [RelayCommand]
         public async void GenerarCSV()
         {
             string str = "nombreCliente;estadoActual;duracion;pregunta;respuesta\n";
 
-            foreach (RespuestaCliente respuestaCliente in _llamadaSeleccionada.getRespuestasDeEncuesta())
+            foreach (RespuestaCliente respuestaCliente in LlamadaSeleccionada.getRespuestasDeEncuesta())
             {
-                str += NombreCliente + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + Duracion + ";" + respuestaCliente.getRespuestaSeleccionada.getPregunta.getStrPregunta + ";" + respuestaCliente.getRespuestaSeleccionada.getDescripcion + "\n";
+                str += NombreCliente + ";" + _llamadaSeleccionada.DeterminarUltimoEstado + ";" + Duracion + ";" + respuestaCliente.getRespuestaSeleccionada().getPregunta().getStrPregunta() + ";" + respuestaCliente.getRespuestaSeleccionada().getDescripcion() + "\n";
             }
             using var stream = new MemoryStream(Encoding.Default.GetBytes(str));
             var path = await fileSaver.SaveAsync(DateTime.Now.ToString()+".csv", stream, cancellationTokenSource.Token);
         }
-
 
     }
 

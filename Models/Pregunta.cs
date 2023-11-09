@@ -47,6 +47,19 @@ namespace dsi_ppai_maui.Models
         {
             encuesta = value;
         }
+        public bool EsEncuestaLlamada(List<string> respuestasDeEncuestaCliente)
+        {
+            foreach (RespuestaPosible respuesta in this.respuestas)
+            {
+                string descripcion = respuesta.getDescripcion();
+                if (respuestasDeEncuestaCliente.Contains(descripcion))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
     }
 }
